@@ -131,6 +131,15 @@ If you want to understand how the scoring and branching decisions work, that doc
 
 ## Setup
 
+### Required n8n Community Nodes
+
+This workflow relies on two n8n community nodes. Install both before importing and running the workflow:
+
+- `@mazix/n8n-nodes-converter-documents` by mazix: https://github.com/mazixs/n8n-node-converter-documents
+- `n8n-nodes-pdf-page-extract` by Oscar Weijman: https://github.com/OscarWeijman/n8n-nodes-pdf-page-extract
+
+These community packages provide the document conversion and PDF page text extraction steps used in the workflow.
+
 ### 1. Install Docker Desktop
 
 This project is intended to run through Docker Desktop on Windows.
@@ -585,5 +594,7 @@ Platform and implementation credits:
 - `n8n`: workflow orchestration and form-driven automation
 - `Microsoft Presidio`: PII detection and anonymization foundation for the bilingual redaction pipeline
 - `spaCy`: NLP model runtime used by the custom Presidio analyzer configuration
+- `@mazix/n8n-nodes-converter-documents` by mazix: https://github.com/mazixs/n8n-node-converter-documents
+- `n8n-nodes-pdf-page-extract` by Oscar Weijman: https://github.com/OscarWeijman/n8n-nodes-pdf-page-extract
 
 Detailed workflow reasoning and methodology attribution are documented in [Project_Evaluation_Business_Logic.md](Project_Evaluation_Business_Logic.md).
