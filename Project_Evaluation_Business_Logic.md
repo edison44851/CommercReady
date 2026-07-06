@@ -1,8 +1,10 @@
 # Project Evaluation Workflow — Business Logic
 
-> **Workflow name:** Project Evaluation
-> **Purpose:** End-to-end technology assessment pipeline for a university Research Office. A Principal Investigator (PI) submits a research disclosure (form + supporting documents); the workflow redacts PII, builds a RAG knowledge base, runs multiple specialised AI evaluation agents in parallel, computes a weighted readiness score, and produces an actionable commercialisation strategy.
-> **Authoring context:** Reverse-engineered from the n8n workflow JSON. All credentials and node IDs have been stripped from the source; this document describes only the business logic.
+| Item              | Details                                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Workflow name     | Project Evaluation                                                                                                                                                                                                                                                                                                                                                                    |
+| Purpose           | End-to-end technology assessment pipeline for a university Research Office. A Principal Investigator (PI) submits a research disclosure (form + supporting documents); the workflow redacts PII, builds a RAG knowledge base, runs multiple specialised AI evaluation agents in parallel, computes a weighted readiness score, and produces an actionable commercialisation strategy. |
+| Authoring context | Reverse-engineered from the n8n workflow JSON. All credentials and node IDs have been stripped from the source; this document describes only the business logic.                                                                                                                                                                                                                      |
 
 ---
 
@@ -77,14 +79,15 @@ The workflow starts with an n8n Form Trigger titled **"Technology Assessment Wor
 A code node (`Parse Form & Normalize Binary`) immediately normalises the form payload:
 
 - It builds a `folder_name` from the current UTC timestamp + a slugified project title (e.g. `20260706153000_My_Quantum_Sensor`).
-- It establishes `base_path = /data/confidential/<folder_name>` as the on-disk root for this submission.
+- It establishes `base_path = confidential_volume/<folder_name>` as the on-disk root for this submission.
 - It explodes the multi-file binary payload into N items (one per uploaded file), each carrying metadata `file_name`, `mime_type`, `category`, `project_title`, `primary_inventors`, `services`, plus the original `binary.data`.
 - It saves a `submission_info.json` snapshot of the form for audit purposes.
 
 The folder layout created on disk is:
 
 ```
-/data/confidential/<timestamp>_<slug>/
+confidential_volume/<timestamp>_<projectTitle>/
+├── 00_Admin/               # intake metadata and summarization artifacts
 ├── 01_Raw/                 # original uploaded files
 ├── 02_Redacted/            # PII-redacted text
 ├── 03_Assessment/          # HTML reports (evaluation, market, prior arts)
@@ -372,24 +375,12 @@ Only the strongest penalty applies — they are not multiplicative. This is a de
 
 The final recommendation label is computed by a strict decision tree (Table 4.4 in the underlying methodology):
 
-```
-if penalised_weighted_sum < HOLD_TR_THRESHOLD (4.0):
-  → "Stop / Archive"
-
-elif maturity_delta > HOLD_TR_THRESHOLD (4.0)
-   OR maturity_delta > HOLD_MD_THRESOLD (3.5):
-  → "Hold / Pivot"
-
-elif penalised_weighted_sum ≥ COMMERICAL_KTH_THRESHOLD (6.0)
-   AND maturity_delta <= COMMERCIAL_TR_THRESHOLD (3.5)
-   AND maturity_delta <= COMMERCIAL_MD_THRESHOLD (3.0)
-   AND TMRL ≥ COMMERCIAL_TMRL_THRESHOLD (5)
-   AND IPRL ≥ COMMERCIAL_IPRL_THRESHOLD (4):
-  → "Advance to Commercialization"
-
-else:
-  → "Accelerate / Support"
-```
+| Priority     | Condition                                                                                                                                                                                                                                                                | Recommendation                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- |
+| 1            | `penalised_weighted_sum < HOLD_TR_THRESHOLD (4.0)`                                                                                                                                                                                                                     | `Stop / Archive`               |
+| 2            | `maturity_delta > HOLD_TR_THRESHOLD (4.0)` or `maturity_delta > HOLD_MD_THRESOLD (3.5)`                                                                                                                                                                              | `Hold / Pivot`                 |
+| 3            | Hold/Pivot floor is satisfied, but one or more commercialization conditions are unmet                                                                                                                                                                                    | `Accelerate / Support`         |
+| 4 (override) | `penalised_weighted_sum >= COMMERICAL_KTH_THRESHOLD (6.0)` and `maturity_delta <= COMMERCIAL_TR_THRESHOLD (3.5)` and `maturity_delta <= COMMERCIAL_MD_THRESHOLD (3.0)` and `TMRL >= COMMERCIAL_TMRL_THRESHOLD (5)` and `IPRL >= COMMERCIAL_IPRL_THRESHOLD (4)` | `Advance to Commercialization` |
 
 The output of this node is a single item containing:
 
@@ -407,146 +398,15 @@ A code node renders the merged scoring payload into a colour-coded HTML report a
 
 ### 6.8 `Business Logic Variables` — complete reference
 
-The `Business Logic Variables` node is a single `Set` node that exposes **21 named constants** to the rest of the workflow. They are read by the `Merge Evaluation Agent Outputs` code node and drive every weight, threshold, and penalty multiplier in the scoring engine. Changing a value here instantly re-tunes the entire assessment without touching any agent prompt.
+The `Business Logic Variables` node is a single `Set` node that exposes **21 named constants** to the rest of the workflow. They are read by the `Merge Evaluation Agent Outputs` code node and drive every weight, threshold, and penalty multiplier in the scoring engine.
+
+To avoid repeating formulas already documented in `6.2` through `6.6`, this subsection provides a compact variable map only.
 
 The node on the n8n canvas is shown below:
 
 ![Business Logic Variables node](images/business_logic_variables.png)
 
-The variables fall into **5 logical groups**.
-
-#### Group 1 — KTH dimension weights
-
-These define how much each KTH IRL dimension contributes to the **weighted sum**, which is the workflow's primary readiness score.
-
-```
-weighted_sum = CRL·w_CRL + TRL·w_TRL + BRL·w_BRL + IPRL·w_IPRL + TMRL·w_TMRL + FRL·w_FRL
-```
-
-| Variable            | Value | Used in formula             | Role                                                                                             |
-| ------------------- | ----- | --------------------------- | ------------------------------------------------------------------------------------------------ |
-| `KTH_CRL_WEIGHT`  | 0.20  | `crl · KTH_CRL_WEIGHT`   | Weight for Customer Readiness Level — how much customer validation matters in the overall score |
-| `KTH_TRL_WEIGHT`  | 0.20  | `trl · KTH_TRL_WEIGHT`   | Weight for Technology Readiness Level — how much technical maturity matters                     |
-| `KTH_BRL_WEIGHT`  | 0.20  | `brl · KTH_BRL_WEIGHT`   | Weight for Business Readiness Level — how much business-model maturity matters                  |
-| `KTH_IPRL_WEIGHT` | 0.15  | `iprl · KTH_IPRL_WEIGHT` | Weight for IP Readiness Level — how much IP protection maturity matters                         |
-| `KTH_TMRL_WEIGHT` | 0.15  | `tmrl · KTH_TMRL_WEIGHT` | Weight for Team Readiness Level — how much team or organization maturity matters                |
-| `KTH_FRL_WEIGHT`  | 0.10  | `frl · KTH_FRL_WEIGHT`   | Weight for Financial Readiness Level — how much funding maturity matters                        |
-
-These six weights sum to exactly `1.00`, so the weighted sum stays on the same `1–9` scale as the input dimensions.
-
-> ⚠️ `MRL` is intentionally **not** in the weighted sum. It comes from the TT&E Framework rather than KTH IRL, and participates through the translation-risk and maturity-gap penalty logic instead.
-
-#### Group 2 — Translation Risk $\rho$ penalty thresholds
-
-Translation risk $\rho$ measures the gap between technology readiness and market readiness.
-
-$$
-\Delta = \lvert TRL - MRL \rvert
-$$
-
-$$
-\rho =
-\begin{cases}
-\dfrac{TRL}{MRL} \cdot e^{(\Delta - 2)}, & MRL > 0 \\
-0, & MRL \le 0
-\end{cases}
-$$
-
-| Variable                                   | Value | Role                                                                            |
-| ------------------------------------------ | ----- | ------------------------------------------------------------------------------- |
-| `TRANSLATION_RISK_NO_PENALTY_THRESHOLD`  | 2     | Below this$\rho$ value, no penalty is applied                                 |
-| `TRANSLATION_RISK_MAX_PENALTY_THRESHOLD` | 4     | At or above this$\rho$ value, the maximum translation-risk penalty is applied |
-
-How they are used:
-
-| $\rho$ range          | Multiplier applied      |
-| ----------------------- | ----------------------- |
-| $\rho < 2.0$          | `1.00`                |
-| $2.0 \leq \rho < 4.0$ | `TR_PENALTY_1 = 0.80` |
-| $\rho \geq 4.0$       | `TR_PENALTY_2 = 0.75` |
-
-They are also used for risk-level labeling:
-
-| $\rho$ range       | Risk level   |
-| -------------------- | ------------ |
-| $\rho \leq 2.0$    | `LOW`      |
-| $2.0 < \rho < 4.0$ | `MODERATE` |
-| $\rho \geq 4.0$    | `HIGH`     |
-
-> ⚠️ Subtle implementation note: the code appears to use `maturityDelta` rather than `rhoValue` for the risk-level buckets. That may be a deliberate simplification or a bug, but the variable names suggest the labels were meant to reflect $\rho$.
-
-#### Group 3 — Maturity Delta $\Delta$ penalty thresholds
-
-$\Delta$ is the absolute gap between `TRL` and `MRL`. It is used as a second, independent penalty path alongside translation risk.
-
-| Variable                                 | Value | Role                                                                |
-| ---------------------------------------- | ----- | ------------------------------------------------------------------- |
-| `MUTURITY_DELTA_NO_PENALTY_THRESHOLD`  | 2     | At or below this$\Delta$, no penalty is applied                   |
-| `MUTURITY_DELTA_MAX_PENALTY_THRESHOLD` | 3.5   | Above this$\Delta$, the maximum maturity-delta penalty is applied |
-
-How they are used:
-
-| $\Delta$ range          | Multiplier applied      |
-| ------------------------- | ----------------------- |
-| $\Delta \leq 2.0$       | `1.00`                |
-| $2.0 < \Delta \leq 3.5$ | `MD_PENALTY_1 = 0.80` |
-| $\Delta > 3.5$          | `MD_PENALTY_2 = 0.75` |
-
-> Note the spelling: `MUTURITY_DELTA_*` is misspelled in the workflow and must remain that way unless the consuming code is updated as well.
-
-#### Group 4 — Penalty multipliers
-
-These are the actual multipliers applied to the weighted sum when the threshold bands above are exceeded.
-
-| Variable         | Value | Used when                 | Effect on weighted sum   |
-| ---------------- | ----- | ------------------------- | ------------------------ |
-| `TR_PENALTY_1` | 0.80  | $2.0 \leq \rho < 4.0$   | `weighted_sum × 0.80` |
-| `TR_PENALTY_2` | 0.75  | $\rho \geq 4.0$         | `weighted_sum × 0.75` |
-| `MD_PENALTY_1` | 0.80  | $2.0 < \Delta \leq 3.5$ | `weighted_sum × 0.80` |
-| `MD_PENALTY_2` | 0.75  | $\Delta > 3.5$          | `weighted_sum × 0.75` |
-
-Combined penalty rule:
-
-```javascript
-penalty_multiplier = Math.min(trMultiplier, mdMultiplier)
-penalised_weighted_sum = weighted_sum × penalty_multiplier
-```
-
-Only the **stronger** penalty is applied. The multipliers are not multiplicative.
-
-#### Group 5 — Decision-matrix thresholds
-
-These define the four recommendation labels that the workflow can emit.
-
-Decision cascade:
-
-| Order | Recommendation                   | Trigger condition                                                                                                                                                                                                                              |
-| ----- | -------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 1     | `STOP / ARCHIVE`               | Project does**not** satisfy the hold/pivot floor, i.e. `penalised_weighted_sum < HOLD_TR_THRESHOLD`                                                                                                                                    |
-| 2     | `HOLD / PIVOT`                 | Project remains above the stop/archive floor, but tech-market alignment breaches the pivot thresholds:`maturity_delta > HOLD_TR_THRESHOLD` or `maturity_delta > HOLD_MD_THRESOLD`                                                          |
-| 3     | `ACCELERATE / SUPPORT`         | One or more`ADVANCE TO COMMERCIALIZATION` conditions are unmet, but the project still satisfies the hold/pivot floor                                                                                                                         |
-| 4     | `ADVANCE TO COMMERCIALIZATION` | `penalised_weighted_sum >= COMMERICAL_KTH_THRESHOLD` and `maturity_delta <= COMMERCIAL_TR_THRESHOLD` and `maturity_delta <= COMMERCIAL_MD_THRESHOLD` and `tmrl >= COMMERCIAL_TMRL_THRESHOLD` and `iprl >= COMMERCIAL_IPRL_THRESHOLD` |
-
-| Variable                      | Value | Used in step  | Role                                                                                                                                         |
-| ----------------------------- | ----- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `HOLD_TR_THRESHOLD`         | 4     | Steps 1 and 2 | Dual-purpose threshold: below this penalized weighted sum gives`STOP / ARCHIVE`; above this maturity delta contributes to `HOLD / PIVOT` |
-| `HOLD_MD_THRESOLD`          | 3.5   | Step 2        | If maturity delta exceeds this, the workflow recommends`HOLD / PIVOT`                                                                      |
-| `COMMERICAL_KTH_THRESHOLD`  | 6     | Step 4        | Minimum penalized weighted sum required to advance                                                                                           |
-| `COMMERCIAL_TR_THRESHOLD`   | 3.5   | Step 4        | Maximum allowed maturity delta for the translation-risk side of the commercialization gate                                                   |
-| `COMMERCIAL_MD_THRESHOLD`   | 3     | Step 4        | Stricter maturity-delta cap for commercialization                                                                                            |
-| `COMMERCIAL_TMRL_THRESHOLD` | 5     | Step 4        | Minimum TMRL required to commercialize                                                                                                       |
-| `COMMERCIAL_IPRL_THRESHOLD` | 4     | Step 4        | Minimum IPRL required to commercialize                                                                                                       |
-
-Recommendation labels:
-
-| Label                            | Color                            | Meaning                                                                                                                             |
-| -------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
-| `STOP / ARCHIVE`               | `from-red-600 to-red-800`      | Project does not satisfy the hold/pivot floor and does not merit continued advancement in its current state                         |
-| `HOLD / PIVOT`                 | `from-amber-500 to-orange-500` | Project clears the stop/archive floor but has enough tech-market misalignment to require a strategic pivot or restructuring         |
-| `ADVANCE TO COMMERCIALIZATION` | `from-emerald-500 to-teal-600` | All commercialization criteria are met                                                                                              |
-| `ACCELERATE / SUPPORT`         | `from-yellow-500 to-amber-500` | Project is above the hold/pivot floor but still misses one or more commercialization conditions, so targeted support is recommended |
-
-#### Summary cheat sheet
+#### Variable cheat sheet
 
 | #  | Variable                                   | Value | Group                 | One-liner                                                       |
 | -- | ------------------------------------------ | ----- | --------------------- | --------------------------------------------------------------- |
@@ -677,13 +537,13 @@ This split-source design is the workflow's most important integrity safeguard: t
 
 At the end of a successful run, the workflow produces four HTML reports plus one technology-summary text file, all under the submission's `base_path`:
 
-| File | Path | Source |
-| --- | --- | --- |
-| Technology summarization (TXT) | `00_Admin/technology_summarization.txt` | Tech Describer agent via `Generate Summarization` |
-| Assessment report (HTML) | `03_Assessment/Assessment_Report.html` | Score calculator + report renderer |
-| Market research report (HTML) | `03_Assessment/Market_Research_Report.html` | Market Research Agent + renderer |
-| Prior arts analysis report (HTML) | `03_Assessment/Prior_Arts_Anaylsis_Report.html` | Prior Arts Agent + renderer |
-| Strategy sheet (HTML) | `04_Strategy/Strategy_Sheet.html` | Strategy Agent + renderer (split-source) |
+| File                              | Path                                              | Source                                             |
+| --------------------------------- | ------------------------------------------------- | -------------------------------------------------- |
+| Technology summarization (TXT)    | `00_Admin/technology_summarization.txt`         | Tech Describer agent via`Generate Summarization` |
+| Assessment report (HTML)          | `03_Assessment/Assessment_Report.html`          | Score calculator + report renderer                 |
+| Market research report (HTML)     | `03_Assessment/Market_Research_Report.html`     | Market Research Agent + renderer                   |
+| Prior arts analysis report (HTML) | `03_Assessment/Prior_Arts_Anaylsis_Report.html` | Prior Arts Agent + renderer                        |
+| Strategy sheet (HTML)             | `04_Strategy/Strategy_Sheet.html`               | Strategy Agent + renderer (split-source)           |
 
 Reports are generated independently — if the Strategy Agent fails, the three upstream reports are still on disk and can be reviewed manually.
 
@@ -751,11 +611,11 @@ This section consolidates where each scored dimension and threshold comes from, 
 
 ### 10.4 How the three frameworks combine
 
-| Framework | Contribution to scoring logic |
-| --- | --- |
-| KTH IRL (6 dimensions, 1–9) | `TRL · IPRL · TMRL · FRL · CRL · BRL`<br/>Feeds the weighted-sum formula |
-| TT&E Framework (Sebastian) | `MRL (1–9)`<br/>Adds the translation-risk concept $\rho$<br/>Uses $\rho = (TRL / MRL) \cdot e^{(\Delta - 2)}$ as a penalty signal |
-| Kobos TRM (regulatory traction) | `RRL (1–5)`<br/>Contributes qualitative regulatory input to the Strategy Agent |
+| Framework                       | Contribution to scoring logic                                                                                                  |
+| ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| KTH IRL (6 dimensions, 1–9)    | `TRL · IPRL · TMRL · FRL · CRL · BRL`Feeds the weighted-sum formula                                                     |
+| TT&E Framework (Sebastian)      | `MRL (1–9)`Adds the translation-risk concept $\rho$Uses $\rho = (TRL / MRL) \cdot e^{(\Delta - 2)}$ as a penalty signal |
+| Kobos TRM (regulatory traction) | `RRL (1–5)`Contributes qualitative regulatory input to the Strategy Agent                                                   |
 
 This three-framework stack is the methodological backbone of the workflow. The agents score; the code node computes; the strategy agent synthesises — but every number and every threshold traces back to one of these three sources.
 
