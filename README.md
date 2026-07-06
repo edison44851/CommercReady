@@ -1,7 +1,7 @@
-# Technology Transfer n8n Workflow
+# CommercReady: A Technology Transfer n8n Workflow
 
 <p align="center">
-	<img src="images/project_logo.svg" alt="Technology Transfer n8n Workflow logo" width="760" />
+	<img src="images\page-commercready-logo.html.png" alt="CommercReady logo" width="760" />
 </p>
 
 <p align="center">
@@ -221,7 +221,7 @@ docker compose down -v
 
 ### 6. Import Workflow to n8n
 
-This project workflow definition is stored in `Project_Evaluation.json`.
+This project workflow definition is stored in `CommercReady.json`.
 
 Import steps in n8n:
 
