@@ -19,6 +19,15 @@ Self-hosted document intake, multilingual PII redaction, and downstream assessme
 
 The stack is designed for handling confidential files locally. Documents stay inside the mounted `confidential_volume` directory, while Presidio performs English and Chinese entity detection and redaction through internal container-to-container calls.
 
+## Important Disclaimer
+
+- This workflow does not guarantee that generated analysis, summaries, redaction outcomes, or report content are accurate, complete, or legally sufficient.
+- All outputs must be reviewed and validated by qualified human reviewers before any operational, legal, regulatory, or investment decision is made.
+
+## License
+
+This repository is licensed under the Apache License 2.0. See [LICENSE](LICENSE) for details.
+
 ## Why This Project
 
 - Designed for university technology transfer and research commercialization workflows
