@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prior Art Analysis Report • UrbanAir_AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; }
+        .font-mono { font-family: 'JetBrains Mono', 'Courier New', monospace; }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 12px; right: 12px; bottom: 4px;
+            height: 2px;
+            background: #0d9488;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+            transform-origin: center;
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.active::after { transform: scaleX(1); }
+        strong { font-weight: 600; color: #0f172a; }
+        .stat-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgb(0 0 0 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Sticky Top Navigation -->
+    <nav class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-x-6">
+            <div class="flex items-center gap-x-3 flex-shrink-0">
+                <div class="w-9 h-9 bg-indigo-700 rounded-xl flex items-center justify-center shadow-inner">
+                    <i class="fa-solid fa-magnifying-glass-chart text-white text-base"></i>
+                </div>
+                <div>
+                    <div class="font-display text-base font-semibold text-slate-900 leading-tight">Prior Art Analysis Report</div>
+                    <div class="text-[10px] text-slate-500 leading-tight">Technology Assessment • 2026-07-06</div>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center gap-x-1 text-sm">
+                <a href="#hero"          class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Overview</a>
+                <a href="#analysis"      class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Analysis</a>
+                <a href="#prior-arts"    class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Prior Arts</a>
+                <a href="#novelty"       class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Novelty</a>
+                <a href="#recommendations" class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Recommendations</a>
+                <a href="#confidence"    class="nav-link px-3 py-2 text-slate-600 hover:text-indigo-700 font-medium">Confidence</a>
+            </div>
+            <div class="flex items-center gap-x-2 px-3 py-1.5 bg-indigo-50 border border-indigo-200 rounded-full text-xs flex-shrink-0">
+                <span class="w-2 h-2 bg-indigo-500 rounded-full animate-pulse"></span>
+                <span class="font-semibold text-indigo-700">10 Patents Analyzed</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- ===== HERO ===== -->
+        <section id="hero" class="mb-12 scroll-mt-24">
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 lg:p-10 shadow-sm">
+                <div class="flex items-center gap-x-2 mb-4 flex-wrap">
+                    <span class="px-3 py-1.5 bg-indigo-50 text-indigo-700 text-xs font-semibold rounded-full border border-indigo-200">PRIOR ART ANALYSIS</span>
+                </div>
+                <h1 class="font-display text-3xl lg:text-4xl font-semibold text-slate-900 tracking-tight leading-tight mb-3">
+                    UrbanAir_AI
+                </h1>
+                <p class="text-slate-500 text-base lg:text-lg leading-relaxed max-w-3xl">
+                    Comparative analysis of 10 prior art patents against the current project, ranked by similarity and assessed for novelty.
+                </p>
+            </div>
+
+            <!-- Hero Stat Cards -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                
+                        <div class="stat-card bg-white rounded-2xl p-5 shadow-lg border border-slate-100">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Prior Arts Analyzed</div>
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-layer-group text-blue-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl font-bold text-blue-900 tracking-tight leading-tight">10</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Patents compared</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-5 shadow-lg border border-slate-100">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Highest Similarity</div>
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-trend-up text-amber-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl font-bold text-amber-900 tracking-tight leading-tight">85%</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Most overlapping patent</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-5 shadow-lg border border-slate-100">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Average Similarity</div>
+                                <div class="w-8 h-8 bg-slate-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-chart-simple text-slate-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl font-bold text-slate-900 tracking-tight leading-tight">53%</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Across all analyzed patents</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-5 shadow-lg border border-slate-100">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Novelty Assessment</div>
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-shield-halved text-amber-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl font-bold text-amber-900 tracking-tight leading-tight">MODERATE NOVELTY</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Based on max overlap</div>
+                        </div>
+                    
+            </div>
+        </section>
+
+        <!-- ===== ANALYSIS SUMMARY ===== -->
+        <section id="analysis" class="mb-14 scroll-mt-24">
+            
+        <div id="analysis-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-file-lines text-indigo-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Analysis Summary</h2>
+                <p class="text-slate-500 text-sm mt-0.5">High-level overview of the comparison</p>
+            </div>
+        </div>
+    
+            <div class="bg-white rounded-3xl border border-slate-200 p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 bg-indigo-100 rounded-xl flex items-center justify-center">
+                        <i class="fa-solid fa-quote-left text-indigo-600"></i>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-base flex-1">The prior art landscape spans diverse domains including IoT-based air quality monitoring, satellite-based gas emission mapping, digital twin healthcare systems, and industrial emission detection. Most patents focus on either environmental monitoring (CN121978286A, AU2021105263A4, EP3629263A1, WO2022056152A1, US20240044783A1) or healthcare/medical systems (WO2024196685A1, WO2012068319A2). The current project appears to be an urban air quality monitoring platform with edge AI capabilities, which shows strongest overlap with IoT-based environmental monitoring patents but has limited overlap with healthcare-focused patents.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RANKED PRIOR ARTS ===== -->
+        <section id="prior-arts" class="mb-14 scroll-mt-24">
+            
+        <div id="prior-arts-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-layer-group text-blue-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Ranked Prior Arts</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Patents sorted by similarity score — color-coded by overlap level</p>
+            </div>
+        </div>
+    
+
+            <!-- Legend -->
+            <div class="flex items-center gap-x-4 mb-5 text-xs text-slate-600 flex-wrap">
+                <div class="flex items-center gap-x-1.5">
+                    <span class="w-2.5 h-2.5 bg-red-500 rounded-full"></span>
+                    <span class="font-medium">High overlap (≥50%)</span>
+                </div>
+                <div class="flex items-center gap-x-1.5">
+                    <span class="w-2.5 h-2.5 bg-amber-500 rounded-full"></span>
+                    <span class="font-medium">Moderate overlap (30-49%)</span>
+                </div>
+                <div class="flex items-center gap-x-1.5">
+                    <span class="w-2.5 h-2.5 bg-emerald-500 rounded-full"></span>
+                    <span class="font-medium">Low overlap (&lt;30%)</span>
+                </div>
+            </div>
+
+            <div class="space-y-6">
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-1">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        1
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 1 • Closest prior art </div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/CN121978286A" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">CN121978286A</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">85%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 85%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">IoT-based ambient air quality monitoring system using sensor networks and data analytics</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">3</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">IoT sensor network for air quality data collection</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Multi-parameter environmental sensing</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Real-time data transmission and analysis</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Environmental monitoring / Smart cities
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">High overlap in core concept of IoT-based air quality monitoring. Both systems use distributed sensors for environmental data collection. However, the current project emphasizes edge AI and TinyML capabilities for on-device processing, while this patent focuses more on basic IoT data collection without advanced on-device intelligence.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-2">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        2
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 2 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/AU2021105263A4" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">AU2021105263A4</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">82%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 82%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Middleware-based real-time air quality monitoring using IoT and neural networks</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Air quality chemical multi-sensor device (AQCMD)</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">MQTT protocol for IoT communication</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Neural network for air quality prediction</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Edge device data aggregation</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Environmental monitoring / IoT
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Strong similarity in using multi-sensor devices, IoT communication, and neural networks for air quality. The current project's use of TinyML on ESP32 aligns well with this patent's edge computing approach. Key difference is the current project's focus on 4-class pollutant source classification vs. general air quality index prediction.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-3">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        3
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 3 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/EP3629263A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">EP3629263A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">78%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 78%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Vehicle-based air quality index estimation using onboard sensors and digital pollution maps</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Onboard vehicle sensors for air quality</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Digital pollution map integration</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Correlation and sensitivity factor computation</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Real-time AQI estimation with map correction</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Automotive / Environmental monitoring
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Moderate-high overlap in sensor-based AQI estimation and map-based visualization. The current project uses fixed municipal nodes rather than vehicle-mounted sensors, but both employ sensor fusion and map-based correction algorithms. The current project's source attribution capability is a differentiator.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-4">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        4
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 4 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/WO2022056152A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">WO2022056152A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">75%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 75%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Industrial air quality monitoring with plume modeling and emission source identification</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Plume dispersion modeling for source identification</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Multi-sensor network deployment optimization</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Emission flux quantification</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Machine learning for emission pattern recognition</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Industrial / Oil &amp; Gas / Environmental
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Moderate overlap in emission source identification and multi-sensor networks. The current project focuses on urban municipal environments with 4-class source classification (Traffic/Construction/Industrial/Background), while this patent targets industrial facilities with plume-based source localization. Both use ML but for different classification schemes.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-5">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        5
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 5 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/US20240044783A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">US20240044783A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">72%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 72%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">High-resolution atmospheric gas concentration mapping using geography-informed machine learning</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Satellite remote sensing for gas concentration mapping</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Geography-informed ML models</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">High-resolution spatial downscaling</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Multi-source data fusion (satellite + ground)</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Environmental monitoring / Remote sensing
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Moderate overlap in ML-based air quality mapping and multi-source data fusion. The current project uses ground-based edge sensors with TinyML, while this patent relies on satellite remote sensing with cloud-based ML. Different sensing modalities but similar ML-driven analytics goals.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-red-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-6">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-red-50 px-6 py-5 border-b border-red-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-red-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        6
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-red-700">Rank 6 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/WO2023229705A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">WO2023229705A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-red-900 leading-none">68%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                        HIGH OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-red-50">
+                <div class="h-full bg-red-500" style="width: 68%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Automated gas emission parameter estimation using deep learning on satellite spectral data</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-red-700 bg-red-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Deep learning classification for gas emission detection</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Satellite spectral signal processing</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Synthetic training data generation</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-red-500 rounded-full"></span>
+                                        <span class="flex-1">Emission rate quantification from overhead sensors</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-red-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Environmental monitoring / Oil &amp; Gas / Remote sensing
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-red-400 bg-red-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-red-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-red-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Moderate overlap in using deep learning for emission detection and quantification. The current project uses ground-based edge AI for urban air quality, while this patent uses satellite-based spectral analysis for industrial gas emissions. Different sensing platforms but similar ML-based detection approach.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-amber-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-7">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-amber-50 px-6 py-5 border-b border-amber-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-amber-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        7
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-amber-700">Rank 7 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/WO2024144477A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">WO2024144477A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-amber-900 leading-none">45%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-amber-100 text-amber-700 border-amber-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                        MODERATE OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-amber-50">
+                <div class="h-full bg-amber-500" style="width: 45%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-amber-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-amber-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Digital twin-based air quality monitoring with YANG data modeling for IIoT systems</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-amber-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-amber-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                        <span class="flex-1">Digital twin for air quality network simulation</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                        <span class="flex-1">YANG-based data modeling for IIoT</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                        <span class="flex-1">Low-latency data synchronization</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-amber-500 rounded-full"></span>
+                                        <span class="flex-1">Industrial IoT architecture</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-amber-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-amber-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Industrial IoT / Smart cities
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-amber-400 bg-amber-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-amber-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-amber-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Low-moderate overlap. Both involve air quality monitoring systems, but this patent focuses on digital twin simulation and IIoT data modeling for industrial applications, while the current project emphasizes edge AI for municipal environmental monitoring. Different architectural approaches and target domains.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-emerald-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-8">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-emerald-50 px-6 py-5 border-b border-emerald-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        8
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Rank 8 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/WO2024196685A1" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">WO2024196685A1</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-emerald-900 leading-none">15%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        LOW OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-emerald-50">
+                <div class="h-full bg-emerald-500" style="width: 15%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Adaptive care pathways for complex health conditions using machine learning and digital health records</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">4</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Machine learning for personalized healthcare pathways</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Electronic health record integration</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Adaptive visualization of treatment plans</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Predictive analytics for patient care</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Healthcare / Digital health
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-emerald-400 bg-emerald-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Very low overlap. This patent is entirely focused on healthcare/medical systems for patient care pathway management, while the current project is an environmental air quality monitoring platform. No meaningful technical overlap in domain, sensors, or application.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-emerald-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-9">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-emerald-50 px-6 py-5 border-b border-emerald-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        9
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Rank 9 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/WO2012068319A2" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">WO2012068319A2</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-emerald-900 leading-none">5%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        LOW OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-emerald-50">
+                <div class="h-full bg-emerald-500" style="width: 5%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Pharmaceutical methods for treating hematological cancers using ruthenium-based compounds</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Key Innovation Points</div>
+                            <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">3</span>
+                        </div>
+                        
+                            <ul class="space-y-2">
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Ruthenium-based anticancer compounds</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Treatment of refractory hematological cancers</span>
+                                    </li>
+                                
+                                    <li class="flex gap-2 text-slate-700 leading-relaxed text-sm">
+                                        <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                                        <span class="flex-1">Pharmaceutical compositions for leukemia/lymphoma</span>
+                                    </li>
+                                
+                            </ul>
+                        
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Pharmaceuticals / Oncology
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-emerald-400 bg-emerald-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">No overlap. This patent is entirely in the pharmaceutical/medical domain for cancer treatment, with no relation to environmental monitoring, air quality, IoT, or machine learning.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    
+        <div class="bg-white rounded-3xl border-2 border-emerald-200 overflow-hidden shadow-sm hover:shadow-md transition-shadow scroll-mt-24" id="prior-art-10">
+            <!-- Card header: rank badge + patent number + similarity score -->
+            <div class="bg-emerald-50 px-6 py-5 border-b border-emerald-200 flex flex-col md:flex-row md:items-center md:justify-between gap-y-3">
+                <div class="flex items-center gap-x-4">
+                    <div class="w-12 h-12 bg-emerald-500 rounded-2xl flex items-center justify-center text-white font-display font-bold text-xl shadow-inner flex-shrink-0">
+                        10
+                    </div>
+                    <div>
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-emerald-700">Rank 10 • Closest prior art match</div>
+                        <div class="font-display text-xl font-semibold text-slate-900 mt-0.5"><a href="https://patents.google.com/patent/KR2022160974A" target="_blank" class="font-mono text-blue-600 hover:underline font-medium">KR2022160974A</a></div>
+                    </div>
+                </div>
+                <div class="flex items-center gap-x-3">
+                    <div class="text-right">
+                        <div class="text-[10px] font-bold uppercase tracking-widest text-slate-500">Similarity</div>
+                        <div class="font-display text-2xl font-bold text-emerald-900 leading-none">0%</div>
+                    </div>
+                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-emerald-100 text-emerald-700 border-emerald-200">
+                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                        LOW OVERLAP
+                    </span>
+                </div>
+            </div>
+
+            <!-- Similarity bar -->
+            <div class="h-1 bg-emerald-50">
+                <div class="h-full bg-emerald-500" style="width: 0%"></div>
+            </div>
+
+            <!-- Card body -->
+            <div class="p-6 space-y-5">
+
+                <!-- Technology & Theory -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-microchip text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Technology &amp; Theory</div>
+                    </div>
+                    <p class="text-slate-700 leading-relaxed text-sm">Unknown - patent not found in database</p>
+                </div>
+
+                <!-- Two-column grid: Key Innovations + Target Industry -->
+                <div class="grid md:grid-cols-3 gap-5">
+
+                    <!-- Key Innovation Points (spans 2) -->
+                    <div class="md:col-span-2">
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-lightbulb text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Key Innovation Points</div>
+                            
+                        </div>
+                        <div class="text-slate-400 text-sm italic">No key innovation points listed.</div>
+                    </div>
+
+                    <!-- Target Industry -->
+                    <div>
+                        <div class="flex items-center gap-2 mb-2">
+                            <i class="fa-solid fa-industry text-emerald-700 text-xs"></i>
+                            <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Target Industry</div>
+                        </div>
+                        <div class="text-slate-700 leading-relaxed text-sm bg-slate-50 rounded-xl p-3 border border-slate-100">
+                            Unknown
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Similarity to Current Project (highlighted callout) -->
+                <div class="rounded-2xl border-l-4 border-emerald-400 bg-emerald-50 p-4">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-arrows-left-right text-emerald-700 text-xs"></i>
+                        <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Similarity to Current Project</div>
+                    </div>
+                    <p class="text-slate-800 leading-relaxed text-sm">Patent could not be retrieved from the database. Unable to assess similarity to the current project.</p>
+                </div>
+
+                <!-- Key References -->
+                
+            </div>
+        </div>
+    </div>
+        </section>
+
+        <!-- ===== OVERALL NOVELTY ASSESSMENT ===== -->
+        <section id="novelty" class="mb-14 scroll-mt-24">
+            
+        <div id="novelty-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-shield-halved text-teal-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Overall Novelty Assessment</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Synthesis of the comparative analysis</p>
+            </div>
+        </div>
+    
+
+            <div class="bg-gradient-to-br from-teal-50 to-cyan-50 border-2 border-teal-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-teal-500 rounded-2xl flex items-center justify-center shadow-inner">
+                        <i class="fa-solid fa-lightbulb text-white text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-3 flex-wrap">
+                            <span class="px-2.5 py-1 bg-amber-100 text-amber-700 text-[10px] font-bold rounded-full border border-amber-200">MODERATE NOVELTY</span>
+                            <span class="text-[10px] text-slate-500 font-medium uppercase tracking-wider">Based on highest similarity = 85%</span>
+                        </div>
+                        <p class="text-slate-800 leading-relaxed text-base">The current project (Urban Air AI) demonstrates strong novelty in its specific combination of edge AI/TinyML on ESP32-class microcontrollers for on-device 4-class pollutant source classification (Traffic/Construction/Industrial/Background) with &gt;84% validated accuracy, integrated with a municipal-grade sensor network and health risk prediction layer. While several patents cover IoT-based air quality monitoring and ML-based analytics, the specific integration of quantized TinyML models for real-time source attribution on low-cost hardware, combined with the health outcome correlation layer, represents a differentiated approach. The strongest overlap is with AU2021105263A4 and CN121978286A, but the current project's edge AI source classification capability and health risk modeling provide meaningful differentiation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== RECOMMENDATIONS ===== -->
+        <section id="recommendations" class="mb-14 scroll-mt-24">
+            
+        <div id="recommendations-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-list-check text-emerald-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Recommendations</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Actionable next steps for patent strategy</p>
+            </div>
+        </div>
+    
+            <div class="bg-white rounded-3xl border border-slate-200 p-6 space-y-3">
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">1</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Strengthen claims around the specific TinyML model architecture and quantization techniques for on-device 4-class source classification</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">2</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Emphasize the validated &gt;84% accuracy for source attribution as a key differentiator from general AQI prediction systems</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">3</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Highlight the health risk prediction layer that correlates hyperlocal AQ data with anonymized respiratory health outcomes - this is a unique differentiator not present in most prior art</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">4</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Consider design-around strategies focusing on the specific edge AI implementation details (ESP32-class microcontroller optimization, model quantization methods) to avoid overlap with AU2021105263A4's neural network claims</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">5</div>
+                <div class="text-slate-700 leading-relaxed text-sm">File continuation applications covering the specific sensor fusion algorithms and drift compensation techniques that enable municipal-grade performance at consumer price points</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">6</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Explore freedom-to-operate analysis for the health data correlation layer, as this appears to be a white space in the prior art landscape</div>
+            </div>
+        
+            <div class="flex gap-4 p-4 bg-slate-50 rounded-2xl hover:bg-slate-100/70 transition-colors">
+                <div class="flex-shrink-0 w-8 h-8 bg-emerald-100 text-emerald-700 rounded-xl flex items-center justify-center font-display font-bold text-sm">7</div>
+                <div class="text-slate-700 leading-relaxed text-sm">Consider patenting the specific calibration and validation methodology that achieves R²=0.91 for PM2.5 and R²=0.87 for NO2 with low-cost sensors</div>
+            </div>
+        
+    </div>
+        </section>
+
+        <!-- ===== CONFIDENCE LEVEL ===== -->
+        <section id="confidence" class="mb-14 scroll-mt-24">
+            
+        <div id="confidence-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-slate-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-circle-check text-slate-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Confidence Level</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Analyst self-assessment of the analysis</p>
+            </div>
+        </div>
+    
+
+            <div class="bg-white rounded-3xl border border-slate-200 p-7 shadow-sm">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center">
+                        <i class="fa-solid fa-circle-check text-emerald-700 text-lg"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-center gap-2 mb-3 flex-wrap">
+                            <span class="px-2.5 py-1 bg-emerald-100 text-emerald-700 border-emerald-200 text-[10px] font-bold rounded-full border">HIGH CONFIDENCE</span>
+                        </div>
+                        <p class="text-slate-700 leading-relaxed text-sm">85</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="border-t border-slate-200 pt-6 pb-2 mt-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-2 text-xs text-slate-500">
+                <div>Generated by Research Office Prior Art Analysis Agent • 2026-07-06</div>
+                <div>Saved to: <span class="font-mono text-[10px]">/data/confidential/20260706024651_UrbanAir_AI/03_Assessment/Prior_Arts_Anaylsis_Report.html</span></div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Highlight active section in nav
+        (function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -60% 0px' });
+            sections.forEach(s => observer.observe(s));
+        })();
+    </script>
+</body>
+</html>

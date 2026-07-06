@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Research Report • UrbanAir_AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap');
+        body { font-family: 'Inter', system-ui, sans-serif; scroll-behavior: smooth; font-size: 15px; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; }
+        .report-card { transition: all 0.2s ease; }
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 12px; right: 12px; bottom: 4px;
+            height: 2px;
+            background: #0d9488;
+            transform: scaleX(0);
+            transition: transform 0.2s ease;
+            transform-origin: center;
+        }
+        .nav-link:hover::after { transform: scaleX(1); }
+        .nav-link.active::after { transform: scaleX(1); }
+        strong { font-weight: 600; color: #0f172a; }
+        .quote-callout {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ecfeff 100%);
+            border-left: 4px solid #14b8a6;
+        }
+        .stat-card {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -8px rgb(0 0 0 / 0.1);
+        }
+        /* --- v4: Inline source link styling --- */
+        .inline-src {
+            color: #0d9488;
+            font-size: 0.7rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dashed #99f6e4;
+            padding: 0 2px;
+            margin: 0 1px;
+            vertical-align: baseline;
+            transition: color 0.15s, border-bottom-color 0.15s;
+            white-space: nowrap;
+        }
+        .inline-src:hover {
+            color: #0f766e;
+            border-bottom-style: solid;
+            border-bottom-color: #0f766e;
+        }
+        .inline-src i {
+            margin-left: 1px;
+            font-size: 0.6rem;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Sticky Top Navigation -->
+    <nav class="bg-white/90 backdrop-blur border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between gap-x-6">
+            <div class="flex items-center gap-x-3 flex-shrink-0">
+                <div class="w-9 h-9 bg-teal-700 rounded-xl flex items-center justify-center shadow-inner">
+                    <i class="fa-solid fa-chart-line text-white text-base"></i>
+                </div>
+                <div>
+                    <div class="font-display text-base font-semibold text-slate-900 leading-tight">Market Research Report</div>
+                    <div class="text-[10px] text-slate-500 leading-tight">Technology Assessment • 2026-07-06</div>
+                </div>
+            </div>
+            <div class="hidden lg:flex items-center gap-x-1 text-sm">
+                <a href="#hero"           class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Overview</a>
+                <a href="#exec-summary"   class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Summary</a>
+                <a href="#findings"       class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Findings</a>
+                <a href="#messaging"      class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Messaging</a>
+                <a href="#recommendations" class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Recommendations</a>
+                <a href="#risks"          class="nav-link px-3 py-2 text-slate-600 hover:text-teal-700 font-medium">Risks</a>
+            </div>
+            <div class="flex items-center gap-x-2 px-3 py-1.5 bg-teal-50 border border-teal-200 rounded-full text-xs flex-shrink-0">
+                <span class="w-2 h-2 bg-teal-500 rounded-full animate-pulse"></span>
+                <span class="font-semibold text-teal-700">Market Research Report</span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-7xl mx-auto px-6 py-8">
+
+        <!-- ===== HERO ===== -->
+        <section id="hero" class="mb-10 scroll-mt-24">
+            <div class="bg-white border border-slate-200 rounded-3xl p-8 lg:p-10 shadow-sm">
+                <div class="flex items-center gap-x-2 mb-4 flex-wrap">
+                    <span class="px-3 py-1.5 bg-teal-50 text-teal-700 text-xs font-semibold rounded-full border border-teal-200">MARKET RESEARCH</span>
+                </div>
+                <h1 class="font-display text-3xl lg:text-4xl font-semibold text-slate-900 tracking-tight leading-tight mb-3">
+                    UrbanAir_AI
+                </h1>
+                <p class="text-slate-500 text-base lg:text-lg leading-relaxed max-w-3xl">
+                    UrbanAir_AI is an edge-to-cloud air quality intelligence platform combining low-cost multi-parameter sensor hardware with on-device TinyML models for hyperlocal, real-time pollutant source identification and health risk prediction. The project has achieved TRL 7 with a validated 25-node pilot in Hong Kong's Sham Shui Po district, demonstrating 99.6% uptime and &gt;84% source classification accuracy. The platform targets municipal environmental monitoring, commercial property management, and health institution use cases, with a hardware-plus-SaaS business model.
+                </p>
+            </div>
+
+            <!-- Hero Stat Cards: 4-column grid -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                
+                        <div class="stat-card bg-white rounded-2xl p-4 lg:p-5 shadow-sm border border-slate-200">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[11px] font-bold uppercase tracking-widest text-slate-500">TAM</div>
+                                <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-globe text-blue-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl lg:text-3xl font-bold text-blue-900 tracking-tight leading-none">$40-50B</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Total Addressable Market</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-4 lg:p-5 shadow-sm border border-slate-200">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[11px] font-bold uppercase tracking-widest text-slate-500">SAM</div>
+                                <div class="w-8 h-8 bg-violet-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-bullseye text-violet-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl lg:text-3xl font-bold text-violet-900 tracking-tight leading-none">$10.86M</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Serviceable Addressable Market</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-4 lg:p-5 shadow-sm border border-slate-200">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[11px] font-bold uppercase tracking-widest text-slate-500">SOM</div>
+                                <div class="w-8 h-8 bg-amber-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-crosshairs text-amber-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl lg:text-3xl font-bold text-amber-900 tracking-tight leading-none">$10.86M</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Serviceable Obtainable Market</div>
+                        </div>
+                    
+                        <div class="stat-card bg-white rounded-2xl p-4 lg:p-5 shadow-sm border border-slate-200">
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="text-[11px] font-bold uppercase tracking-widest text-slate-500">CAGR (2026–2031)</div>
+                                <div class="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                                    <i class="fa-solid fa-arrow-trend-up text-emerald-700 text-sm"></i>
+                                </div>
+                            </div>
+                            <div class="font-display text-2xl lg:text-3xl font-bold text-emerald-900 tracking-tight leading-none">7.3–7.4%</div>
+                            <div class="text-[11px] text-slate-500 mt-1.5">Market growth rate</div>
+                        </div>
+                    
+            </div>
+        </section>
+
+        <!-- ===== EXECUTIVE SUMMARY ===== -->
+        <section id="exec-summary" class="mb-16 scroll-mt-24">
+            
+        <div id="exec-summary-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-lightbulb text-amber-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Executive Summary</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Key headlines at a glance</p>
+            </div>
+        </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                    <div class="report-card bg-white rounded-2xl p-6 border border-amber-300 bg-amber-50/30 hover:shadow-md transition-all">
+                        <div class="flex items-start gap-x-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-amber-500 rounded-xl flex items-center justify-center font-display font-bold text-sm text-white">1</div>
+                            <p class="text-slate-700 text-[15px] leading-7">UrbanAir_AI is an edge-to-cloud air quality intelligence platform combining low-cost multi-parameter sensor hardware with on-device TinyML models for hyperlocal, real-time pollutant source identification and health risk prediction. The project has achieved TRL 7 with a validated 25-node pilot in Hong Kong's Sham Shui Po district, demonstrating 99.6% uptime and &gt;84% source classification accuracy. The platform targets municipal environmental monitoring, commercial property management, and health institution use cases, with a hardware-plus-SaaS business model.</p>
+                        </div>
+                    </div>
+                
+                    <div class="report-card bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-md transition-all">
+                        <div class="flex items-start gap-x-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-xl flex items-center justify-center font-display font-bold text-sm text-slate-600">2</div>
+                            <p class="text-slate-700 text-[15px] leading-7">The global air quality monitoring system market is projected to grow from approximately USD 6.15 billion in 2026 to USD 8.77–13.86 billion by 2031, at a CAGR of 7.3–7.4%. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> Asia-Pacific leads with a 37.5% revenue share and the fastest growth at 8.55% CAGR, positioning Hong Kong and the Greater Bay Area as a strategically advantageous beachhead market. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></p>
+                        </div>
+                    </div>
+                
+                    <div class="report-card bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-md transition-all">
+                        <div class="flex items-start gap-x-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-xl flex items-center justify-center font-display font-bold text-sm text-slate-600">3</div>
+                            <p class="text-slate-700 text-[15px] leading-7">The convergence of tightening air quality regulations worldwide — including the EU's revised Ambient Air Quality Directive (EU) 2024/2881 entering into force in December 2024 <a href="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng">EUR-Lex, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>, Hong Kong's updated Air Quality Objectives effective April 2025 <a href="https://www.epd.gov.hk/epd/english/environmentinhk/air/air_quality_objectives/air_quality_objectives.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epd.gov.hk/epd/english/environmentinhk/air/air_quality_objectives/air_quality_objectives.html">EPD Hong Kong, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>, and the US EPA's $83 million IRA allocation for air sensor monitoring <a href="https://www.epa.gov/air-sensor-toolbox" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/air-sensor-toolbox">US EPA, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> — creates strong policy tailwinds for AI-enhanced low-cost sensor networks. The TinyML market underpinning the edge AI component is forecast to grow at 9.8–34% CAGR through 2035. <a href="https://www.globalmarketstatistics.com/market-reports/tiny-machine-learning-tinyml-market-13901" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.globalmarketstatistics.com/market-reports/tiny-machine-learning-tinyml-market-13901">Global Market Statistics, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></p>
+                        </div>
+                    </div>
+                
+                    <div class="report-card bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-md transition-all">
+                        <div class="flex items-start gap-x-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-xl flex items-center justify-center font-display font-bold text-sm text-slate-600">4</div>
+                            <p class="text-slate-700 text-[15px] leading-7">Competitive differentiation rests on three pillars: (1) on-device TinyML inference enabling real-time drift compensation and source apportionment without cloud dependency, (2) validated municipal-grade performance in dense Asian urban conditions (PM2.5 R²=0.91), and (3) an integrated health-risk layer linking hyperlocal air quality data with epidemiological outcomes. Competitors such as PurpleAir (22,000+ sensors, primarily PM-only, no edge AI) and Clarity Movement ($16.22M raised, cloud-dependent analytics) lack the combined edge-AI + health-layer value proposition. <a href="https://pitchbook.com/profiles/company/340793-74" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://pitchbook.com/profiles/company/340793-74">PurpleAir PitchBook, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.cbinsights.com/company/clarity-movement" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.cbinsights.com/company/clarity-movement">Clarity CBInsights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></p>
+                        </div>
+                    </div>
+                
+                    <div class="report-card bg-white rounded-2xl p-6 border border-slate-200 hover:shadow-md transition-all">
+                        <div class="flex items-start gap-x-3">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-200 rounded-xl flex items-center justify-center font-display font-bold text-sm text-slate-600">5</div>
+                            <p class="text-slate-700 text-[15px] leading-7">The project seeks HKD 8–12 million (approximately USD 1.0–1.5 million) in Seed/Pre-Series A funding to support manufacturing scale-up, GBA market entry, and regulatory certification. Comparable transactions in the air quality sensor space include Airly's $10.86M total funding <a href="https://startup-seeker.com/company/airly~org" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://startup-seeker.com/company/airly~org">Startup-Seeker, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> and Clarity Movement's $9.6M Series A+ <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>. Air pollution management tech in Southeast Asia saw a 790% funding surge to $27.6M in 2024, signaling growing investor appetite. <a href="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></p>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+
+        <!-- ===== KEY FINDINGS ===== -->
+        <section id="findings" class="mb-16 scroll-mt-24">
+            
+        <div id="findings-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-magnifying-glass-chart text-blue-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Key Findings</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Market sizing, ecosystem, competition, and investor framing</p>
+            </div>
+        </div>
+    
+
+            <!-- Market Sizing subsection -->
+            <div class="mb-12">
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full uppercase tracking-wide">Market Sizing &amp; Opportunity</div>
+                    <div class="h-px flex-1 border-blue-200"></div>
+                </div>
+
+                <!-- TAM / SAM / SOM in 3-column grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    
+                            <div class="bg-white rounded-2xl border-2 border-blue-200 overflow-hidden">
+                                <div class="bg-blue-50 px-5 py-3 border-b border-blue-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="font-display text-2xl font-bold text-blue-900">TAM</div>
+                                            <div class="text-[11px] text-slate-500 uppercase tracking-wide mt-0.5">Total Addressable Market</div>
+                                        </div>
+                                        <div class="font-display text-xl font-bold text-blue-700">$40-50B</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 text-sm text-slate-600 leading-7">The global air quality monitoring system market was valued at approximately USD 5.52–5.80 billion in 2025 and is projected to reach USD 8.89–13.86 billion by 2030–2031, growing at a CAGR of 7.3–7.5%. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.grandviewresearch.com/industry-analysis/air-quality-monitoring-system-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.grandviewresearch.com/industry-analysis/air-quality-monitoring-system-market">Grand View Research, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> The broader environmental sensors market is estimated at USD 2.77 billion in 2026, growing to USD 4.49 billion by 2031 at 10.16% CAGR. <a href="https://www.mordorintelligence.com/industry-reports/environmental-sensors-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/environmental-sensors-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> The combined addressable market across air quality monitoring systems, environmental sensors, and associated data analytics platforms is approximately USD 8–10 billion in 2026, growing to USD 14–19 billion by 2031.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border-2 border-emerald-200 overflow-hidden">
+                                <div class="bg-emerald-50 px-5 py-3 border-b border-emerald-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="font-display text-2xl font-bold text-emerald-900">SAM</div>
+                                            <div class="text-[11px] text-slate-500 uppercase tracking-wide mt-0.5">Serviceable Addressable Market</div>
+                                        </div>
+                                        <div class="font-display text-xl font-bold text-emerald-700">$10.86M</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 text-sm text-slate-600 leading-7">The serviceable addressable market focuses on the Asia-Pacific air quality monitoring segment, which held a 37.5% revenue share in 2025 and is forecast to grow at 8.55% CAGR through 2031. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> This implies an APAC AQM market of approximately USD 2.3 billion in 2026. Within this, the low-cost sensor segment with AI-enhanced analytics (the specific technology niche) represents an estimated 15–22% of the total, yielding a SAM of approximately USD 345–506 million in 2026 across Asia-Pacific. Hong Kong's municipal environmental monitoring market alone, including government EPD network operations, district-level deployments, and private sector ESG compliance, is estimated at HKD 200–400 million annually based on the project team's validated bottom-up estimate of ~HKD 95M ARR at scale for their addressable segments. [Project Team Internal Estimate, 2026]</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border-2 border-violet-200 overflow-hidden">
+                                <div class="bg-violet-50 px-5 py-3 border-b border-violet-200">
+                                    <div class="flex items-center justify-between">
+                                        <div>
+                                            <div class="font-display text-2xl font-bold text-violet-900">SOM</div>
+                                            <div class="text-[11px] text-slate-500 uppercase tracking-wide mt-0.5">Serviceable Obtainable Market</div>
+                                        </div>
+                                        <div class="font-display text-xl font-bold text-violet-700">$10.86M</div>
+                                    </div>
+                                </div>
+                                <div class="p-4 text-sm text-slate-600 leading-7">The project team's 5-year conservative projection targets 1,800 deployed nodes by Year 3 (2028) generating HKD 14.2M (~USD 1.8M) in annual revenue with 63% gross margin. [Project Team Business Plan, 2026] By Year 5, assuming expansion into 3–5 GBA cities and addition of data licensing revenue streams, a realistic SOM is HKD 40–60M (~USD 5.1–7.7M) annually, representing approximately 0.5–1.0% capture of the Greater China low-cost AI-enhanced AQM segment. This estimate is based on: (1) comparable revenue trajectories of Airly ($10.86M raised, scaling across Central/Eastern Europe) <a href="https://startup-seeker.com/company/airly~org" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://startup-seeker.com/company/airly~org">Startup-Seeker, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>, (2) Breeze Technologies reaching $1.3M ARR bootstrapped in 2024 <a href="https://getlatka.com/companies/breeze-technologies" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://getlatka.com/companies/breeze-technologies">GetLatka, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>, and (3) the project's validated pilot conversion pipeline in Hong Kong districts. SOM is an estimate based on the following assumptions: successful pilot-to-contract conversion in 2–3 HK districts, GBA entry by Year 2–3, SaaS retention rate &gt;85%, and no major competitive displacement by incumbents.</div>
+                            </div>
+                        
+                </div>
+
+                <!-- Remaining sizing items as titled cards (merged by label) -->
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-blue-900 text-xs uppercase tracking-wider">Market Driver</div>
+                    <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full">6</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Tightening global air quality standards: EU's revised Ambient Air Quality Directive (EU) 2024/2881 cuts PM2.5 annual limit from 25 to 10 µg/m³ by 2030, requiring denser monitoring networks. <a href="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng">EUR-Lex, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong's Clean Air Plan 2035 explicitly calls for a 'smart air quality monitoring system with integration of IoT, AI, sensors and numerical models' for district-based air quality information. <a href="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf">HK EPB, 2023 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">US Inflation Reduction Act allocated $83 million in one-time funds for air sensor monitoring activities at state/local agencies, plus $50M from American Rescue Plan. <a href="https://www.epa.gov/system/files/documents/2024-12/fy25-and-fy26-npm-guidance-monitoring-appendix-for-external-review-120324.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/system/files/documents/2024-12/fy25-and-fy26-npm-guidance-monitoring-appendix-for-external-review-120324.pdf">US EPA, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">ESG reporting software market growing at 17.4% CAGR to $2.93B by 2031, driving corporate demand for verified environmental data. <a href="https://www.marketsandmarkets.com/Market-Reports/esg-reporting-software-market-173110129.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.marketsandmarkets.com/Market-Reports/esg-reporting-software-market-173110129.html">MarketsandMarkets, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Air pollution management tech in Southeast Asia saw a 790% funding surge to $27.6M in 2024, indicating rising investor interest. <a href="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">WHO 2021 Air Quality Guidelines adoption as benchmark by multiple jurisdictions increases compliance pressure and monitoring density requirements. <a href="https://www.consilium.europa.eu/en/policies/air-quality/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.consilium.europa.eu/en/policies/air-quality/">EU Council, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-blue-900 text-xs uppercase tracking-wider">Advantage vs. Alternative</div>
+                    <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">On-device TinyML inference enables real-time drift compensation and 4-class pollutant source classification (&gt;84% accuracy) without cloud connectivity, reducing latency and data transmission costs versus cloud-dependent competitors like Clarity Movement. [Project Pilot Validation, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Multi-parameter sensing (PM2.5/PM10, NO₂, O₃, VOC, Temp/Humidity) at BOM &lt;HKD 800 (~USD 103) at volume, compared to reference-grade stations costing $15,000–$150,000 per unit. [Project Tech Description, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Integrated health-risk layer linking hyperlocal AQ data with anonymized respiratory health outcomes — a unique differentiator versus pure environmental monitoring platforms (PurpleAir, AirGradient, IQAir). [Project Tech Description, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Validated municipal-grade performance in dense Asian urban conditions (PM2.5 R²=0.91, RMSE=3.8 µg/m³; NO₂ R²=0.87) with 99.6% uptime over 4-month pilot, meeting or exceeding EPA performance targets for non-regulatory supplemental monitoring. [Project Pilot Certificate, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Solar + battery powered IP65 enclosure enables deployment flexibility without grid power dependency, critical for dense urban and peri-urban environments.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-blue-900 text-xs uppercase tracking-wider">Disadvantage / Risk</div>
+                    <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Low-cost sensors can deviate by 15–25% compared to reference-grade monitors, and calibration requirements every 6–12 months increase operational burdens. <a href="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524">Business Research Insights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Limited to non-regulatory supplemental and informational monitoring (NSIM) applications — cannot replace EPA Federal Reference Method certified stations for compliance reporting. <a href="https://www.epa.gov/air-sensor-toolbox/air-sensor-performance-targets-and-testing-protocols" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/air-sensor-toolbox/air-sensor-performance-targets-and-testing-protocols">US EPA, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Government procurement cycles are lengthy (12–24 months), creating cash flow challenges for early-stage companies dependent on municipal contracts.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Environmental factors such as humidity and temperature variations can impact sensor readings by up to 20%, requiring continuous AI-based compensation. <a href="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524">Business Research Insights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Health claims integration introduces regulatory risk around medical device classification or health advisory liability in some jurisdictions.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-blue-900 text-xs uppercase tracking-wider">Cost Structure</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">Hardware BOM target is &lt;HKD 800 (~USD 103) per node at volume, with a selling price of ~HKD 2,150 (~USD 276), yielding 55–60% hardware gross margin at scale. [Project Business Plan, 2026] SaaS subscription at HKD 650–850 per node per month provides high-margin recurring revenue (estimated &gt;80% gross margin for software). Combined blended gross margin is projected to improve from 58% (Year 1) to 63% (Year 3) as SaaS revenue share increases. [Project Financial Projections, 2026] R&amp;D costs are primarily embedded in founder/team salaries (HKD 2.76M combined for three co-founders annually). No public comparable cost data for TinyML-embedded air quality nodes was found; however, PurpleAir's PA-II sensors retail at $249–$299 with PM-only capability, suggesting the multi-parameter + AI node at HKD 2,150 (~$276) is competitively positioned. [PurpleAir Product Pricing, 2025]</div>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-blue-200 hover:border-blue-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-blue-900 text-xs uppercase tracking-wider">Entry Barrier</div>
+                    <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Validated field performance data in specific municipal environments creates a significant trust barrier — new entrants need 12–24 months of collocation testing against reference stations to build credibility with government buyers. <a href="https://www.epa.gov/air-sensor-toolbox" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/air-sensor-toolbox">US EPA Air Sensor Toolbox, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Proprietary TinyML models trained on location-specific pollution profiles (traffic/construction/industrial source signatures) create data moats that are difficult to replicate without extensive local deployment history.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Regulatory certification requirements (EPA performance targets, CEN/TS 17660 standards, local PDPO/data privacy compliance) impose 12–18 month certification timelines and testing costs. <a href="https://egusphere.copernicus.org/preprints/2025/egusphere-2025-2677/egusphere-2025-2677.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://egusphere.copernicus.org/preprints/2025/egusphere-2025-2677/egusphere-2025-2677.pdf">CEN, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Government procurement qualification requirements (reference cases, tender history, financial stability) favor incumbents and create a chicken-and-egg problem for new entrants.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full"></span>
+                    <span class="flex-1">Integration complexity of hardware + edge AI + cloud platform + health data layer requires cross-disciplinary team capabilities that are difficult to assemble.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+                </div>
+            </div>
+
+            <!-- Ecological Niche / Ecosystem subsection -->
+            <div class="mb-12">
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-emerald-100 text-emerald-700 text-xs font-bold rounded-full uppercase tracking-wide">Ecosystem Positioning</div>
+                    <div class="h-px flex-1 border-emerald-200"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Value Chain Position</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">UrbanAir_AI occupies the 'intelligent edge device + data analytics platform' position in the environmental monitoring value chain, sitting between component-level sensor manufacturers (Sensirion, Bosch Sensortec, Alphasense) and end-user municipal/enterprise customers. The platform integrates hardware manufacturing, embedded AI firmware, cloud data platform, and health analytics into a vertically integrated offering. This positions the project as a 'solution provider' rather than a pure hardware vendor or pure software play, capturing value across multiple layers. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence AQM Market Analysis, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Business Cycle Stage</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">The low-cost AI-enhanced air quality monitoring segment is in an early growth phase. Traditional reference-grade monitoring (Thermo Fisher, Horiba, Teledyne) is mature, while the low-cost sensor + AI analytics layer is experiencing rapid adoption driven by regulatory pressure for denser monitoring networks and falling sensor costs. The market is transitioning from 'citizen science' and pilot deployments toward municipal-grade procurement and enterprise ESG compliance use cases. The EU's 2024 directive mandating expanded monitoring networks and Hong Kong's 2035 Clean Air Plan signal the inflection point from pilot to scale. <a href="https://www.consilium.europa.eu/en/policies/air-quality/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.consilium.europa.eu/en/policies/air-quality/">EU Council, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf">HK EPB, 2023 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Complementor / Partner</div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">6</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong EPD (Environmental Protection Department) — operates 18 reference-grade AQMS stations; UrbanAir_AI's micro-sensor network complements and extends spatial coverage of the government network. <a href="https://www.aqhi.gov.hk/common/api_history/english/report/files/AQR2024e_finalUpdate0305.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.aqhi.gov.hk/common/api_history/english/report/files/AQR2024e_finalUpdate0305.pdf">HK EPD, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Smart lamppost infrastructure — HK EPD has installed air quality sensors on 11 Multi-Functional Smart Lampposts; UrbanAir_AI nodes could integrate with this infrastructure. <a href="https://www.legco.gov.hk/yr2022/english/hc/sub_com/hs01/papers/hs0120250428cb2-715-3-e.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.legco.gov.hk/yr2022/english/hc/sub_com/hs01/papers/hs0120250428cb2-715-3-e.pdf">HK LegCo, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">ESG reporting software providers (e.g., Workiva, Sphera) — air quality data feeds into corporate ESG disclosures, creating integration partnership opportunities.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Healthtech and insurance companies — anonymized health-risk correlation data has licensing value for epidemiological research and insurance risk modeling.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Property management companies — large Hong Kong property groups expressed interest in deploying nodes across commercial buildings (HKD 450k+ initial order indicated). [Project Internal Memo, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">GBA city environmental bureaus — Guangdong-Hong Kong-Macao Pearl River Delta Regional Air Quality Monitoring Network provides institutional framework for cross-border expansion. <a href="https://www.info.gov.hk/gia/general/202511/07/P2025110600289.htm" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.info.gov.hk/gia/general/202511/07/P2025110600289.htm">HK Gov, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Substitute / Alternative</div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Reference-grade monitoring stations (Thermo Fisher, Horiba, Teledyne) — gold standard for regulatory compliance but cost $15,000–$150,000+ per station, limiting spatial density. <a href="https://www.fortunebusinessinsights.com/air-quality-monitoring-system-market-105614" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.fortunebusinessinsights.com/air-quality-monitoring-system-market-105614">Fortune Business Insights, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">PurpleAir network — 22,000+ PM sensors globally, community-driven model, but PM-only measurement without edge AI or source apportionment. <a href="https://amt.copernicus.org/articles/17/6425/2024/amt-17-6425-2024.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://amt.copernicus.org/articles/17/6425/2024/amt-17-6425-2024.pdf">Copernicus AMT, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Satellite-based air quality estimation (Google Air Quality API, ESA Sentinel) — provides broad coverage but lacks street-level granularity and real-time responsiveness. <a href="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/">WEF, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Digital twin urban climate models (UrbanAIR Horizon Europe project) — computationally intensive simulation approaches for city-scale planning, not real-time monitoring. <a href="https://cordis.europa.eu/project/id/101188131/de" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://cordis.europa.eu/project/id/101188131/de">CORDIS, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Clarity Movement Co. — cloud-based environmental sensing platform with NO₂, O₃, PM, but dependent on cloud connectivity for analytics. <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Platform &amp; Ecosystem Dynamics</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">The platform has strong potential to evolve into a data platform play. As node density increases, the proprietary pollution source classification data and hyperlocal temporal patterns become a valuable dataset for: (1) municipal planning and policy evaluation, (2) real estate valuation and site selection, (3) insurance risk modeling, (4) health research, and (5) ESG compliance reporting. The API-first architecture enables third-party integration. The health-risk correlation layer, if validated at scale, creates a unique cross-domain dataset bridging environmental and public health data — a potential moat. Cross-vertical licensing of anonymized data to insurers, healthtech companies, and urban planners represents a high-margin revenue expansion path beyond the initial hardware+SaaS model.</div>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">White-Space Opportunity</div>
+                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Indoor air quality monitoring for commercial buildings — the project's outdoor nodes could be extended to indoor environments, addressing a growing market segment where wearable monitors lead at 7.2% CAGR. <a href="https://www.imarcgroup.com/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.imarcgroup.com/air-quality-monitoring-market">IMARC Group, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Carbon footprint and GHG monitoring integration — Shenzhen's GBA carbon footprint labelling certification program (RMB 100K per certificate incentive) creates adjacent demand. <a href="https://www.bayarea.gov.hk/en/resource/mainland-policies-measures-20240511.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.bayarea.gov.hk/en/resource/mainland-policies-measures-20240511.html">Shenzhen DRC, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Integration with Hong Kong's low-altitude economy regulatory sandbox (38 pilot projects approved March 2025) for drone-mounted mobile air quality sensing. <a href="https://chozan.co/greater-bay-area/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://chozan.co/greater-bay-area/">ChoZan, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">School and hospital micro-environment monitoring — health-sensitive institutions represent underserved segments with specific air quality alerting needs.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-emerald-500 rounded-full"></span>
+                    <span class="flex-1">Real-time traffic emission optimization — integration with smart traffic management systems to provide feedback loops for congestion-based pollution mitigation.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-emerald-200 hover:border-emerald-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-emerald-900 text-xs uppercase tracking-wider">Business Model Implications</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">The recommended business model is a hybrid hardware+SaaS+data licensing structure, consistent with the project team's current plan. Hardware sales at ~HKD 2,150 per node (55–60% GM) serve as the customer acquisition mechanism, while tiered SaaS subscriptions (HKD 650–850/node/month) provide recurring revenue with &gt;80% gross margins. Data licensing to insurers, healthtech companies, and government agencies represents a high-margin third revenue stream that scales with network density without proportional cost increases. This model is validated by comparable companies: Airly uses a similar sensor-network + platform model <a href="https://airly.org/en/airly-raises-2m-for-global-air-quality-platform/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://airly.org/en/airly-raises-2m-for-global-air-quality-platform/">Airly, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>, while Clarity Movement operates as a 'sensing + data platform' <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>. For university spin-out purposes, a licensing model for the TinyML firmware to sensor OEMs could provide an additional non-dilutive revenue stream, though this would require IP separation from the platform business.</div>
+            </div>
+        
+                </div>
+            </div>
+
+            <!-- Competitive Analysis subsection -->
+            <div class="mb-12">
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-violet-100 text-violet-700 text-xs font-bold rounded-full uppercase tracking-wide">Competitive Landscape</div>
+                    <div class="h-px flex-1 border-violet-200"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Academic Competitor</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">4</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Microsoft Research Urban Air (led by Dr. Yu Zheng): Cloud-based air quality inference using big data (meteorological, traffic, mobility, POIs) with semi-supervised learning. Research-only, not commercialized as a product. <a href="https://www.microsoft.com/en-us/research/project/urban-air/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.microsoft.com/en-us/research/project/urban-air/">Microsoft Research <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Barcelona Supercomputing Center (BSC-CNS): CALIOPE-Urban model combined with AI/ML for street-level NO₂ mapping at 10-meter resolution. Published in Geoscientific Model Development. Research tool, not a commercial sensor product. <a href="https://www.newswise.com/articles/scientists-create-new-ai-technique-to-combat-air-pollution-in-cities" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.newswise.com/articles/scientists-create-new-ai-technique-to-combat-air-pollution-in-cities">BSC-CNS Newswise, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Imperial College London DyNA system: Combines physical modelling with AI (customized Recurrent Neural Network) for pollution event forecasting with data assimilation. Research-stage, not commercially deployed as sensor hardware. <a href="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/">WEF, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Barcelona Eixample IoT-AI pilot: Integrates low-cost sensors and AI-powered video-based traffic analysis with HPC simulation pipeline for urban AQ modeling. Published on arXiv (2025). Research prototype. <a href="https://proyecto-ascender.com/wp-content/uploads/2026/01/2511.00187v1.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://proyecto-ascender.com/wp-content/uploads/2026/01/2511.00187v1.pdf">arXiv, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Industry Competitor</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">7</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">PurpleAir (US): Largest low-cost AQ sensor network globally with 22,000+ PM sensors across ~100 countries. Raised $3.5M seed (2021). Revenue estimated at $2.4M. PM-only measurement, no edge AI, community-driven model. <a href="https://pitchbook.com/profiles/company/340793-74" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://pitchbook.com/profiles/company/340793-74">PitchBook, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.owler.com/company/purpleair" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.owler.com/company/purpleair">Owler, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Clarity Movement Co. (US): Environmental sensing and data platform targeting NO₂, O₃, PM. Raised $16.22M total ($9.6M Series A+ in 2022). Cloud-dependent analytics. <a href="https://www.cbinsights.com/company/clarity-movement" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.cbinsights.com/company/clarity-movement">CBInsights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity Blog, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Airly (Poland): AI-powered air quality monitoring platform with sensor networks for governments and businesses. Raised $10.86M total ($5.5M Series A led by firstminute capital). <a href="https://startup-seeker.com/company/airly~org" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://startup-seeker.com/company/airly~org">Startup-Seeker, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.chemeurope.com/en/news/1178460/cleantech-startup-airly-secures-new-5-5m-funding-round-to-fight-air-pollution-and-save-lives.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.chemeurope.com/en/news/1178460/cleantech-startup-airly-secures-new-5-5m-funding-round-to-fight-air-pollution-and-save-lives.html">ChemEurope, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">AirGradient (Thailand/Global): Open-source air quality monitors measuring CO₂, NOx, PM, VOCs. Privately held, community-focused, lower price point (~$100–200). No proprietary AI layer. <a href="https://www-int.airgradient.com/press/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www-int.airgradient.com/press/">AirGradient, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Kaiterra (Hong Kong/China): Commercial air quality monitors (Sensedge series) for indoor/outdoor. Estimated $7.3M annual revenue. Targets enterprise and institutional customers. <a href="https://growjo.com/company/Kaiterra" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://growjo.com/company/Kaiterra">Growjo, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">IQAir (Switzerland): Professional-grade monitoring with ~14% global market share, 1M+ devices across 100+ countries. AirVisual product line. Premium pricing. <a href="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.businessresearchinsights.com/market-reports/air-quality-sensor-market-127524">Business Research Insights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Breeze Technologies (Germany): AI-powered air quality analytics platform. Bootstrapped to $1.3M ARR in 2024. Software-only, relies on third-party sensor data. <a href="https://getlatka.com/companies/breeze-technologies" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://getlatka.com/companies/breeze-technologies">GetLatka, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Indirect Competitor</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">4</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Thermo Fisher Scientific (US): Dominant reference-grade AQM provider with EPA FRM certifications. ~38% North American market share. Not competing in low-cost segment but defends installed base. <a href="https://www.congruencemarketinsights.com/report/air-quality-monitoring-systems-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.congruencemarketinsights.com/report/air-quality-monitoring-systems-market">Congruence Market Insights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Horiba Ltd. (Japan): Major analytical instruments manufacturer, environmental monitoring division. Part of the 45%+ combined deployment share with Thermo Fisher and Teledyne. <a href="https://www.marketgrowthreports.com/market-reports/ambient-air-quality-monitoring-system-market-103988" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.marketgrowthreports.com/market-reports/ambient-air-quality-monitoring-system-market-103988">Market Growth Reports, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Sensirion AG (Switzerland): MEMS sensor manufacturer supplying components to low-cost AQM devices. Potential upstream competitor if they vertically integrate into complete solutions. <a href="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.mordorintelligence.com/industry-reports/air-quality-monitoring-market">Mordor Intelligence, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Google Air Quality API: Satellite + model-based global pollutant estimation available to developers. Free/low-cost alternative to sensor deployment for basic AQ visualization. <a href="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.weforum.org/stories/2025/04/the-role-of-ai-in-reducing-urban-pollution/">WEF, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Positioning Gap / Exploitable Weakness</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">PurpleAir's PM-only sensing cannot address multi-pollutant regulatory requirements (NO₂, O₃, VOC) increasingly mandated by EU Directive 2024/2881 and HK AQOs — UrbanAir_AI's multi-parameter platform fills this gap. <a href="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng">EUR-Lex, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Clarity Movement's cloud-dependent architecture creates latency, connectivity cost, and data sovereignty concerns for government customers in Asia — edge AI inference eliminates these issues.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Airly's European focus leaves the Asia-Pacific market underserved, particularly for GBA-specific pollution profiles (mixed traffic/industrial/construction sources) that require locally trained AI models.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">No major competitor currently offers an integrated health-risk correlation layer linking environmental data with epidemiological outcomes — this is a unique differentiator for health-sector and insurance use cases.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Open-source competitors (AirGradient) lack the validated accuracy, enterprise support, and regulatory compliance frameworks required for municipal procurement.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Defensibility Signal</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Validated pilot data: 25-node deployment with PM2.5 R²=0.91, RMSE=3.8 µg/m³ and 99.6% uptime over 4 months in real urban conditions — performance data that requires 12–24 months for competitors to replicate. [Project Pilot Certificate, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Proprietary TinyML models for 4-class pollutant source classification trained on Hong Kong-specific pollution signatures — data moat that improves with deployment scale.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">MOU with Sham Shui Po District Council and hospital group — government reference cases that are critical for municipal procurement qualification. [Project Internal Memo, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">PI's 85+ publications and h-index 38 in sensing and edge AI — deep academic credibility supporting IP claims. [Project Team Description, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">TRL 7 / MRL 6 maturity — significantly ahead of most academic-origin competitors in the air quality space.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Competitive Response Risk</div>
+                    <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">PurpleAir could add multi-gas sensors and edge ML to their next-generation devices, leveraging their 22,000-node installed base for rapid distribution.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Thermo Fisher or Horiba could acquire a low-cost sensor company (e.g., AirGradient, PurpleAir) to enter the segment and leverage existing government procurement relationships.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Chinese sensor manufacturers (Sail Hero, FPI, Skyray) could develop competing AI-enhanced products with lower BOM costs and preferential access to GBA municipal procurement. <a href="https://www.marketgrowthreports.com/market-reports/ambient-air-quality-monitoring-system-market-103988" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.marketgrowthreports.com/market-reports/ambient-air-quality-monitoring-system-market-103988">Market Growth Reports, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Google or major cloud providers could expand their Air Quality API with ground-truth sensor integration, commoditizing the analytics layer.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-violet-500 rounded-full"></span>
+                    <span class="flex-1">Open-source TinyML frameworks could enable hardware OEMs to build comparable edge AI capabilities without licensing from UrbanAir_AI.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-violet-200 hover:border-violet-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-violet-900 text-xs uppercase tracking-wider">Go-to-Market Comparison</div>
+                    
+                </div>
+                <div class="text-slate-700 text-[15px] leading-7">Competitors employ varied GTM approaches: PurpleAir uses a community/citizen-science model with direct-to-consumer e-commerce sales <a href="https://pitchbook.com/profiles/company/340793-74" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://pitchbook.com/profiles/company/340793-74">PurpleAir, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>; Clarity targets government and enterprise with a B2B platform model <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>; Airly focuses on local government contracts with city-wide deployments <a href="https://airly.org/en/airly-raises-2m-for-global-air-quality-platform/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://airly.org/en/airly-raises-2m-for-global-air-quality-platform/">Airly, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a>. UrbanAir_AI's recommended GTM is a 'pilot-to-procurement' strategy: start with district-level pilots (validated in Sham Shui Po), convert to municipal contracts, then expand to GBA cities via local partnerships. This bottom-up government-led approach is capital-efficient and builds the reference case portfolio needed for larger tenders. The addition of private sector (property management, hospitals) as a parallel revenue stream diversifies away from government sales cycle risk.</div>
+            </div>
+        
+                </div>
+            </div>
+
+            <!-- Investor Framing subsection (no longer contains promotion-ready language) -->
+            <div>
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-rose-100 text-rose-700 text-xs font-bold rounded-full uppercase tracking-wide">Investor &amp; Funding Framing</div>
+                    <div class="h-px flex-1 border-rose-200"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Why Now</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">6</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong's updated Air Quality Objectives (effective April 2025) and Clean Air Plan 2035 create immediate demand for district-level smart monitoring systems. <a href="https://www.epd.gov.hk/epd/english/environmentinhk/air/air_quality_objectives/air_quality_objectives.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epd.gov.hk/epd/english/environmentinhk/air/air_quality_objectives/air_quality_objectives.html">HK EPD, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.eeb.gov.hk/sites/default/files/pdf/Clean_Air_Plan_2035_eng.pdf">HK EPB, 2023 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">EU Ambient Air Quality Directive (EU) 2024/2881 mandates expanded monitoring networks with stricter PM2.5/NO₂ limits by 2030, creating a global regulatory pull for denser sensor networks. <a href="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng">EUR-Lex, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">US IRA allocated $83M specifically for air sensor monitoring at state/local agencies, signaling government willingness to fund low-cost sensor deployments. <a href="https://www.epa.gov/system/files/documents/2024-12/fy25-and-fy26-npm-guidance-monitoring-appendix-for-external-review-120324.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/system/files/documents/2024-12/fy25-and-fy26-npm-guidance-monitoring-appendix-for-external-review-120324.pdf">US EPA, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Air pollution management tech funding surged 790% in SEA to $27.6M in 2024, indicating investor appetite is awakening. <a href="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">TinyML hardware maturity (ESP32-class MCUs with ML acceleration) now enables municipal-grade edge AI at consumer price points — a technical inflection that didn't exist 3 years ago. <a href="https://www.abiresearch.com/press/tinyml-ai-chipset-shipments-to-top-4.1-billion-by-2031-as-embedded-ai-scales-across-industrial-iot" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.abiresearch.com/press/tinyml-ai-chipset-shipments-to-top-4.1-billion-by-2031-as-embedded-ai-scales-across-industrial-iot">ABI Research, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong's HKD 2B Innovation and Technology Venture Fund (ITVF) co-invests with private VCs in local I&amp;T startups, providing matching capital. <a href="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf">HK Brand HK, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Key Value Driver</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Hardware + SaaS + data licensing model creates multiple revenue streams with improving margins (58% → 63% over 3 years) and high customer retention. [Project Financial Projections, 2026]</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">TRL 7 / MRL 6 maturity with validated pilot de-risks technology and market adoption — rare for a university spin-out at seed stage.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">GBA expansion opportunity: 86M population across 11 cities with harmonizing environmental standards creates a $100M+ regional market. <a href="https://chozan.co/greater-bay-area/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://chozan.co/greater-bay-area/">ChoZan, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Health-risk correlation layer creates unique cross-domain dataset with licensing value to insurers, healthtech, and epidemiological researchers — potential for high-margin data revenue.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">ESG compliance tailwinds: ESG reporting software market growing at 17.4% CAGR to $2.93B by 2031, with environmental reporting representing 48.27% of the segment. <a href="https://www.marketsandmarkets.com/Market-Reports/esg-reporting-software-market-173110129.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.marketsandmarkets.com/Market-Reports/esg-reporting-software-market-173110129.html">MarketsandMarkets, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.businessresearchinsights.com/market-reports/environmental-social-and-governance-esg-market-118939" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.businessresearchinsights.com/market-reports/environmental-social-and-governance-esg-market-118939">Business Research Insights, 2026 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Risk from Investor Perspective</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">6</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Government sales cycle risk: Municipal procurement typically takes 12–24 months, creating lumpy revenue and cash flow uncertainty for an early-stage company.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Concentration risk: Initial revenue heavily dependent on Hong Kong government and district council contracts — political or budget changes could delay or cancel deployments.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Technology obsolescence risk: Rapid advancement in sensor technology and edge AI could enable competitors to leapfrog current performance advantages within 2–3 years.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Regulatory risk: Health-risk claims could trigger medical device or health advisory regulatory scrutiny in some jurisdictions, limiting the health layer's commercialization.</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Team risk: CTO (professor) may have divided attention between academic responsibilities and startup execution; CEO's prior exit was at a relatively small scale (HKD 4.2M seed).</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">IP ownership risk: University-origin IP may have complex ownership/licensing arrangements that could complicate future fundraising or acquisition.</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Comparable Transaction</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Airly (Poland): Raised $5.5M Series A in 2022 (led by firstminute capital, Pi Labs), total $10.86M raised. AI-powered air quality monitoring for governments. <a href="https://www.chemeurope.com/en/news/1178460/cleantech-startup-airly-secures-new-5-5m-funding-round-to-fight-air-pollution-and-save-lives.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.chemeurope.com/en/news/1178460/cleantech-startup-airly-secures-new-5-5m-funding-round-to-fight-air-pollution-and-save-lives.html">ChemEurope, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://startup-seeker.com/company/airly~org" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://startup-seeker.com/company/airly~org">Startup-Seeker, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Clarity Movement Co. (US): Raised $9.6M Series A+ in August 2022 (co-led by Amasia and Active Fund), total $16.22M raised. Environmental sensing and data platform. <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity Blog, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://www.cbinsights.com/company/clarity-movement" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.cbinsights.com/company/clarity-movement">CBInsights, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">PurpleAir (US): Raised $3.5M Seed in May 2021 (Craft Ventures). Community air quality sensor network. <a href="https://pitchbook.com/profiles/company/340793-74" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://pitchbook.com/profiles/company/340793-74">PitchBook, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Air Pollution Management Tech in SEA: $27.6M total sector funding in 2024, 790% increase from $3.1M in 2023. <a href="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Plume Labs (France): Raised $4.5M total before acquisition. Portable air quality sensor + AI forecasting API. <a href="https://tracxn.com/d/artificial-intelligence/ai-startups-in-smart-cities/__NQiCz3QFxsskyHDTjJK46-b2KVheHawc56yip0pdEYI/companies" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://tracxn.com/d/artificial-intelligence/ai-startups-in-smart-cities/__NQiCz3QFxsskyHDTjJK46-b2KVheHawc56yip0pdEYI/companies">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Investor Profile &amp; Check Size</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">5</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong I&amp;T-focused VCs (e.g., Horizon Ventures, Alibaba Entrepreneurs Fund): Typical seed checks HKD 5–15M (~USD 0.6–1.9M). Focus on GBA expansion potential and ESG alignment. <a href="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf">HK ITVF Framework, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Climate/sustainability-focused VCs (e.g., Amasia, Spero Ventures, The Climate Syndicate): Typical seed/Series A checks $2–10M. Active in air quality and environmental sensing. <a href="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.clarity.io/blog/clarity-movement-co-raises-us-9-6m-series-a-co-led-by-amasia-and-active-fund">Clarity Funding, 2022 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Hong Kong Government ITVF (Innovation and Technology Venture Fund): Co-investment with selected VC partners on ~1:2 matching basis. HKD 2B fund. <a href="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.brandhk.gov.hk/docs/default-source/factsheets-library/hong-kong-themes/2024-05-20/innovation-and-technology_en_may-20.pdf">HK Brand HK, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Singapore-based climate tech investors (e.g., GenZero, Wavemaker Impact): Active in SEA climate tech, seed-stage checks $0.5–3M. <a href="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://w.tracxn.com/report-releases/climate-tech-sea-annual-funding-report-2024">Tracxn, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">Government grants: HK Green Tech Fund (HKD 2.5–30M for R&amp;D/application projects), HK ITF Enterprise Support Scheme (up to HKD 10M matching), EPIC Air Quality Fund (international, $2.9M+ in grants). <a href="https://www.smelink.gov.hk/en/web/sme-portal/w/green-tech-fund.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.smelink.gov.hk/en/web/sme-portal/w/green-tech-fund.html">HK Green Tech Fund, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a> <a href="https://aqfund.epic.uchicago.edu/news/epic-awards-six-projects-to-improve-air-quality-monitoring-and-data-access/" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://aqfund.epic.uchicago.edu/news/epic-awards-six-projects-to-improve-air-quality-monitoring-and-data-access/">EPIC/UChicago, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></span>
+                </li>
+              
+           </ul>
+            </div>
+        
+            <div class="bg-white rounded-2xl p-5 border border-rose-200 hover:border-rose-400 hover:shadow-md transition-all">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="font-display font-semibold text-rose-900 text-xs uppercase tracking-wider">Likely Investor Question</div>
+                    <span class="text-[10px] font-bold text-rose-700 bg-rose-100 px-1.5 py-0.5 rounded-full">7</span>
+                </div>
+                <ul class="space-y-2">
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">What is the IP ownership structure between the university and the spin-out? Are there any licensing obligations or royalty payments that dilute margins?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">How defensible is the TinyML source classification model? Can competitors replicate &gt;84% accuracy with publicly available datasets and open-source frameworks?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">What is the customer acquisition cost (CAC) and lifetime value (LTV) per node, including ongoing calibration and maintenance costs?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">How does the team plan to manage the 12–24 month government procurement cycle with limited runway from seed funding?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">What is the path to GBA market entry given regulatory differences between Hong Kong and mainland China (data privacy, sensor certification, government procurement eligibility)?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">How scalable is the health-risk correlation layer? Does it require city-specific health data partnerships, and what are the data privacy (PDPO/GDPR/PIPL) implications?</span>
+                </li>
+              
+                <li class="flex gap-2 text-slate-700 text-[15px] leading-7">
+                    <span class="flex-shrink-0 mt-1.5 w-1.5 h-1.5 bg-rose-500 rounded-full"></span>
+                    <span class="flex-1">What happens if a well-funded incumbent (Thermo Fisher, Honeywell, or a Chinese sensor OEM) enters the AI-enhanced low-cost segment within 18 months?</span>
+                </li>
+              
+           </ul>
+            </div>
+        
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PROMOTION-READY MESSAGING ===== -->
+        
+        <section id="messaging" class="mb-16 scroll-mt-24">
+            
+        <div id="messaging-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-bullhorn text-teal-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Promotion-Ready Messaging</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Ready-to-use copy for pitches and grant applications</p>
+            </div>
+        </div>
+    
+
+            <div class="space-y-4">
+                
+                    <div class="quote-callout rounded-2xl p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-person-chalkboard text-teal-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-teal-700 mb-2">For Pitches</div>
+                                <div class="text-slate-800 text-[17px] leading-8 italic">"UrbanAir_AI delivers municipal-grade air quality intelligence at 1/50th the cost of reference stations — combining edge AI, multi-parameter sensing, and health-risk prediction in a single platform. Validated across 25 nodes in Hong Kong with 99.6% uptime and &gt;84% pollution source accuracy, we are the only platform bridging real-time environmental monitoring with epidemiological health insights. With $8–10B in global air quality monitoring spend growing at 7%+ CAGR and tightening regulations worldwide, we are positioned to become the intelligent sensing layer for Asia-Pacific's smart cities."</div>
+                            </div>
+                        </div>
+                    </div>
+                
+                
+                    <div class="quote-callout rounded-2xl p-6">
+                        <div class="flex items-start gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-teal-100 rounded-2xl flex items-center justify-center">
+                                <i class="fa-solid fa-file-signature text-teal-600 text-lg"></i>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-teal-700 mb-2">For Grant Applications</div>
+                                <div class="text-slate-800 text-[17px] leading-8 italic">"UrbanAir_AI directly addresses Hong Kong's Clean Air Plan 2035 vision for a smart air quality monitoring system integrating IoT, AI, sensors, and numerical models. Our edge-to-cloud platform enables district-level, real-time air quality intelligence with automatic pollution source identification — supporting the government's updated Air Quality Objectives and the Greater Bay Area's collaborative environmental monitoring framework. The project leverages Hong Kong's world-class research capabilities in TinyML and environmental sensing to deliver a commercially viable solution for one of the most pressing public health challenges in the Asia-Pacific region."</div>
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+        </section>
+        
+
+        <!-- ===== RECOMMENDATIONS ===== -->
+        <section id="recommendations" class="mb-16 scroll-mt-24">
+            
+        <div id="recommendations-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-emerald-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-list-check text-emerald-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Implications &amp; Actionable Recommendations</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Sequenced by execution phase</p>
+            </div>
+        </div>
+    
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
+                
+                        <div class="bg-white rounded-2xl border border-red-200 overflow-hidden">
+                            <div class="bg-red-50 px-5 py-3 border-b border-red-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-red-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-bolt text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-red-900 text-sm">Immediate</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">0–6 months</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-red-700 bg-red-100 px-2 py-0.5 rounded-full">2 ITEMS</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Complete spin-out incorporation and formalize IP licensing agreement with the university. Priority: secure exclusive or field-of-use license for the TinyML air quality models and sensor fusion algorithms. Engage university KTO/TT&amp;E office immediately. Estimated cost: HKD 100–200K for legal and IP structuring.</div>
+                                    </div>
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-red-100 text-red-700 rounded-md flex items-center justify-center font-bold text-xs">2</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Close seed funding round (target HKD 8–12M). Leverage the two VCs already in due diligence (Horizon Ventures, Asia Climate Capital per project pipeline) and apply for HK ITVF co-investment matching. Simultaneously submit Green Tech Fund application (HKD 2.5–20M available for green tech R&amp;D/application). <a href="https://www.smelink.gov.hk/en/web/sme-portal/w/green-tech-fund.html" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.smelink.gov.hk/en/web/sme-portal/w/green-tech-fund.html">HK Green Tech Fund, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white rounded-2xl border border-amber-200 overflow-hidden">
+                            <div class="bg-amber-50 px-5 py-3 border-b border-amber-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-amber-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-clock text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-amber-900 text-sm">Short-term</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">6–18 months</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">2 ITEMS</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Convert Sham Shui Po pilot MOUs into revenue-generating contracts. Target 220-node deployment across 2–3 HK districts. Build reference case documentation package for government tender qualification. Hire 2–3 enterprise sales staff with government procurement experience.</div>
+                                    </div>
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-amber-100 text-amber-700 rounded-md flex items-center justify-center font-bold text-xs">2</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Initiate EPA Air Sensor Performance Target testing (base + enhanced) and CEN/TS 17660 compliance assessment to prepare for international market entry. Estimated cost: HKD 300–500K for third-party testing and certification. <a href="https://www.epa.gov/air-sensor-toolbox/air-sensor-performance-targets-and-testing-protocols" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.epa.gov/air-sensor-toolbox/air-sensor-performance-targets-and-testing-protocols">US EPA, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white rounded-2xl border border-blue-200 overflow-hidden">
+                            <div class="bg-blue-50 px-5 py-3 border-b border-blue-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-blue-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-calendar-days text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-blue-900 text-sm">Medium-term</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">18–36 months</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">2 ITEMS</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Execute GBA market entry: establish Shenzhen or Guangzhou entity for mainland procurement eligibility. Partner with a GBA-based environmental services company for local distribution. Target 3–5 pilot deployments in GBA cities by end of Year 3. Budget: HKD 2–3M for market entry activities.</div>
+                                    </div>
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-blue-100 text-blue-700 rounded-md flex items-center justify-center font-bold text-xs">2</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Develop and validate the health-risk correlation layer with 2–3 hospital/institutional partners. Publish peer-reviewed validation study to establish scientific credibility. Explore data licensing agreements with insurance or healthtech companies for anonymized environmental-health datasets.</div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white rounded-2xl border border-violet-200 overflow-hidden">
+                            <div class="bg-violet-50 px-5 py-3 border-b border-violet-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-violet-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-flag-checkered text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-violet-900 text-sm">Long-term</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">36–60 months</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-violet-700 bg-violet-100 px-2 py-0.5 rounded-full">1 ITEM</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-violet-100 text-violet-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Scale to 5,000+ nodes across APAC. Evaluate strategic partnerships with sensor OEMs (Sensirion, Bosch) for co-branded products. Explore Series A for international expansion beyond GBA. Target pre-money valuation of HKD 80–120M based on revenue trajectory.</div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+                            <div class="bg-slate-50 px-5 py-3 border-b border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-slate-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-shield-halved text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-slate-900 text-sm">Risk Mitigation</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">Ongoing</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-slate-700 bg-slate-100 px-2 py-0.5 rounded-full">1 ITEM</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-slate-100 text-slate-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Implement PDPO-compliant data governance framework before scaling health data layer. Engage privacy counsel for cross-border data flow assessment (HK PDPO, China PIPL, EU GDPR) as GBA and international expansion proceeds. Budget: HKD 200–400K annually for compliance program.</div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+                        <div class="bg-white rounded-2xl border border-emerald-200 overflow-hidden">
+                            <div class="bg-emerald-50 px-5 py-3 border-b border-emerald-200 flex items-center justify-between">
+                                <div class="flex items-center gap-x-2">
+                                    <div class="w-7 h-7 bg-emerald-500 rounded-lg flex items-center justify-center">
+                                        <i class="fa-solid fa-handshake text-white text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-display font-semibold text-emerald-900 text-sm">Investor Readiness</div>
+                                        <div class="text-[10px] text-slate-500 -mt-0.5">Now</div>
+                                    </div>
+                                </div>
+                                <span class="text-[10px] font-bold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">1 ITEM</span>
+                            </div>
+                            <div class="p-4 space-y-3">
+                                
+                                    <div class="flex gap-3 p-4 bg-slate-50 rounded-xl hover:bg-slate-100/70 transition-colors">
+                                        <div class="flex-shrink-0 w-6 h-6 bg-emerald-100 text-emerald-700 rounded-md flex items-center justify-center font-bold text-xs">1</div>
+                                        <div class="text-slate-700 text-[15px] leading-7">Prepare investor data room with: (1) pilot validation report and sensor calibration certificates, (2) financial model with unit economics per node, (3) IP ownership documentation, (4) customer pipeline with LOIs/MOUs, (5) regulatory compliance assessment. Ensure all founder employment agreements and equity allocations are formalized pre-spin-out.</div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    
+            </div>
+        </section>
+
+        <!-- ===== RISKS, CONTRARIAN VIEWS ===== -->
+        <section id="risks" class="mb-16 scroll-mt-24">
+            
+        <div id="risks-h" class="flex items-center gap-x-4 mb-6 scroll-mt-24">
+            <div class="w-12 h-12 bg-amber-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <i class="fa-solid fa-triangle-exclamation text-amber-700 text-xl"></i>
+            </div>
+            <div>
+                <h2 class="text-2xl font-display font-semibold text-slate-900 tracking-tight">Risks &amp; Contrarian Views</h2>
+                <p class="text-slate-500 text-sm mt-0.5">Severity-coded risk inventory plus alternative perspectives</p>
+            </div>
+        </div>
+    
+
+            
+            <div class="mb-6 bg-yellow-50 border-2 border-yellow-300 rounded-2xl p-5 flex items-start gap-3">
+                <i class="fa-solid fa-database text-yellow-600 text-xl mt-0.5"></i>
+                <div>
+                    <div class="font-display font-semibold text-yellow-900 text-sm mb-1">Data Staleness Warning</div>
+                    <div class="text-yellow-800 text-[15px] leading-7">Market size figures from Mordor Intelligence, MarketsandMarkets, and Grand View Research are based on reports published in 2025–2026 and represent the most current data available. However, specific CAGR projections and regional splits may vary between research firms (e.g., global AQM market ranges from $4.54B to $9.61B for 2025–2026 depending on scope definition). Competitor funding data (Airly, Clarity, PurpleAir) is from 2021–2022 funding rounds and may not reflect current financial positions. Hong Kong government policy data is current through 2025–2026. All figures should be verified against the latest available reports before inclusion in investor presentations.</div>
+                </div>
+            </div>
+            
+
+            
+            <div class="mb-8">
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-red-100 text-red-700 text-xs font-bold rounded-full uppercase tracking-wide">Risk Inventory</div>
+                    <div class="h-px flex-1 bg-red-200"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">Government Procurement Cycle Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-red-100 text-red-700 border-red-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                        HIGH
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">Municipal government contracts represent the primary revenue target but typically require 12–24 month procurement cycles, including tender qualification, budget approval, and competitive bidding. Mitigation: diversify with private sector (property management, hospitals) as parallel revenue stream; build reference case portfolio through district-level pilots; maintain 18+ months cash runway. Downside: if government budget priorities shift or procurement is delayed, Year 1–2 revenue could fall 40–60% below projections.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">Technology Competition Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-orange-100 text-orange-700 border-orange-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        MEDIUM-HIGH
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">Well-funded incumbents (Thermo Fisher, Honeywell, Chinese sensor OEMs) or fast-following startups could replicate the edge AI + multi-sensor approach within 18–24 months. Mitigation: continuously invest in proprietary training data and model improvements; build data moats through deployment scale; file defensive patents on key TinyML architectures. Downside: if a major player enters with comparable performance at lower price, market share capture could be severely limited.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">IP Ownership and Licensing Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-orange-100 text-orange-700 border-orange-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        MEDIUM-HIGH
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">University-origin IP may have complex ownership structures, co-ownership with funding agencies, or restrictive licensing terms that complicate spin-out commercialization or future M&amp;A. Mitigation: engage university KTO early to negotiate clear, exclusive, field-of-use license with reasonable royalty terms; ensure all new IP developed post-spin-out is cleanly owned by the company. Downside: unfavorable IP terms could reduce margins by 5–15% or block acquisition by strategic buyers.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">Sensor Accuracy and Calibration Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-amber-100 text-amber-700 border-amber-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        MEDIUM
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">Low-cost sensors are subject to drift, environmental interference (humidity, temperature), and batch-to-batch variability. The pilot showed &lt;6% drift over 4 weeks, but long-term field performance at scale may differ. Mitigation: automated AI-based drift compensation; periodic collocation with reference stations; establish sensor replacement schedule. Downside: if field accuracy degrades significantly, government customers may terminate contracts and reputation damage could limit future sales.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">Data Privacy and Regulatory Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-amber-100 text-amber-700 border-amber-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        MEDIUM
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">The health-risk correlation layer involves processing anonymized health outcome data alongside environmental data, triggering PDPO (HK), PIPL (China), and potentially GDPR requirements. Mitigation: conduct DPIA, implement pseudonymization, establish clear data governance policies, and position conservatively as 'environmental advisory' rather than 'medical device.' Downside: regulatory classification as health-related data processing could impose compliance costs of HKD 500K–1M annually and limit the health layer's commercialization.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">GBA Market Entry Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-amber-100 text-amber-700 border-amber-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                                        MEDIUM
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">Expanding from Hong Kong into mainland GBA cities requires navigating different regulatory frameworks (sensor certification, data localization under PIPL, government procurement eligibility for HK-incorporated companies). Mitigation: establish mainland entity or joint venture; partner with local environmental services company; leverage GBA harmonization policies. Downside: if cross-border data flows are restricted or procurement access is denied, the GBA expansion thesis — a key investor value driver — may not materialize.</div>
+                            </div>
+                        
+                            <div class="bg-white rounded-2xl border border-slate-200 p-5 hover:shadow-md transition-all">
+                                <div class="flex items-center justify-between mb-3">
+                                    <div class="font-display font-semibold text-slate-900 text-base">Funding and Cash Flow Risk</div>
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[10px] font-bold border bg-orange-100 text-orange-700 border-orange-200">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                        MEDIUM-HIGH
+                                    </span>
+                                </div>
+                                <div class="text-slate-600 text-[15px] leading-7">The HKD 8–12M seed raise must fund manufacturing scale-up, team expansion, certification, and GBA entry simultaneously. With government revenue delayed by procurement cycles, cash burn could exceed projections. Mitigation: stage funding milestones; apply for non-dilutive grants (Green Tech Fund, ITF); maintain lean operations until EBITDA positive (targeted Year 2). Downside: if seed round is undersubscribed or delayed, the company may need to accept unfavorable terms or reduce growth ambitions.</div>
+                            </div>
+                        
+                </div>
+            </div>
+            
+
+            
+            <div>
+                <div class="flex items-center gap-x-2 mb-4">
+                    <div class="px-3 py-1 bg-violet-100 text-violet-700 text-xs font-bold rounded-full uppercase tracking-wide">Contrarian Views</div>
+                    <div class="h-px flex-1 bg-violet-200"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    
+                        <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl border border-violet-200 p-5">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="fa-solid fa-arrows-rotate text-violet-500 mt-0.5"></i>
+                                <div class="font-display font-semibold text-violet-900 text-sm">Low-cost sensors may never achieve regulatory acceptance</div>
+                            </div>
+                            <div class="text-slate-700 text-[15px] leading-7 mb-3 pl-7">Despite growing adoption, low-cost air quality sensors remain excluded from regulatory compliance monitoring in most jurisdictions. EPA and EU frameworks explicitly limit LCS to 'non-regulatory supplemental and informational monitoring' (NSIM). If regulatory bodies maintain this stance, the addressable market may be limited to non-government applications.</div>
+                            
+                            <div class="pl-7 mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-violet-700 mb-1">Implication</div>
+                                <div class="text-slate-600 text-sm leading-7">Government procurement — the project's primary revenue target — could be constrained to supplementary monitoring roles rather than replacing reference-grade stations, limiting contract sizes and recurring revenue potential.</div>
+                            </div>
+                            
+                            <div class="pl-7">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">Counter-Argument</div>
+                                <div class="text-slate-600 text-sm leading-7">The EU's revised Directive 2024/2881 explicitly calls for 'enhanced use of air quality modelling' and expanded monitoring networks with 4,000+ stations. The sheer density required to meet new PM2.5 limits (10 µg/m³ by 2030) makes reference-grade-only networks economically unfeasible, creating inevitable pressure to accept validated LCS data for at least screening-level assessments. <a href="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://eur-lex.europa.eu/eli/dir/2024/2881/oj/eng">EUR-Lex, 2024 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+                            </div>
+                        </div>
+                    
+                        <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl border border-violet-200 p-5">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="fa-solid fa-arrows-rotate text-violet-500 mt-0.5"></i>
+                                <div class="font-display font-semibold text-violet-900 text-sm">Edge AI on microcontrollers may be commoditized rapidly</div>
+                            </div>
+                            <div class="text-slate-700 text-[15px] leading-7 mb-3 pl-7">TinyML frameworks (TensorFlow Lite Micro, Edge Impulse) are becoming increasingly accessible, and ESP32-class MCUs with ML acceleration are widely available. The edge AI differentiation may erode as open-source tools enable any sensor manufacturer to add basic ML capabilities.</div>
+                            
+                            <div class="pl-7 mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-violet-700 mb-1">Implication</div>
+                                <div class="text-slate-600 text-sm leading-7">The project's core technical moat — on-device TinyML for drift compensation and source classification — could be replicated by competitors within 12–18 months, reducing pricing power and differentiation.</div>
+                            </div>
+                            
+                            <div class="pl-7">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">Counter-Argument</div>
+                                <div class="text-slate-600 text-sm leading-7">The differentiation lies not in the framework but in the trained models and location-specific pollution signature datasets accumulated through deployments. A competitor can access TinyML tools but cannot replicate years of validated training data from diverse Asian urban environments. The 84% source classification accuracy was achieved through extensive field training, not just algorithm design.</div>
+                            </div>
+                        </div>
+                    
+                        <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl border border-violet-200 p-5">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="fa-solid fa-arrows-rotate text-violet-500 mt-0.5"></i>
+                                <div class="font-display font-semibold text-violet-900 text-sm">Air quality in Hong Kong is already improving — demand may plateau</div>
+                            </div>
+                            <div class="text-slate-700 text-[15px] leading-7 mb-3 pl-7">Hong Kong's air quality has improved significantly: PM2.5 concentrations fell 67% from 2004–2024, and 98.7% of AQHI readings are now in the low/moderate risk category. The government may view additional monitoring as unnecessary given improving trends.</div>
+                            
+                            <div class="pl-7 mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-violet-700 mb-1">Implication</div>
+                                <div class="text-slate-600 text-sm leading-7">If the perceived urgency of air quality monitoring declines, government budgets for denser sensor networks may not materialize, undermining the core market thesis.</div>
+                            </div>
+                            
+                            <div class="pl-7">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">Counter-Argument</div>
+                                <div class="text-slate-600 text-sm leading-7">Despite improvements, Hong Kong's updated AQOs (April 2025) set stricter targets, and ozone levels have actually increased 20% over the past decade. The Clean Air Plan 2035 explicitly calls for smart monitoring systems. Moreover, the GBA expansion thesis is independent of HK-specific trends — mainland GBA cities still face significant air quality challenges. <a href="https://www.legco.gov.hk/yr2025/english/panels/ea/papers/ea20250331cb1-443-3-e.pdf" target="_blank" rel="noopener noreferrer" class="inline-src" title="https://www.legco.gov.hk/yr2025/english/panels/ea/papers/ea20250331cb1-443-3-e.pdf">HK LegCo, 2025 <i class="fa-solid fa-arrow-up-right-from-square text-[9px] opacity-60"></i></a></div>
+                            </div>
+                        </div>
+                    
+                        <div class="bg-gradient-to-br from-violet-50 to-white rounded-2xl border border-violet-200 p-5">
+                            <div class="flex items-start gap-3 mb-3">
+                                <i class="fa-solid fa-arrows-rotate text-violet-500 mt-0.5"></i>
+                                <div class="font-display font-semibold text-violet-900 text-sm">Health-risk correlation may face scientific and regulatory skepticism</div>
+                            </div>
+                            <div class="text-slate-700 text-[15px] leading-7 mb-3 pl-7">Linking hyperlocal air quality data with health outcomes at a district level requires large sample sizes, long observation periods, and careful epidemiological methodology. Claims of health-risk prediction from a small sensor network may be viewed as scientifically premature by medical regulators and public health authorities.</div>
+                            
+                            <div class="pl-7 mb-2">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-violet-700 mb-1">Implication</div>
+                                <div class="text-slate-600 text-sm leading-7">The health layer — a key differentiator and potential high-margin revenue stream — may take 5+ years to validate scientifically and could face regulatory barriers if positioned as health advisory.</div>
+                            </div>
+                            
+                            <div class="pl-7">
+                                <div class="text-[10px] font-bold uppercase tracking-wider text-emerald-700 mb-1">Counter-Argument</div>
+                                <div class="text-slate-600 text-sm leading-7">The project positions the health layer as 'epidemiological research tool' and 'environmental advisory system' rather than a medical device, avoiding the most restrictive regulatory pathways. Partnerships with hospital groups for data validation provide scientific credibility. Even without full clinical validation, the environmental data alone has standalone commercial value.</div>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+            
+        </section>
+
+        <!-- ===== FOOTER ===== -->
+        <footer class="border-t border-slate-200 pt-6 pb-2 mt-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-y-2 text-xs text-slate-500">
+                <div>Generated by Research Office Market Research Agent • 2026-07-06 • Schema v4 (inline sources) • new format detected</div>
+                <div>Saved to: <span class="font-mono text-[10px]">/data/confidential/20260706024651_UrbanAir_AI/03_Assessment/Market_Research_Report.html</span></div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Highlight active section in nav
+        (function() {
+            const sections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const id = entry.target.id;
+                        navLinks.forEach(link => {
+                            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+                        });
+                    }
+                });
+            }, { rootMargin: '-30% 0px -60% 0px' });
+            sections.forEach(s => observer.observe(s));
+        })();
+    </script>
+</body>
+</html>

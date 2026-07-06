@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Assessment Report • Environmental Technology | Research Office</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+        body { font-family: 'Inter', system_ui, sans-serif; }
+        .font-display { font-family: 'Space Grotesk', 'Inter', sans-serif; font-weight: 600; }
+        .metric-card { transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0.0, 0.2, 1); }
+        .metric-card:hover { transform: translateY(-2px); box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); }
+        .readiness-bar { height: 6px; background: linear-gradient(90deg, #14b8a6, #0f766e); border-radius: 9999px; }
+        .assessment-pill { padding: 2px 10px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; letter-spacing: -0.3px; }
+        .kth-dimension { transition: all 0.2s ease; }
+        .kth-dimension:hover { background-color: #f0fdfa; }
+        .data-table th { background-color: #f8fafc; font-weight: 600; color: #334155; }
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        details[open] > summary i.fa-list-ul:before { content: "\f03a"; }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+    <!-- Top Navigation -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-screen-2xl mx-auto">
+            <div class="px-8 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-x-4">
+                    <div class="flex items-center gap-x-3">
+                        <div class="w-10 h-10 bg-teal-800 rounded-2xl flex items-center justify-center shadow-inner">
+                            <i class="fa-solid fa-flask text-white text-2xl"></i>
+                        </div>
+                        <div>
+                            <div class="font-display text-xl tracking-tighter font-semibold text-teal-900">Research Office</div>
+                            <div class="text-[10px] text-teal-700 -mt-1 font-medium">TECHNOLOGY TRANSLATION</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex items-center gap-x-4">
+                    <div class="text-right">
+                        <div class="text-xs text-slate-500">Assessment Date</div>
+                        <div class="font-semibold text-sm">2026-07-06</div>
+                    </div>
+                    <div class="flex items-center gap-x-2 px-4 py-2 bg-white border border-slate-200 rounded-3xl text-sm">
+                        <div class="w-2.5 h-2.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                        <span class="font-medium text-emerald-700">Internal Draft v1.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Header -->
+    <div class="max-w-screen-2xl mx-auto px-8 pt-8 pb-6">
+        <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-y-4">
+            <div>
+                <div class="flex items-center gap-x-3 mb-2 flex-wrap">
+                    <span class="assessment-pill bg-teal-100 text-teal-700">TRL 6</span>
+                    <span class="assessment-pill bg-indigo-100 text-indigo-700">Tech Category: Environmental Technology</span>
+                    <span class="assessment-pill bg-orange-100 text-orange-700">RRL 2 / 5</span>
+                </div>
+                <h1 class="font-display text-4xl lg:text-5xl tracking-tighter font-semibold text-slate-900 leading-none">
+                    UrbanAir_AI
+                </h1>
+                <p class="mt-3 max-w-2xl text-lg text-slate-600">
+                    Urban Air AI is an edge-to-cloud air quality monitoring platform combining custom multi-parameter sensor hardware (PM2.5/PM10, NO₂, O₃, VOC, Temp/Humidity) in IP65 weatherproof enclosures with solar+battery power, on-device Tiny ML models running on ESP32-class microcontrollers for real-time drift compensation and pollutant source classification (>84% accuracy), a cloud platform for aggregated data analytics with epidemiological health risk modeling, and interactive dashboards with automated alerts. The system targets municipal-grade performance at consumer price points (BOM < HKD 800). TRL 7 with a completed 25-node pilot in Sham Shui Po, Hong Kong.
+                </p>
+            </div>
+            
+            <div class="flex flex-col items-start lg:items-end gap-y-1">
+                <div class="flex items-center gap-x-2">
+                    <div class="text-sm font-medium text-slate-500">WEIGHTED SUM</div>
+                    <div class="text-5xl font-display font-semibold tabular-nums text-amber-700">5.2</div>
+                    <div class="text-xs text-teal-600 font-medium">/ 9.0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Key Metrics -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <div class="metric-card bg-white border border-slate-200 rounded-3xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-xs font-semibold tracking-widest text-slate-500">PENALIZED WEIGHTED SUM</div>
+                        <div class="mt-1 text-4xl font-display font-semibold tabular-nums text-amber-700">5.2</div>
+                    </div>
+                    <i class="fa-solid fa-chart-line text-3xl text-amber-200"></i>
+                </div>
+                <div class="mt-3 text-xs text-slate-500">Σ(w×L) across 6 KTH dims</div>
+                
+            </div>
+            
+            <!-- RRL card — now on 1-5 scale -->
+            <div class="metric-card bg-white border border-slate-200 rounded-3xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-xs font-semibold tracking-widest text-slate-500">REGULATORY (RRL)</div>
+                        <div class="mt-1 text-4xl font-display font-semibold tabular-nums text-teal-700">2<span class="text-2xl text-slate-400">/5</span></div>
+                    </div>
+                    <i class="fa-solid fa-balance-scale text-3xl text-teal-200"></i>
+                </div>
+                <div class="mt-1">
+                    <div class="w-full bg-slate-100 rounded-full h-1.5">
+                        <div style="height: 6px; width: 40%; background: linear-gradient(90deg, #f97316, #c2410c); border-radius: 9999px;"></div>
+                    </div>
+                </div>
+                <div class="text-xs mt-2 text-red-600 font-medium">
+                    Regulatory landscape and key barriers identified.
+                </div>
+            </div>
+            
+            <div class="metric-card bg-white border border-slate-200 rounded-3xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-xs font-semibold tracking-widest text-amber-600">MATURITY DELTA</div>
+                        <div class="mt-1 text-4xl font-display font-semibold tabular-nums text-amber-700">1</div>
+                    </div>
+                    <i class="fa-solid fa-arrows-alt-h text-3xl text-amber-300"></i>
+                </div>
+                <div class="mt-2 text-xs">
+                    <span class="font-semibold text-amber-700">|TRL 6 − MRL 5| = 1</span>
+                </div>
+            </div>
+            
+            <!-- DYNAMIC TRANSLATION RISK CARD -->
+            <div class="metric-card bg-white border border-slate-200 rounded-3xl p-5 shadow-sm">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <div class="text-xs font-semibold tracking-widest text-slate-500">TRANSLATION RISK</div>
+                        <div class="mt-1 text-4xl font-display font-semibold tabular-nums text-emerald-600">×1.0</div>
+                    </div>
+                    <span class="text-xs px-2.5 py-0.5 bg-emerald-100 text-emerald-700 rounded-3xl font-bold">LOW</span>
+                </div>
+                <div class="mt-2 text-xs">
+                    <span class="font-semibold text-emerald-600">ρ 0.4 ≤ 2 (no pen)</span>
+                </div>
+            </div>
+            
+            <!-- DYNAMIC RECOMMENDATION CARD -->
+            <div class="metric-card bg-white border border-slate-200 rounded-3xl p-5 shadow-sm col-span-2 md:col-span-2 lg:col-span-2">
+                <div class="text-xs font-semibold tracking-widest text-slate-500 mb-2">RECOMMENDATION</div>
+                <div class="px-4 py-3 bg-gradient-to-r from-yellow-500 to-amber-500 text-white rounded-2xl text-sm font-semibold flex items-center justify-center gap-x-2 text-center">
+                    <span>ACCELERATE / SUPPORT</span>
+                </div>
+                <div class="text-xs text-slate-500 mt-2 leading-relaxed text-center">Penalized WS 5.15 ≥ 4.0, Hold thresholds not triggered. Project shows promise. Gaps: WS 5.15 < 6, IPRL 3 < 4. Targeted support recommended.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scoring & Decision Matrix Rubrics -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-10">
+        <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+            <div class="px-8 pt-7 pb-5 border-b bg-slate-50">
+                <div class="font-display text-2xl font-semibold tracking-tight flex items-center gap-x-3">
+                    <i class="fa-solid fa-table-cells text-teal-700"></i>
+                    <span>Scoring Formula &amp; Decision Matrix Rubrics</span>
+                </div>
+                <div class="text-sm text-slate-500 mt-0.5">How the Weighted Sum, penalties, and final recommendation are computed.</div>
+            </div>
+            <div class="p-8 space-y-8">
+                <!-- Weighted Sum Formula -->
+                <div>
+                    <div class="uppercase tracking-widest text-xs font-semibold text-teal-700 mb-3">WEIGHTED SUM FORMULA</div>
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-5">
+                        <div class="font-mono text-sm text-slate-800 mb-4">
+                            Weighted Sum = (CRL × 0.2) + (TRL × 0.2) + (BRL × 0.2) + (IPRL × 0.15) + (TMRL × 0.15) + (FRL × 0.1)
+                        </div>
+                        <div class="grid grid-cols-3 md:grid-cols-6 gap-3 text-center">
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">CRL × 0.2</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">1.2</div>
+                                <div class="text-[10px] text-slate-400">6 × 0.2</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">TRL × 0.2</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">1.2</div>
+                                <div class="text-[10px] text-slate-400">6 × 0.2</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">BRL × 0.2</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">0.8</div>
+                                <div class="text-[10px] text-slate-400">4 × 0.2</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">IPRL × 0.15</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">0.4</div>
+                                <div class="text-[10px] text-slate-400">3 × 0.15</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">TMRL × 0.15</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">0.9</div>
+                                <div class="text-[10px] text-slate-400">6 × 0.15</div>
+                            </div>
+                            <div class="bg-white border border-slate-200 rounded-xl p-3">
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">FRL × 0.1</div>
+                                <div class="text-lg font-display font-bold text-slate-800 mt-1">0.6</div>
+                                <div class="text-[10px] text-slate-400">6 × 0.1</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 pt-3 border-t border-slate-200 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-slate-700">Raw Weighted Sum</span>
+                            <span class="text-2xl font-display font-bold text-teal-700">5.2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maturity Delta -->
+                <div>
+                    <div class="uppercase tracking-widest text-xs font-semibold text-amber-700 mb-3">MATURITY DELTA</div>
+                    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4">
+                        <div class="flex items-center justify-between">
+                            <div class="font-mono text-sm text-amber-900">|TRL 6 − MRL 5| = <span class="font-bold text-lg">1</span></div>
+                            <div class="text-xs text-amber-700 font-medium">Gap between technology and market readiness</div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-amber-200">
+                            <div class="font-mono text-xs text-amber-800 bg-amber-100/60 rounded-xl px-4 py-2.5">
+                                <span class="font-semibold text-amber-900">Translation Risk Formula:</span>&nbsp;&nbsp;ρ = (TRL / MRL) × exp(|TRL − MRL| − 2)
+                            </div>
+                            <div class="mt-2 flex items-center justify-between bg-white rounded-xl border border-amber-200 px-4 py-3">
+                                <span class="font-mono text-sm text-amber-900">ρ = (6 / 5) × exp(1 − 2) = <span class="font-bold text-xl text-amber-700">0.4</span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Penalty Tables -->
+                <div>
+                    <div class="uppercase tracking-widest text-xs font-semibold text-red-700 mb-3">PENALTY SYSTEM</div>
+                    <div class="p-4 bg-red-50 border border-red-200 rounded-2xl mb-4 text-xs text-red-800 font-medium">
+                        <i class="fa-solid fa-circle-exclamation text-red-500 mr-1"></i>
+                        Only the <strong>strongest penalty</strong> is applied. If both tables yield a penalty, the lower multiplier (higher penalty) takes precedence — they do not stack.
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Table 4.2: Translation Risk -->
+                        <div>
+                            <table class="w-full text-sm data-table border border-slate-200 rounded-2xl overflow-hidden">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left py-2.5 px-4">ρ Value (Translation Risk)</th>
+                                        <th class="text-center py-2.5 px-4">Multiplier</th>
+                                        <th class="text-center py-2.5 px-4">This Project</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-xs divide-y divide-slate-100">
+                                    <tr class="bg-emerald-50 font-semibold">
+                                        <td class="py-2.5 px-4">ρ &lt; 2</td>
+                                        <td class="py-2.5 px-4 text-center">×1.0</td>
+                                        <td class="py-2.5 px-4 text-center">✓ Applied</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="py-2.5 px-4">2 ≤ ρ &lt; 4</td>
+                                        <td class="py-2.5 px-4 text-center">0.8</td>
+                                        <td class="py-2.5 px-4 text-center"></td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="py-2.5 px-4">ρ ≥ 4</td>
+                                        <td class="py-2.5 px-4 text-center">0.75</td>
+                                        <td class="py-2.5 px-4 text-center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Table 4.3: Maturity Delta -->
+                        <div>
+                            <table class="w-full text-sm data-table border border-slate-200 rounded-2xl overflow-hidden">
+                                <thead>
+                                    <tr>
+                                        <th class="text-left py-2.5 px-4">Δ (Maturity Delta)</th>
+                                        <th class="text-center py-2.5 px-4">Multiplier</th>
+                                        <th class="text-center py-2.5 px-4">This Project</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="text-xs divide-y divide-slate-100">
+                                    <tr class="bg-emerald-50 font-semibold">
+                                        <td class="py-2.5 px-4">Delta ≤ 2</td>
+                                        <td class="py-2.5 px-4 text-center">×1.0</td>
+                                        <td class="py-2.5 px-4 text-center">✓ Applied</td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="py-2.5 px-4">2 &lt; Delta ≤ 3.5</td>
+                                        <td class="py-2.5 px-4 text-center">0.8</td>
+                                        <td class="py-2.5 px-4 text-center"></td>
+                                    </tr>
+                                    <tr class="">
+                                        <td class="py-2.5 px-4">Delta &gt; 3.5</td>
+                                        <td class="py-2.5 px-4 text-center">0.75</td>
+                                        <td class="py-2.5 px-4 text-center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Penalty Result -->
+                    <div class="mt-4 bg-slate-50 border border-slate-200 rounded-2xl p-4">
+                        <div class="grid grid-cols-3 gap-4 text-center">
+                            <div>
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">TR PENALTY</div>
+                                <div class="text-xl font-display font-bold text-emerald-600">×1.0</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">MD PENALTY</div>
+                                <div class="text-xl font-display font-bold text-emerald-600">×1.0</div>
+                            </div>
+                            <div>
+                                <div class="text-[10px] font-semibold text-slate-500 tracking-wider">APPLIED (STRONGEST)</div>
+                                <div class="text-xl font-display font-bold text-emerald-600">×1.0</div>
+                            </div>
+                        </div>
+                        <div class="mt-3 pt-3 border-t border-slate-200 flex items-center justify-between">
+                            <span class="text-sm font-semibold text-slate-700">Penalized Weighted Sum</span>
+                            <span class="text-2xl font-display font-bold text-teal-700">5.2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Table 4.4: Decision Matrix -->
+                <div>
+                    <div class="uppercase tracking-widest text-xs font-semibold text-teal-700 mb-3">DECISION MATRIX</div>
+                    <table class="w-full text-sm data-table border border-slate-200 rounded-2xl overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="text-left py-2.5 px-4 rounded-tl-2xl">Category</th>
+                                <th class="text-left py-2.5 px-4">Criteria</th>
+                                <th class="text-center py-2.5 px-4 rounded-tr-2xl">This Project</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-xs divide-y divide-slate-100">
+                            <tr class="">
+                                <td class="py-3 px-4 font-semibold text-emerald-700">Advance to<br>Commercialization</td>
+                                <td class="py-3 px-4">WS ≥ 6 AND Δ ≤ 3 (MD) AND ρ ≤ 3.5 (TR) AND TMRL ≥ 5 AND IPRL ≥ 4</td>
+                                <td class="py-3 px-4 text-center font-mono">5.2 ✗WS Δ✓MD ρ✓TR TMRL✓ IPRL✗</td>
+                            </tr>
+                            <tr class="bg-yellow-50">
+                                <td class="py-3 px-4 font-semibold text-yellow-700">Accelerate /<br>Support</td>
+                                <td class="py-3 px-4">WS ≥ 4.0, Hold thresholds not triggered, but not all Advance criteria met</td>
+                                <td class="py-3 px-4 text-center font-mono">5.2</td>
+                            </tr>
+                            <tr class="">
+                                <td class="py-3 px-4 font-semibold text-amber-700">Hold / Pivot</td>
+                                <td class="py-3 px-4">Δ &gt; 3.5 (MD) OR ρ &gt; 4 (TR)</td>
+                                <td class="py-3 px-4 text-center font-mono">Δ=1, ρ=0.4 ✗</td>
+                            </tr>
+                            <tr class="">
+                                <td class="py-3 px-4 font-semibold text-red-700 rounded-bl-2xl">Stop / Archive</td>
+                                <td class="py-3 px-4">Penalized WS &lt; 4.0</td>
+                                <td class="py-3 px-4 text-center font-mono rounded-br-2xl">5.2 ✗</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KTH Radar + Dimensions -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-10">
+        <div class="grid lg:grid-cols-12 gap-6">
+            <div class="lg:col-span-5 bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="flex items-center justify-between mb-4">
+                    <div>
+                        <div class="font-display text-xl font-semibold tracking-tight">KTH Innovation Readiness Level™</div>
+                        <div class="text-sm text-slate-500">6-dimensional maturity assessment</div>
+                    </div>
+                </div>
+                
+                <div class="radar-container mx-auto" style="max-width: 380px;">
+                    <canvas id="kthRadar" width="380" height="380"></canvas>
+                </div>
+            </div>
+            
+            <div class="lg:col-span-7 bg-white border border-slate-200 rounded-3xl p-7 shadow-sm">
+                <div class="font-display text-xl font-semibold tracking-tight mb-5">Dimension Scores &amp; Justifications</div>
+                
+                <div class="space-y-4">
+                    
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-yellow-100 bg-yellow-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-yellow-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">6</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Customer Readiness Level (CRL)</div>
+                                <span class="assessment-pill bg-yellow-200 text-yellow-700">LEVEL 6 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">Benefits confirmed by first customer testing. The project completed a 4-month field pilot with 25 nodes in Sham Shui Po district, achieving 99.6% uptime and >84% source identification accuracy. Formal MOUs and positive feedback were obtained from the district council and hospital groups. However, no actual commercial sales have occurred yet - the property management company's HKD 450k+ order remains estimated, not confirmed.</div>
+                        </div>
+                    </div>
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-yellow-100 bg-yellow-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-yellow-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">6</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Technology Readiness Level (TRL)</div>
+                                <span class="assessment-pill bg-yellow-200 text-yellow-700">LEVEL 6 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">A representative prototype (UA-Node-v2.1, 25 units) has been deployed and validated in a relevant operational environment (Sham Shui Po district, 4-month pilot) with strong performance metrics (PM2.5 R²=0.91, 99.6% uptime, >84% source classification accuracy). However, the system remains in pilot phase — not yet in commercial operations with paying customers. Manufacturing at volume is unproven, regulatory certification is pending, and the spin-out has not yet occurred. The technology meets most key requirements but is not yet a complete system proven in actual commercial operations by first users (TRL 8).</div>
+                        </div>
+                    </div>
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-yellow-100 bg-yellow-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-yellow-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">4</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Business Readiness Level (BRL)</div>
+                                <span class="assessment-pill bg-yellow-200 text-yellow-700">LEVEL 4 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">Economic viability calculations done and target markets defined. The project has detailed 5-year financial projections (Year 1: HKD 1.4M, Year 2: HKD 5.8M EBITDA positive, Year 3: HKD 14.2M), a structured business model with hardware (HKD 2,150/node, 55-60% margin), SaaS (HKD 650-850/node/month), and data licensing. Target market is defined as HKD 95M addressable market with >12% CAGR in Asia-Pacific. However, the business model has not been validated by actual commercial sales.</div>
+                        </div>
+                    </div>
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-red-100 bg-red-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-red-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">3</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">IPR Readiness Level (IPRL)</div>
+                                <span class="assessment-pill bg-red-200 text-red-700">LEVEL 3 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">The CTO's role explicitly includes 'IP strategy' and the technology is described as 'proprietary,' suggesting key IPR forms (e.g., patents on TinyML drift compensation, multi-sensor fusion, edge-to-cloud architecture) have been identified by the technical team. However, there is no evidence in the documents of any patent filings, professional prior art searches, freedom-to-operate assessments, or a documented IPR strategy. No concrete IPR protection measures beyond the team's awareness of the need are demonstrated.</div>
+                        </div>
+                    </div>
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-yellow-100 bg-yellow-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-yellow-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">6</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Team Readiness Level (TMRL)</div>
+                                <span class="assessment-pill bg-yellow-200 text-yellow-700">LEVEL 6 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">The founding team comprises three co-founders with complementary competencies: CTO (PhD EE, 85+ publications, h-index 38, hardware/AI expertise), CEO (DBA, MBA, full-time, prior successful exit raising HKD 4.2M), and CPO (MSc HCI UCL, full-time, 3 successful smart city product launches). The CEO is clearly defined and full-time. Equity splits are allocated (15%/20%/8%). However, no formal signed ownership agreement, board of directors, HR systems, or documented recruitment plan is evidenced. The CTO remains a Professor, raising questions about full-time commitment post-spin-out.</div>
+                        </div>
+                    </div>
+                    <div class="kth-dimension flex items-start gap-x-4 p-3 rounded-2xl border border-yellow-100 bg-yellow-50/30">
+                        <div class="w-11 h-11 flex-shrink-0 rounded-2xl bg-yellow-600 flex items-center justify-center text-white font-display text-xl font-bold shadow-inner">6</div>
+                        <div class="flex-1 min-w-0">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Funding Readiness Level (FRL)</div>
+                                <span class="assessment-pill bg-yellow-200 text-yellow-700">LEVEL 6 / 9</span>
+                            </div>
+                            <div class="justification-text mt-1 text-sm text-slate-600">Detailed 5-year financial projections exist (Year 1: HKD 1.4M revenue, 58% gross margin; Year 2: HKD 5.8M, EBITDA positive; Year 3: HKD 14.2M). Active investor discussions are reported with two VCs in due diligence stage (Blue Horizon Ventures HK with signed NDA; Asia Climate Capital Singapore). The project is seeking HKD 8-12M in Seed/Pre-Series A funding. However, no term sheet has been signed, no funding is confirmed, and current runway before spin-out is not documented. The projections, while detailed, remain unvalidated by independent financial review.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- === NEW: Readiness Level Rubrics Section === -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-10">
+        <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+            <div class="px-8 pt-7 pb-5 border-b bg-slate-50 flex items-center justify-between">
+                <div>
+                    <div class="font-display text-2xl font-semibold tracking-tight flex items-center gap-x-3">
+                        <i class="fa-solid fa-layer-group text-teal-700"></i>
+                        <span>Readiness Level Rubrics</span>
+                    </div>
+                    <div class="text-sm text-slate-500 mt-0.5">Official KTH Innovation Readiness Level™ definitions per dimension. Click "Show full rubric" to view all levels.</div>
+                </div>
+                <div class="hidden md:flex items-center gap-x-2 text-xs text-slate-500">
+                    <span class="inline-block w-2 h-2 rounded-full bg-emerald-500"></span> Achieved
+                    <span class="inline-block w-2 h-2 rounded-full bg-teal-500 ml-3"></span> Current
+                    <span class="inline-block w-2 h-2 rounded-full bg-slate-300 ml-3"></span> Pending
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">CRL</span><span class="text-xs text-slate-500">Customer Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 6 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Benefits confirmed by first customer testing. Updated sales pitch and value proposition based on customer/user feedback.</div><div class="text-xs text-slate-500 italic leading-relaxed">Benefits confirmed by first customer testing. The project completed a 4-month field pilot with 25 nodes in Sham Shui Po district, achieving 99.6% uptime and >84% source identification accuracy. Formal MOUs and positive feedback were obtained from the district council and hospital groups. However, no actual commercial sales have occurred yet - the property management company's HKD 450k+ order remains estimated, not confirmed.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full CRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 1</span><span class="text-slate-600">Hypothesis of possible needs in the market. No clear hypotheses on who customers are, what problems exist, etc.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 2</span><span class="text-slate-600">Identified specific needs in the market. Some market research is performed, typically derived from secondary sources.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 3</span><span class="text-slate-600">First market feedback established. Received feedback from primary market research, i.e. direct contacts with a few possible users/customers or experts.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 4</span><span class="text-slate-600">Confirmed problem/need from several customers or users. Customer segmentation with initial basic customer profiles in place.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 5</span><span class="text-slate-600">Established interest and relations with customers. Customers/users have expressed interest and confirmed initial problem-solution fit.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">CRL 6</span><span class="text-slate-900 font-medium">Benefits confirmed by first customer testing. Updated sales pitch and value proposition based on customer/user feedback.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 7</span><span class="text-slate-600">Customers in extended testing or first test sales. Small number of active users of early versions of product/service.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 8</span><span class="text-slate-600">First commercial sales and implemented sales process. Substantial number of active users of market-ready product/service.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">CRL 9</span><span class="text-slate-600">Widespread sales that scale. Large number of active users with substantial growth.</span></div></div></div></details></div>
+<div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">TRL</span><span class="text-xs text-slate-500">Technology Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 6 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Technology prototype demonstration in relevant environment. Representative model or prototype shown to actually work.</div><div class="text-xs text-slate-500 italic leading-relaxed">A representative prototype (UA-Node-v2.1, 25 units) has been deployed and validated in a relevant operational environment (Sham Shui Po district, 4-month pilot) with strong performance metrics (PM2.5 R²=0.91, 99.6% uptime, >84% source classification accuracy). However, the system remains in pilot phase — not yet in commercial operations with paying customers. Manufacturing at volume is unproven, regulatory certification is pending, and the spin-out has not yet occurred. The technology meets most key requirements but is not yet a complete system proven in actual commercial operations by first users (TRL 8).</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full TRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 1</span><span class="text-slate-600">Interesting research results or initial technology idea identified. Vague idea of a technology to be developed.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 2</span><span class="text-slate-600">Technology concept and/or application formulated. Practical applications can be defined but are speculative.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 3</span><span class="text-slate-600">Proof-of-concept of critical functions and/or characteristics in laboratory. Active R&D is initiated.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 4</span><span class="text-slate-600">Technology validation in laboratory. Basic components integrated and shown to work together. Initial evidence that concept will work.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 5</span><span class="text-slate-600">Technology validation in relevant environment. Basic components integrated and tested in a more realistic form. Evidence indicating the technology will work.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">TRL 6</span><span class="text-slate-900 font-medium">Technology prototype demonstration in relevant environment. Representative model or prototype shown to actually work.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 7</span><span class="text-slate-600">Technology prototype demonstration in operational environment. Prototype near or at complete technology shown to work in operational environment.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 8</span><span class="text-slate-600">Technology complete and demonstrated in actual operations. Complete technology proven to work in actual operations by first users.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TRL 9</span><span class="text-slate-600">Technology complete and proven in actual operations over time. Complete technology is scalable and proven by several users over time.</span></div></div></div></details></div>
+<div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">BRL</span><span class="text-xs text-slate-500">Business Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 4 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> First calculations indicate economically viable business model. First sustainability assessment of proposed business model.</div><div class="text-xs text-slate-500 italic leading-relaxed">Economic viability calculations done and target markets defined. The project has detailed 5-year financial projections (Year 1: HKD 1.4M, Year 2: HKD 5.8M EBITDA positive, Year 3: HKD 14.2M), a structured business model with hardware (HKD 2,150/node, 55-60% margin), SaaS (HKD 650-850/node/month), and data licensing. Target market is defined as HKD 95M addressable market with >12% CAGR in Asia-Pacific. However, the business model has not been validated by actual commercial sales.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full BRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 1</span><span class="text-slate-600">No or unclear description of business idea, market potential and competition.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 2</span><span class="text-slate-600">Description of possible business concept, market opportunity and competition. Some insight into sustainability aspects of business.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 3</span><span class="text-slate-600">Description of business model, target market(s) and competitive landscape. Draft of business model described e.g. in canvas format.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">BRL 4</span><span class="text-slate-900 font-medium">First calculations indicate economically viable business model. First sustainability assessment of proposed business model.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 5</span><span class="text-slate-600">Market feedback on key assumptions of business model. Key assumptions (specifically willingness to pay and pricing) validated.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 6</span><span class="text-slate-600">Business model validated by target customers (pilot/test sales). Key sustainability metrics proposed.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 7</span><span class="text-slate-600">Business model validated by commercial sales. Market differentiators/USPs validated by market feedback.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 8</span><span class="text-slate-600">Sales and metrics show that business model is viable. Sustainability integrated and used to create business value.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">BRL 9</span><span class="text-slate-600">Business model proven to meet expectations on profit, growth and sustainability.</span></div></div></div></details></div>
+<div class="border border-red-200 bg-red-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">IPRL</span><span class="text-xs text-slate-500">IPR Readiness Level</span></div><span class="assessment-pill bg-red-100 text-red-700">LEVEL 3 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Description of possible key IPR in some detail. Initial evaluation of potential to protect key IPR.</div><div class="text-xs text-slate-500 italic leading-relaxed">The CTO's role explicitly includes 'IP strategy' and the technology is described as 'proprietary,' suggesting key IPR forms (e.g., patents on TinyML drift compensation, multi-sensor fusion, edge-to-cloud architecture) have been identified by the technical team. However, there is no evidence in the documents of any patent filings, professional prior art searches, freedom-to-operate assessments, or a documented IPR strategy. No concrete IPR protection measures beyond the team's awareness of the need are demonstrated.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full IPRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 1</span><span class="text-slate-600">Hypothesizing on your possible IPR. Some ideas may exist, but are speculative. No description/documentation of the possible IPR.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 2</span><span class="text-slate-600">Identified different forms of possible IPR that you have/create. Mapped IPR forms. Specific ideas exist but not well described. Ownership is clarified.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">IPRL 3</span><span class="text-slate-900 font-medium">Description of possible key IPR in some detail. Initial evaluation of potential to protect key IPR.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 4</span><span class="text-slate-600">Confirmed that IPR protection is possible and for what. Decided why to protect certain IPR (business relevance).</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 5</span><span class="text-slate-600">Draft of IPR strategy to create business value is in place. Filed first formal application/registration of key IPR.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 6</span><span class="text-slate-600">First complete IPR strategy in place considering different IPR. Positive response on filed applications/registrations.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 7</span><span class="text-slate-600">Filed formal applications/registrations of key IPR in relevant countries/regions according to IPR strategy.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 8</span><span class="text-slate-600">IPR strategy and management practices fully implemented. Filed formal applications/registrations of complementary IPR.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">IPRL 9</span><span class="text-slate-600">Strong IPR support and protection for business. IPR protection granted and maintained in relevant countries.</span></div></div></div></details></div>
+<div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">TMRL</span><span class="text-xs text-slate-500">Team Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 6 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Complementary, diverse, and committed founding team with all necessary competencies and capacity to start building a business.</div><div class="text-xs text-slate-500 italic leading-relaxed">The founding team comprises three co-founders with complementary competencies: CTO (PhD EE, 85+ publications, h-index 38, hardware/AI expertise), CEO (DBA, MBA, full-time, prior successful exit raising HKD 4.2M), and CPO (MSc HCI UCL, full-time, 3 successful smart city product launches). The CEO is clearly defined and full-time. Equity splits are allocated (15%/20%/8%). However, no formal signed ownership agreement, board of directors, HR systems, or documented recruitment plan is evidenced. The CTO remains a Professor, raising questions about full-time commitment post-spin-out.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full TMRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 1</span><span class="text-slate-600">Lack of necessary competencies/resources to verify idea. Little insight into team needs (typically an individual).</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 2</span><span class="text-slate-600">Limited competencies in place to start verifying the idea. First idea of additional necessary competencies or resources.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 3</span><span class="text-slate-600">Some of necessary competencies in place to verify/develop idea. Defined needed competencies (and plan for finding them).</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 4</span><span class="text-slate-600">A champion is present with clear idea of direction (startup/other way). Several needed competencies in place, initiated plan to complement.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 5</span><span class="text-slate-600">Initial founding team with main needed competencies and capacity. Team agrees on ownership, roles, goals, and visions.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">TMRL 6</span><span class="text-slate-900 font-medium">Complementary, diverse, and committed founding team with all necessary competencies and capacity to start building a business.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 7</span><span class="text-slate-600">Well-functioning team and culture in place. Growth plan for expanding team and building organization over time.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 8</span><span class="text-slate-600">Professional organization in place (board, CEO, management, staff).</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">TMRL 9</span><span class="text-slate-600">High performing, well-structured organization at all levels that is maintained, develops, and performs over time.</span></div></div></div></details></div>
+<div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">FRL</span><span class="text-xs text-slate-500">Funding Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 6 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Improved pitch for funding based on feedback. Discussions with relevant funding sources.</div><div class="text-xs text-slate-500 italic leading-relaxed">Detailed 5-year financial projections exist (Year 1: HKD 1.4M revenue, 58% gross margin; Year 2: HKD 5.8M, EBITDA positive; Year 3: HKD 14.2M). Active investor discussions are reported with two VCs in due diligence stage (Blue Horizon Ventures HK with signed NDA; Asia Climate Capital Singapore). The project is seeking HKD 8-12M in Seed/Pre-Series A funding. However, no term sheet has been signed, no funding is confirmed, and current runway before spin-out is not documented. The projections, while detailed, remain unvalidated by independent financial review.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full FRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 1</span><span class="text-slate-600">Little insight into funding needs and funding options. No funding or plan for validation of idea.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 2</span><span class="text-slate-600">Identified funding needs and funding options for validation. Initiated efforts to secure funding for validation.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 3</span><span class="text-slate-600">Insight into overall funding options and their requirements. Secured initial funding for validation.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 4</span><span class="text-slate-600">Pitch/presentation in place for next-stage funding. Secured funding to initiate development.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 5</span><span class="text-slate-600">Pitch for funding tested on relevant audience. Possible funding roadmap and first financial projections.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">FRL 6</span><span class="text-slate-900 font-medium">Improved pitch for funding based on feedback. Discussions with relevant funding sources.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 7</span><span class="text-slate-600">Term sheet level discussions with funding source(s). All material in place to pass a due diligence for funding.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 8</span><span class="text-slate-600">Secured funding for at least 12 months of operations. Control of financial status via financial monitoring and forecasting.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">FRL 9</span><span class="text-slate-600">Long term funding strategy in place. Prepared next needed funding with interest from funding sources.</span></div></div></div></details></div>
+<div class="border border-yellow-200 bg-yellow-50/40 rounded-2xl overflow-hidden"><div class="p-4"><div class="flex items-center justify-between mb-2"><div class="flex items-center gap-2"><span class="font-display font-semibold text-slate-900">MRL</span><span class="text-xs text-slate-500">Market Readiness Level</span></div><span class="assessment-pill bg-yellow-100 text-yellow-700">LEVEL 5 / 9</span></div><div class="text-xs text-slate-600 bg-white/60 rounded-lg p-2 mb-2"><span class="font-semibold text-slate-700">Current level meaning:</span> Critical functions for a solution or product have been delivered to and tested on potential need owners. A business concept has been described (e.g., according to the NABC model). Market needs have been confirmed through interviews or practical tests.</div></div><details class="border-t border-slate-200/60"><summary class="cursor-pointer px-4 py-2 text-xs font-semibold text-teal-700 hover:bg-teal-50 flex items-center gap-2"><i class="fa-solid fa-list-ul"></i>Show full MRL rubric (9 levels)</summary><div class="divide-y divide-slate-100 bg-white/40"><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 1</span><span class="text-slate-600">A hypothesis is formulated about the needs of owners and the market.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 2</span><span class="text-slate-600">Existing solutions/products on the market are known. An IP strategy is formulated, including the <u>right</u> and <u>opportunity</u> for commercialization.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 3</span><span class="text-slate-600">An overview of the market and size/volumes is described. Some competitors have been identified.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 4</span><span class="text-slate-600">The competitive situation and alternatives are analyzed. Market acceptance has been tested on a smaller scale.</span></div></div><div class="bg-teal-50 border-l-4 border-teal-500 px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-teal-700 flex-shrink-0">MRL 5</span><span class="text-slate-900 font-medium">Critical functions for a solution or product have been delivered to and tested on potential need owners. A business concept has been described (e.g., according to the NABC model). Market needs have been confirmed through interviews or practical tests.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 6</span><span class="text-slate-600">A detailed picture of the market size/volumes is described. The opportunities for commercialization have been developed and demonstrated. Potential obstacles have been identified.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 7</span><span class="text-slate-600">Opportunity to take a significant share of the market has been proven. Collaborations that confirm <u>unique</u> characteristics or functions of the innovation have been established.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 8</span><span class="text-slate-600">Attractive sales <u>opportunities</u> demonstrated based on a documented business and pricing model. A business concept has been confirmed to several potential customers and has an estimated successful commercial potential.</span></div></div><div class="border-l-4 border-transparent px-3 py-2 text-xs"><div class="flex items-start gap-2"><span class="font-bold text-slate-500 flex-shrink-0">MRL 9</span><span class="text-slate-600">Product testing or test <u>sales</u> in progress (or process in use).</span></div></div></div></details></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Regulatory Section (Dynamic) -->
+    <div class="max-w-screen-2xl mx-auto px-8 pb-10">
+        <div class="bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-sm">
+            <div class="px-8 pt-7 pb-5 border-b flex items-center justify-between bg-slate-50">
+                <div>
+                    <div class="font-display text-2xl font-semibold tracking-tight flex items-center gap-x-3">
+                        <i class="fa-solid fa-globe text-teal-700"></i> 
+                        <span>Regulatory &amp; Certification Strategy</span>
+                    </div>
+                    <div class="text-sm text-slate-500 mt-0.5">Regulatory Readiness Level: <span class="font-bold text-teal-700">RRL 2 / 5</span> &nbsp;•&nbsp; Regulatory landscape and key barriers identified.</div>
+                </div>
+            </div>
+            
+            <div class="p-8">
+                <!-- RRL Ladder visualization -->
+                <div class="mb-8">
+                    <div class="uppercase tracking-widest text-xs font-semibold text-slate-500 mb-3">REGULATORY READINESS LADDER (5 LEVELS)</div>
+                    <div class="grid md:grid-cols-5 gap-3">
+                        
+            <div class="flex items-start gap-3 p-3 rounded-2xl border border-emerald-200 bg-emerald-50/50 transition-all">
+                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-display font-bold text-sm">1</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-semibold text-sm">RRL 1</span>
+                        
+                        <span class="assessment-pill bg-emerald-200 text-emerald-800">ACHIEVED</span>
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1 leading-relaxed">Initial awareness/hypothesis of possible regulatory needs (no systematic mapping).</div>
+                </div>
+            </div>
+        
+            <div class="flex items-start gap-3 p-3 rounded-2xl border border-teal-500 bg-teal-50 ring-2 ring-teal-300 transition-all">
+                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-teal-600 text-white flex items-center justify-center font-display font-bold text-sm">2</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-semibold text-sm">RRL 2</span>
+                        <span class="assessment-pill bg-teal-200 text-teal-800">CURRENT</span>
+                        
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1 leading-relaxed">Regulatory landscape and key barriers identified.</div>
+                </div>
+            </div>
+        
+            <div class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 bg-white transition-all">
+                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-200 text-slate-500 flex items-center justify-center font-display font-bold text-sm">3</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-semibold text-sm">RRL 3</span>
+                        
+                        
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1 leading-relaxed">Regulatory pathway defined, classified, and validated (gaps analyzed).</div>
+                </div>
+            </div>
+        
+            <div class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 bg-white transition-all">
+                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-200 text-slate-500 flex items-center justify-center font-display font-bold text-sm">4</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-semibold text-sm">RRL 4</span>
+                        
+                        
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1 leading-relaxed">Approval/submission pathway secured or advanced (evidence submitted, positive engagement).</div>
+                </div>
+            </div>
+        
+            <div class="flex items-start gap-3 p-3 rounded-2xl border border-slate-200 bg-white transition-all">
+                <div class="flex-shrink-0 w-9 h-9 rounded-xl bg-slate-200 text-slate-500 flex items-center justify-center font-display font-bold text-sm">5</div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                        <span class="font-semibold text-sm">RRL 5</span>
+                        
+                        
+                    </div>
+                    <div class="text-xs text-slate-600 mt-1 leading-relaxed">Full regulatory endorsement/approvals operational and scalable across markets.</div>
+                </div>
+            </div>
+        
+                    </div>
+                    
+                    <div class="mt-4 p-4 bg-amber-50 border border-amber-200 rounded-2xl">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-circle-info text-amber-600 mt-1"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-amber-800 text-sm mb-1">RRL Justification</div>
+                                <div class="text-xs text-amber-900 leading-relaxed">The project has completed a PDPO privacy assessment with DPIA for the pilot phase and has explicitly identified AI governance and health claims as key regulatory risks in its business plan, with a mitigation strategy of conservative positioning as an 'environmental advisory system.' Internal sensor calibration certificates have been produced (traceable to HK EPD reference stations). The team has allocated budget for 'regulatory certification and PDPO full compliance program' in the Seed/Pre-Series A raise. However, no third-party accredited certifications have been obtained, no formal regulatory pathway has been defined or validated for any market, no engagement with standards bodies or notified organizations has occurred, the health risk modeling layer has not been assessed for potential medical device classification risk, and no regulatory mapping has been done for GBA/China expansion despite it being planned for 2027. This corresponds to RRL 2: the regulatory landscape and key barriers have been identified, but no pathway has been formally defined, classified, or validated.</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-3 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl">
+                        <div class="flex items-start gap-2">
+                            <i class="fa-solid fa-lightbulb text-emerald-600 mt-1"></i>
+                            <div class="flex-1">
+                                <div class="font-semibold text-emerald-800 text-sm mb-2">RRL Advancement Recommendations</div>
+                                <ul class="text-xs text-emerald-900 space-y-1.5 leading-relaxed">
+                                    <li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Immediately engage an accredited test laboratory for OFCA type approval of wireless modules — this is a legal prerequisite for continued deployment in Hong Kong and is a quick win.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Commission an independent ISO 17025-accredited collocation study against HK EPD reference stations to produce third-party validated performance data — this directly strengthens government tender qualifications and investor confidence.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Conduct a formal regulatory classification assessment for the health risk prediction layer to determine whether it could trigger medical device classification in HK, EU (MDR), or China (NMPA) — document the rationale for 'environmental advisory' positioning with legal opinion.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Develop a comprehensive regulatory roadmap covering HK, GBA/China, and EU markets with specific milestones, timelines, and budget allocations aligned to the go-to-market phases.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Appoint or engage a dedicated regulatory affairs consultant or Data Protection Officer to scale PDPO compliance from pilot-phase assessment to full organizational program before commercial deployment.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Initiate pre-submission dialogue with HK EPD and District Councils to understand data quality requirements for municipal monitoring tenders and align sensor performance claims with procurement specifications.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>Begin ISO 27001 implementation immediately as it is a prerequisite for government tenders, enterprise customer onboarding (hospitals, schools), and international expansion.</span></li><li class="flex gap-2"><i class="fa-solid fa-arrow-right text-emerald-600 mt-1 fa-fw flex-shrink-0"></i><span>For GBA expansion, engage China regulatory counsel to map PIPL/DSL/Cybersecurity Law compliance requirements, particularly around data localization and cross-border transfer restrictions for environmental and health data.</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="uppercase tracking-widest text-xs font-semibold text-slate-500 mb-3">KEY MARKET REGULATORY CONSIDERATIONS</div>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        
+                    <div class="border border-slate-200 rounded-2xl p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-semibold text-slate-900">Hong Kong (Primary Market)</span>
+                            <span class="assessment-pill bg-amber-100 text-amber-700">Medium</span>
+                        </div>
+                        <div class="text-xs space-y-2">
+                            <div>
+                                <div class="font-medium text-slate-600 mb-1">Key Regulations:</div>
+                                <div><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Personal Data (Privacy) Ordinance (PDPO) — Cap. 486</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Air Pollution Control Ordinance (Cap. 311)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Telecommunications Ordinance (Cap. 106) — OFCA equipment type approval</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Product Safety Law (Cap. 529) — electrical safety of consumer products</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Occupational Safety and Health Ordinance (Cap. 509) — workplace deployment</span></div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100">
+                                <div class="font-medium text-slate-600 mb-1">Key Requirements:</div>
+                                <div class="text-slate-700 leading-relaxed">PDPO compliance at scale requires full organizational privacy program beyond pilot-phase DPIA, including breach notification procedures, data retention policies, and staff training. Sensor data used for government environmental monitoring must meet EPD data quality standards for tender eligibility. Wireless modules (WiFi/LoRa/NB-IoT) require OFCA type approval. Health risk prediction features must be carefully positioned as environmental advisory (not medical advice) to avoid triggering medical device classification. Electrical safety compliance required for consumer/municipal hardware deployment.</div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 italic text-slate-500"><span class="font-medium not-italic">Notes:</span> PDPO DPIA completed for pilot phase; full organizational compliance program explicitly budgeted in Seed/Pre-Series A raise. Team has identified AI governance and health claims as key regulatory risks with mitigation through conservative positioning as environmental advisory system. Strong government relationships (district council MOU) provide pathway for regulatory engagement.</div>
+                        </div>
+                    </div>
+                
+                    <div class="border border-slate-200 rounded-2xl p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-semibold text-slate-900">European Union (Future Expansion)</span>
+                            <span class="assessment-pill bg-red-100 text-red-700">High</span>
+                        </div>
+                        <div class="text-xs space-y-2">
+                            <div>
+                                <div class="font-medium text-slate-600 mb-1">Key Regulations:</div>
+                                <div><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">EU AI Act (Regulation 2024/1689)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">General Data Protection Regulation (GDPR)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">CE Marking Directive (LVD 2014/35/EU, EMC 2014/30/EU, RED 2014/53/EU)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">EU Air Quality Directive 2008/50/EC</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">WEEE Directive 2012/19/EU</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">RoHS Directive 2011/65/EU</span></div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100">
+                                <div class="font-medium text-slate-600 mb-1">Key Requirements:</div>
+                                <div class="text-slate-700 leading-relaxed">If health risk predictions materially influence decisions about individuals, the AI system may be classified as high-risk under the EU AI Act (Annex III), requiring conformity assessment, risk management system, and CE marking of the AI system. GDPR applies to any personal data processing of EU residents, including location data linked to health outcomes — requires DPO appointment and potentially a representative in the EU. CE marking requires compliance with Low Voltage Directive, EMC Directive, and Radio Equipment Directive for hardware. Air quality data used for regulatory reporting must meet reference method equivalence under the Air Quality Directive.</div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 italic text-slate-500"><span class="font-medium not-italic">Notes:</span> No EU regulatory pathway work has been initiated. The health risk modeling layer creates the most significant regulatory uncertainty — positioning as 'environmental advisory' may not be sufficient under EU AI Act if the system is used for health-related decision-making affecting individuals. EU market entry is not planned until Phase 3 (2028+), providing time to prepare but requiring early strategic engagement.</div>
+                        </div>
+                    </div>
+                
+                    <div class="border border-slate-200 rounded-2xl p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-semibold text-slate-900">China / Greater Bay Area (Phase 2 Expansion — 2027)</span>
+                            <span class="assessment-pill bg-red-100 text-red-700">High</span>
+                        </div>
+                        <div class="text-xs space-y-2">
+                            <div>
+                                <div class="font-medium text-slate-600 mb-1">Key Regulations:</div>
+                                <div><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Personal Information Protection Law (PIPL)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Data Security Law (DSL)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Cybersecurity Law (CSL)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">CAC Algorithm Recommendation Regulations</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Measures for Environmental Information Disclosure</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">CCC (China Compulsory Certification) for electrical/electronic products</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">GB environmental monitoring equipment standards (e.g., HJ 653, HJ 193)</span></div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100">
+                                <div class="font-medium text-slate-600 mb-1">Key Requirements:</div>
+                                <div class="text-slate-700 leading-relaxed">Cross-border data transfer from mainland China requires security assessment or standard contractual clauses under PIPL. Data localization likely required for environmental monitoring data collected in mainland China. Algorithm recommendation regulations require filing with CAC for AI systems that make recommendations to users. Environmental monitoring equipment sold in China must comply with relevant GB standards and potentially CCC certification. Health-related data processing triggers heightened protections under PIPL as 'sensitive personal information.'</div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 italic text-slate-500"><span class="font-medium not-italic">Notes:</span> GBA market entry is planned for Phase 2 (2027) but no China-specific regulatory work has been initiated. The combination of AI algorithms, environmental data, and health data creates a complex multi-law compliance surface. Data localization requirements may necessitate separate cloud infrastructure in mainland China. CAC algorithm filing is a novel requirement that the team has not addressed.</div>
+                        </div>
+                    </div>
+                
+                    <div class="border border-slate-200 rounded-2xl p-5 hover:shadow-md transition-shadow">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="font-semibold text-slate-900">United States (Potential Future Market)</span>
+                            <span class="assessment-pill bg-amber-100 text-amber-700">Medium</span>
+                        </div>
+                        <div class="text-xs space-y-2">
+                            <div>
+                                <div class="font-medium text-slate-600 mb-1">Key Regulations:</div>
+                                <div><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">EPA Federal Reference Method / Federal Equivalent Method requirements</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">FCC Part 15 certification for wireless devices</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">State-level AI regulations (e.g., California AI Transparency Act, Colorado AI Act)</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">Consumer Product Safety Commission (CPSC) requirements</span><span class="inline-block text-[11px] bg-slate-100 text-slate-700 rounded px-2 py-0.5 mr-1 mb-1">HIPAA (if health data linked to covered entities)</span></div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100">
+                                <div class="font-medium text-slate-600 mb-1">Key Requirements:</div>
+                                <div class="text-slate-700 leading-relaxed">EPA does not directly regulate low-cost sensors but data from these sensors may not be accepted for regulatory purposes without meeting Federal Equivalent Method (FEM) criteria — important for government procurement. FCC Part 15 certification is mandatory for all wireless devices sold in the US. State-level AI regulations are emerging rapidly and may require transparency disclosures for AI systems that influence decisions. If health data is linked to healthcare providers, HIPAA compliance may be triggered. Product safety compliance required for consumer electronics.</div>
+                            </div>
+                            <div class="pt-2 border-t border-slate-100 italic text-slate-500"><span class="font-medium not-italic">Notes:</span> US market is not explicitly in the current go-to-market roadmap but is a potential future market for data licensing and technology partnerships. The fragmented US regulatory landscape for AI creates uncertainty. EPA sensor performance validation (e.g., CAMx collocation studies) would significantly strengthen credibility for US government procurement.</div>
+                        </div>
+                    </div>
+                
+                    </div>
+                </div>
+                
+                
+                <div>
+                    <div class="uppercase tracking-widest text-xs font-semibold text-slate-500 mb-3">RECOMMENDED CERTIFICATIONS</div>
+                    <table class="w-full text-sm data-table">
+                        <thead>
+                            <tr>
+                                <th class="text-left py-3 px-4 rounded-tl-2xl">Certification</th>
+                                <th class="text-left py-3 px-4">Value Added</th>
+                                <th class="text-center py-3 px-4">Effort</th>
+                                <th class="text-center py-3 px-4 rounded-tr-2xl">Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-xs">
+                            
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">ISO/IEC 42001 — AI Management System Certification</td>
+                        <td class="py-3 px-4">Demonstrates responsible AI governance to investors, government procurement officers, and enterprise customers. Directly addresses the team's identified regulatory risk around AI governance. Prepares the company for EU AI Act conformity assessment and emerging global AI regulations. Strong signal to VCs conducting technical due diligence that AI risks are systematically managed.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">6-9 months to implement and certify</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-red-100 text-red-700">High</span></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">MCERTS (Monitoring Certification Scheme) or equivalent ISO 17025-accredited third-party sensor performance validation</td>
+                        <td class="py-3 px-4">Essential for government procurement credibility — municipal and EPD tenders typically require third-party validated sensor performance data. Transforms internal pilot calibration certificates into internationally recognized evidence of data quality. Directly addresses the competitive differentiation claim of 'municipal-grade performance at consumer price points' with independent verification.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">12-18 months for full MCERTS certification; 3-6 months for ISO 17025-accredited collocation study</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-red-100 text-red-700">High</span></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">ISO 27001 (Information Security) + ISO 27701 (Privacy Information Management)</td>
+                        <td class="py-3 px-4">Critical for handling environmental sensor data linked to health outcomes and location data. Required by most government tenders and enterprise customers (schools, hospitals, property groups). Provides a recognized framework for PDPO compliance at scale and creates a foundation for GDPR compliance when expanding internationally. Strong investor confidence signal for data-intensive SaaS businesses.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">4-6 months for ISO 27001; additional 2-3 months for ISO 27701 extension</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-red-100 text-red-700">High</span></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">IEC 61010-1 / IEC 62368-1 — Electrical Safety Certification (via accredited CB Test House)</td>
+                        <td class="py-3 px-4">Required for legal sale of electronic hardware in most global markets. CB Scheme certification enables streamlined market access across multiple countries (HK, EU, China, etc.) through a single test report. Reduces product liability risk for outdoor-deployed solar-powered electronic equipment. Prerequisite for CE marking and CCC certification.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">3-4 months for testing and certification via CB Scheme</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-amber-100 text-amber-700">Medium</span></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">ISO 14001 — Environmental Management System</td>
+                        <td class="py-3 px-4">Aligns with the company's environmental mission and ESG positioning. Required or preferred in many government environmental monitoring tenders. Demonstrates organizational commitment to environmental performance beyond the product itself. Supports ESG reporting requirements that are increasingly demanded by investors and enterprise customers.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">4-6 months to implement and certify</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-amber-100 text-amber-700">Medium</span></td>
+                    </tr>
+                
+                    <tr>
+                        <td class="py-3 px-4 font-semibold">OFCA Type Approval (Hong Kong) / FCC Part 15 (US) / CE-RED (EU) — Radio Equipment Certification</td>
+                        <td class="py-3 px-4">Legally mandatory for wireless communication modules (WiFi/LoRa/NB-IoT) in respective markets. Without this, the hardware cannot be legally deployed or sold. OFCA approval is immediately required for Hong Kong operations. FCC and CE-RED needed for future market expansion.</td>
+                        <td class="py-3 px-4 text-center"><span class="px-2.5 py-0.5 bg-yellow-100 text-yellow-700 rounded">2-3 months per jurisdiction; can be parallelized</span></td>
+                        <td class="py-3 px-4 text-center"><span class="assessment-pill bg-amber-100 text-amber-700">Medium</span></td>
+                    </tr>
+                
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mt-8">
+                    <div>
+                        <div class="uppercase tracking-widest text-xs font-semibold text-red-600 mb-2">MAJOR GAPS &amp; RISKS</div>
+                        <ul class="text-sm space-y-2 text-slate-600">
+                            <li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>No third-party accredited certifications obtained for sensor performance, AI system, or information security — all current validations are internal or pilot-scale only.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>Health risk prediction layer has not been formally assessed for medical device regulatory classification — if classified as a medical device in any market, it would fundamentally change the regulatory pathway, timeline, and cost structure.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>No regulatory pathway defined or validated for GBA/China market entry despite it being planned for Phase 2 (2027) — PIPL, DSL, CAC algorithm filing, and GB standards compliance are complex and time-consuming.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>Full PDPO compliance program is planned but not yet implemented — scaling from pilot (25 nodes) to commercial deployment (220+ nodes in Year 1) requires organizational policies, staff training, breach response procedures, and potentially a DPO.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>No engagement with AI governance frameworks (EU AI Act, NIST AI RMF, HK AI guidelines) despite the system's AI-driven source classification and health risk prediction being core differentiators.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>Radio equipment certifications (OFCA, FCC, CE-RED) for wireless modules have not been mentioned as completed — these are legal prerequisites for deployment and sale.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-exclamation-triangle text-red-500 mt-1 fa-fw"></i><span>Data licensing to insurers and healthtech companies creates additional regulatory surface (potential HIPAA implications in US, heightened PIPL requirements in China) that has not been assessed.</span></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="uppercase tracking-widest text-xs font-semibold text-emerald-600 mb-2">STRATEGIC RECOMMENDATIONS</div>
+                        <ul class="text-sm space-y-2 text-slate-600">
+                            <li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Prioritize ISO 27001 + OFCA type approval as immediate 90-day actions — these are table-stakes requirements for commercial deployment and government tender eligibility in Hong Kong, and their completion before fundraising close would significantly strengthen the investment case.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Commission an independent legal opinion on health risk prediction regulatory classification before Series A — this is the single largest regulatory uncertainty and investors will scrutinize it during due diligence. A clean legal opinion de-risks the investment.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Use MCERTS or equivalent third-party sensor validation as a competitive moat — most low-cost sensor competitors lack this certification. Publishing validated performance data creates a defensible market position and justifies premium pricing.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Build a phased regulatory compliance roadmap aligned to go-to-market phases: Phase 1 (HK) = PDPO full compliance + OFCA + ISO 27001 + sensor validation; Phase 2 (GBA) = PIPL/DSL compliance + CCC + CAC filing + data localization; Phase 3 (EU/International) = GDPR + CE marking + EU AI Act conformity.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Position regulatory compliance as a fundraising narrative strength, not a cost center — demonstrate to investors that proactive regulatory strategy creates competitive moats, accelerates government sales cycles, and reduces downstream compliance costs.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Establish an advisory board or engage consultants with regulatory expertise in environmental monitoring, AI governance, and data privacy across target markets — this compensates for the founding team's technical strengths with regulatory domain knowledge.</span></li><li class="flex gap-x-2"><i class="fa-solid fa-arrow-right text-emerald-500 mt-1 fa-fw"></i><span>Consider pursuing ISO/IEC 42001 (AI Management System) certification as a differentiator — this is a relatively new standard and early adoption signals maturity to sophisticated investors and government customers evaluating AI-enabled systems.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="border-t border-slate-200 bg-white py-6">
+        <div class="max-w-screen-2xl mx-auto px-8 text-xs text-slate-500 flex flex-col md:flex-row md:items-center md:justify-between gap-y-2">
+            <div>© 2026 Research Office • Project Team • Internal Review</div>
+            <div>Tech Category: <span class="font-semibold">Environmental Technology</span> | Saved to: <span class="font-mono text-[10px]">/data/confidential/20260706024651_UrbanAir_AI/03_Assessment</span></div>
+        </div>
+    </footer>
+
+    <script>
+        function createKTHRadar() {
+            const ctx = document.getElementById('kthRadar');
+            if (!ctx) return;
+            
+            new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Customer (CRL)', 'Technology (TRL)', 'Business (BRL)', 'IPR (IPRL)', 'Team (TMRL)', 'Funding (FRL)'],
+                    datasets: [{
+                        label: 'Current Readiness',
+                        data: [6, 6, 4, 3, 6, 6],
+                        backgroundColor: 'rgba(13, 148, 136, 0.18)',
+                        borderColor: '#0f766e',
+                        borderWidth: 2.5,
+                        pointBackgroundColor: '#0f766e',
+                        pointBorderColor: '#fff',
+                        pointRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    scales: {
+                        r: {
+                            min: 0,
+                            max: 9,
+                            ticks: { stepSize: 3, color: '#64748b', font: { size: 10 } },
+                            grid: { color: '#e2e8f0', circular: true },
+                            angleLines: { color: '#cbd5e1' },
+                            pointLabels: { color: '#334155', font: { size: 11, weight: 600 } }
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12, padding: 20, font: { size: 11 } } }
+                    }
+                }
+            });
+        }
+        
+        window.onload = function() {
+            createKTHRadar();
+            
+            const cards = document.querySelectorAll('.metric-card');
+            cards.forEach((card, i) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(10px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+                    card.style.transitionDelay = (i * 60) + 'ms';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 120);
+            });
+        };
+    </script>
+</body>
+</html>
