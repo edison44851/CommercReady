@@ -1,0 +1,132 @@
+group,language,value
+hkid_context,en,hkid
+hkid_context,en,hk id
+hkid_context,en,hong kong identity
+hkid_context,en,identity card
+hkid_context,en,id card
+hkid_context,en,card number
+hkid_context,en,id number
+hkid_context,zh,身份證
+hkid_context,zh,身份证
+hkid_context,zh,身分證
+hkid_context,zh,身分證號
+hkid_context,zh,身份證號
+passport_context,en,passport
+passport_context,en,travel document
+passport_context,en,travel
+passport_context,en,nationality
+passport_context,en,issuing
+passport_context,en,expiry
+passport_context,en,passport number
+passport_context,zh,護照
+passport_context,zh,护照
+passport_context,zh,travel document
+passport_context,zh,旅行證件
+passport_context,zh,護照號碼
+passport_context,zh,护照号码
+hk_phone_context,en,phone
+hk_phone_context,en,tel
+hk_phone_context,en,telephone
+hk_phone_context,en,mobile
+hk_phone_context,en,cell
+hk_phone_context,en,hp
+hk_phone_context,en,direct
+hk_phone_context,en,contact
+hk_phone_context,zh,電話
+hk_phone_context,zh,电话
+hk_phone_context,zh,手提
+hk_phone_context,zh,手機
+hk_phone_context,zh,手机
+hk_phone_context,zh,聯絡
+hk_phone_context,zh,联络
+hk_phone_context,zh,熱線
+hk_phone_context,zh,热线
+bank_account_context,en,account
+bank_account_context,en,bank
+bank_account_context,en,account number
+bank_account_context,en,bank account
+bank_account_context,en,a/c
+bank_account_context,zh,戶口
+bank_account_context,zh,户口
+bank_account_context,zh,銀行
+bank_account_context,zh,银行
+bank_account_context,zh,戶口號碼
+bank_account_context,zh,户口号码
+bank_account_context,zh,匯款
+bank_account_context,zh,汇款
+bank_account_context,zh,轉帳
+bank_account_context,zh,转帐
+english_address_context,en,address
+english_address_context,en,correspondence
+english_address_context,en,mailing
+english_address_context,en,registered office
+english_address_context,en,office
+english_address_context,en,located at
+english_address_context,en,address:
+english_address_context,en,room
+english_address_context,en,flat
+english_address_context,en,suite
+english_address_context,en,building
+english_address_context,en,tower
+english_address_context,en,campus
+english_address_context,en,park
+english_address_context,en,estate
+english_address_context,en,residence
+english_address_context,en,house
+english_address_context,en,villa
+english_address_context,en,apartment
+english_address_context,en,block
+english_address_context,en,unit
+chinese_name_context,en,name
+chinese_name_context,en,姓名
+chinese_name_context,en,名字
+chinese_name_context,en,本人
+chinese_name_context,en,contact
+chinese_name_context,en,聯絡人
+chinese_name_context,en,联络人
+chinese_name_context,en,負責人
+chinese_name_context,en,负责人
+chinese_name_context,en,inventor
+chinese_name_context,en,發明人
+chinese_name_context,en,发明人
+chinese_name_context,en,pi
+chinese_name_context,en,researcher
+chinese_name_context,en,研究員
+chinese_name_context,en,研究员
+chinese_name_context,en,我叫
+chinese_name_context,en,我是
+chinese_name_context,en,稱呼
+chinese_name_context,en,本人
+chinese_address_context,en,address
+chinese_address_context,en,地址
+chinese_address_context,en,位於
+chinese_address_context,en,位于
+chinese_address_context,en,地點
+chinese_address_context,en,地点
+chinese_address_context,en,correspondence
+chinese_address_context,en,通訊地址
+chinese_address_context,en,通讯地址
+chinese_address_context,en,registered office
+chinese_address_context,en,辦公室
+chinese_address_context,en,办公室
+chinese_address_context,en,mailing
+chinese_address_context,en,郵寄地址
+chinese_address_context,en,邮寄地址
+hk_districts_trad,trad,"香港|香港島|香港仔|南區|中環|上環|西環|堅尼地城|薄扶林|大學堂|柴灣|筲箕灣|西灣河|鰂魚涌|北角|天后|炮台山|銅鑼灣|灣仔|會議道|金鐘|太古廣場|中信|九龍|九龍塘|九龍城|旺角|油麻地|佐敦|尖沙咀|紅磡|何文田|土瓜灣|深水埗|長沙灣|荔枝角|石硤尾|大角咀|美孚|新蒲崗|鑽石山|黃大仙|九龍灣|牛頭角|觀塘|藍田|油塘|牛池灣|慈雲山|鯉魚門|新界|新界東|新界西|沙田|火炭|馬鞍山|大圍|科學園|大埔|白石角|康樂園|粉嶺|上水|古洞|羅湖|打鼓嶺|坪輋|葵涌|葵芳|葵盛|荃灣|荃灣西|深井|青山|屯門|藍地|元朗|天水圍|洪水橋|錦上路|落馬洲|廈村|東涌|大嶼山|愉景灣|梅窩|坪洲|南丫島|長洲|西貢|清水灣|將軍澳|坑口|調景嶺|小瀝源|香港科學園|數碼港"
+hk_districts_simp,simp,"香港|香港岛|香港仔|南区|中环|上环|西环|坚尼地城|薄扶林|大学堂|柴湾|筲箕湾|西湾河|鲗鱼涌|北角|天后|炮台山|铜锣湾|湾仔|会议道|金钟|太古广场|中信|九龙|九龙塘|九龙城|旺角|油麻地|佐敦|尖沙咀|红磡|何文田|土瓜湾|深水埗|长沙湾|荔枝角|石硤尾|大角咀|美孚|新蒲岗|钻石山|黄大仙|九龙湾|牛头角|观塘|蓝田|油塘|牛池湾|慈云山|鲤鱼门|新界|新界东|新界西|沙田|火炭|马鞍山|大围|科学园|大埔|白石角|康乐园|粉岭|上水|古洞|罗湖|打鼓岭|坪輋|葵涌|葵芳|葵盛|荃湾|荃湾西|深井|青山|屯门|蓝地|元朗|天水围|洪水桥|锦上路|落马洲|厦村|东涌|大屿山|愉景湾|梅窝|坪洲|南丫岛|长洲|西贡|清水湾|将军澳|坑口|调景岭|小沥源|香港科学园|数码港"
+hk_estates_trad,trad,"美孚新邨|荔枝角花園|碧海名譽|海麗新邨|泓景臺|昇悅居|宇晴軒|南昌站|凱樂苑|凱滙|黃埔花園|海逸豪園|都會軒|海名軒|海景山莊|又一村|又一居|畢架山花園|龍翔山莊|德福花園|淘大花園|得寶花園|花園大厦|彩虹邨|彩雲邨|順利邨|順天邨|樂華邨|牛池灣村|坪石邨|彩虹村|彩盈邨|富山邨|翠湖花園|天馬花園|威豪花園|康翠臺|樂富花園|泰民花園|福昌大廈|德強苑|海盛花園|興田邨|秀茂坪邨|寶達邨|曉麗苑|安達邨|安泰邨|盛泰邨|興富大廈|安基苑|和牛池灣|觀塘花園|凱匯|啟晴邨|德朗邨|彩福邨|彩德邨|彩盈邨|白虹苑|樂華北邨|油美花園|油翠苑|高峰花園|富華花園|福民大廈|天台32|水泉澳邨|朗逸豪園|峰華邨|翠林花園|寶林邨|景林邨|坑口西貢|新都城|東港城|厚德邨|富康花園|裕明苑|天宇海|海恬花園|慧景園|怡情花園|彩明苑|欣明苑|欣盛苑|景明苑|寶盈花園|廣明苑|富天花園|運亨花園|逸濤灣|傲雲峰|天璽|形品|瓏璽|海翩滙|溱岸|日出康城|Marini|Grand Montara|Metro Ocean|Ocean One|嘉湖山莊|栢慧豪園|尚豪居|御豪山莊|翠峰園|帝庭豪園|新翠花園|新圍墟|翠湖花園|新港城|海典灣|星河明居|映灣園|東堤灣畔|藍天海岸|海堤灣畔|映日灣|海之盈|海嵐|海瓏|海譽|南灣|北大嶼山醫院|映逸漣|海澄湖畔|海角宮|愉景新城|康景花園|碧海雲天|御庭園|康樂園|翠怡花園|綠楊新邨|海皇花園|盈翠半島|御庭軒|怡峰園|樂怡居|怡庭苑|盈峰華庭|翠華庭|海逸居|金禧花園|新元朗中心|振萬撈|冠豐大廈|寶怡花園|安庭花園|雅珊園|麗虹花園|富安花園|大同山莊|新葵芳花園|葵涌中心|葵芳花園|荔灣花園|盈荔花園|恆峰花園|寧安花園|富景花園|華荔花園|嘉荔花園|荔欣花園|翠瑤花園|盈逸豪園|景峰花園|欣盛花園|富麗花園|昌磊大廈|榮亞大廈|天際中心|浩瀾居|瓏門|瓏庭|海濱南岸|愛琴海岸|海溢大廈|海璽|海天|海峰|海悅|海峻|海嵐|海濤|海濤|海瀧|海濤花園|浪濤花園|海之嬌|海之嬌女|海之最|海之王|海之霸|海之夢|海之星|海之韻|海之頌"
+hk_estates_simp,simp,"美孚新邨|荔枝角花园|碧海名誉|海丽新邨|泓景台|昇悦居|宇晴轩|南昌站|凯乐苑|凯汇|黄埔花园|海逸豪园|都会轩|海名轩|海景山庄|又一村|又一居|毕架山花园|龙翔山庄|德福花园|淘大花园|得宝花园|花园大厦|彩虹邨|彩云邨|顺利邨|顺天邨|乐华邨|牛头湾村|坪石邨|彩虹村|彩盈邨|富山邨|翠湖花园|天马花园|威豪花园|康翠台|乐富花园|泰民花园|福昌大厦|德强苑|海盛花园|兴田邨|秀茂坪邨|宝达邨|晓丽苑|安达邨|安泰邨|盛泰邨|兴富大厦|安基苑|和牛头湾|观塘花园|凯汇|启晴邨|德朗邨|彩福邨|彩德邨|彩盈邨|白虹苑|乐华北邨|油美花园|油翠苑|高峰花园|富华花园|福民大厦|天台32|水泉澳邨|朗逸豪园|峰华邨|翠林花园|宝林邨|景林邨|坑口西贡|新都城|东港城|厚德邨|富康花园|裕明苑|天宇海|海恬花园|慧景园|怡情花园|彩明苑|欣明苑|欣盛苑|景明苑|宝盈花园|广明苑|富天花园|运亨花园|逸涛湾|傲云峰|天玺|形品|珑玺|海翩汇|溱岸|日出康城|Marini|Grand Montara|Metro Ocean|Ocean One|嘉湖山庄|栢慧豪园|尚豪居|御豪山庄|翠峰园|帝庭豪园|新翠花园|新围墟|翠湖花园|新港城|海典湾|星河明居|映湾园|东堤湾畔|蓝天海岸|海堤湾畔|映日湾|海之盈|海岚|海珑|海誉|南湾|北大屿山医院|映逸涟|海澄湖畔|海角宫|愉景新城|康景花园|碧海云天|御庭园|康乐园|翠怡花园|绿杨新邨|海皇花园|盈翠半岛|御庭轩|怡峰园|乐怡居|怡庭苑|盈峰华庭|翠华庭|海逸居|金禧花园|新元朗中心|振万捞|冠丰大厦|宝怡花园|安庭花园|雅珊园|丽虹花园|富安花园|大同山庄|新葵芳花园|葵涌中心|葵芳花园|荔湾花园|盈荔花园|恒峰花园|宁安花园|富景花园|华荔花园|嘉荔花园|荔欣花园|翠瑶花园|盈逸豪园|景峰花园|欣盛花园|富丽花园|昌磊大厦|荣亚大厦|天际中心|浩澜居|珑门|珑庭|海滨南岸|爱琴海岸|海溢大厦|海玺|海天|海峰|海悦|海峻|海岚|海涛|海珑|海涛花园|浪涛花园|海之娇|海之娇女|海之最|海之王|海之霸|海之梦|海之星|海之韵|海之颂"
+hk_mtr_trad,trad,"中環站|金鐘站|灣仔站|銅鑼灣站|天后站|北角站|鰂魚涌站|太古站|西灣河站|筲箕灣站|柴灣站|香港大學站|堅尼地城站|上環站|九龍站|佐敦站|油麻地站|旺角站|太子站|深水埗站|長沙灣站|荔枝角站|美孚站|荔景站|葵芳站|葵涌站|大窩口站|荃灣站|觀塘站|牛頭角站|九龍灣站|彩虹站|鑽石山站|黃大仙站|樂富站|九龍城站|何文田站|紅磡站|土瓜灣站|尖沙咀站|尖東站|紅磡站|旺角東站|石硤尾站|太和站|大埔墟站|粉嶺站|上水站|羅湖站|落馬洲站|東鐵|西鐵|觀塘線|港島線|荃灣線|將軍澳線|東涌線|迪士尼線|機場快線|南港島線"
+hk_mtr_simp,simp,"中环站|金钟站|湾仔站|铜锣湾站|天后站|北角站|鲗鱼涌站|太古站|西湾河站|筲箕湾站|柴湾站|香港大学站|坚尼地城站|上环站|九龙站|佐敦站|油麻地站|旺角站|太子站|深水埗站|长沙湾站|荔枝角站|美孚站|荔景站|葵芳站|葵涌站|大窝口站|荃湾站|观塘站|牛头角站|九龙湾站|彩虹站|钻石山站|黄大仙站|乐富站|九龙城站|何文田站|红磡站|土瓜湾站|尖沙咀站|尖东站|红磡站|旺角东站|石硤尾站|太和站|大埔墟站|粉岭站|上水站|罗湖站|落马洲站|东铁|西铁|观塘线|港岛线|荃湾线|将军澳线|东涌线|迪士尼线|机场快线|南港岛线"
+hk_universities_trad,trad,"香港大學|香港中文大學|香港科技大學|香港城市大學|香港理工大學|香港浸會大學|嶺南大學|香港教育大學|香港都會大學|城市大學|科技大學|理工大學|中山大學|深圳大學|清華大學"
+hk_universities_simp,simp,"香港大学|香港中文大学|香港科技大学|香港城市大学|香港理工大学|香港浸会大学|岭南大学|香港教育大学|香港都会大学|城市大学|科技大学|理工大学|中山大学|深圳大学|清华大学"
+hk_science_parks_trad,trad,"科學園|科技園|工業邨|工業園|數碼港|數碼道|港威大廈"
+hk_science_parks_simp,simp,"科学园|科技园|工业邨|工业园|数码港|数码道|港威大厦"
+building_types_trad,trad,"大廈|商廈|廣場|中心|大樓|寫字樓|商場|酒店|屋苑|屋邨|花園|別墅|公寓|學術樓|教學樓|研究樓|辦公大樓"
+building_types_simp,simp,"大厦|商厦|广场|中心|大楼|写字楼|商场|酒店|屋苑|屋邨|花园|别墅|公寓|学术楼|教学楼|研究楼|办公大楼"
+floor_room_types_trad,trad,"樓|層|室|座|棟|號"
+floor_room_types_simp,simp,"楼|层|室|座|栋|号"
+street_types_trad,trad,"道|路|街|大道|徑|巷|里|圍|坊|廣場|隧道|天橋"
+street_types_simp,simp,"道|路|街|大道|径|巷|里|围|坊|广场|隧道|天桥"
+hk_streets_trad,trad,"彌敦道|加士居道|梳士巴利道|漆咸道|荷里活道|皇后大道|德輔道|軒尼詩道|謝斐道|告打打|告士打道|金鐘道|紅棉道|花園道|天后的道|干諾道|夏愨道|遮打道|美利道|力寶中心|交易廣場|太古廣場|港灣道|港灣徑|海防道|甘街|崇光|百德新街|加寧街|記利佐治街|恩平道|蘭桂坊|雲咸街|些些乍利|伊利近街|士他令他|吉士笠|九如坊|樂古道|榕樹|玉葉|蘇杭|萬宜|永星|永勝|永吉|永隆|永亨|永豪|永德|永康|永盛|永興|永樂|渣華道|馬師道|柯士甸道|吳松街|寶靈街|佐敦道|西貢街|南京街|甘肅街|旺角道|亞皆老街|洗衣街|花園街|楓樹街|砵蘭街|上海街|廟街|鴉蘭街|晏架街|福榮街|欽州街|南昌街|汝州街|荔枝角道|蝴蝶谷道|Marlborough|瑰麗花園|帝峰|爵悅|南線|北海|中山|倫敦|庇護|佐敦|九龍|加士居|漆咸|鶴園|溫思勞|天光|青|石壁|馬頭|打磬|東莞|廈門|福州|潮州|汕頭|潮汕|海南"
+hk_streets_simp,simp,"弥敦道|加士居道|梳士巴利道|漆咸道|荷里活道|皇后大道|德辅道|轩尼诗道|谢斐道|告打打|告士打道|金钟道|红棉道|花园道|天后的道|干诺道|夏您道|遮打道|美利道|力宝中心|交易广场|太古广场|港湾道|港湾径|海防道|甘街|崇光|百德新街|加宁街|记利佐治街|恩平道|兰桂坊|云咸街|些些乍利|伊利近街|士他令他|吉士笠|九如坊|乐古道|榕树|玉叶|苏杭|万宜|永星|永胜|永吉|永隆|永胜|永亨|永豪|永德|永康|永盛|永兴|永乐|渣华道|马师道|柯士甸道|吴松街|宝灵街|佐敦道|西贡街|南京街|甘肃街|旺角道|亚皆老街|洗衣街|花园街|枫树街|砵兰街|上海街|庙街|鸦兰街|晏架街|福荣街|钦州街|南昌街|汝州街|荔枝角道|蝴蝶谷道|Marlborough|瑰丽花园|帝峰|爵悦|南线|北海|中山|伦敦|庇护|佐敦|九龙|加士居|漆咸|鹤园|温思劳|天光|青|石壁|马头|打磬|东莞|厦门|福州|潮州|汕头|潮汕|海南"

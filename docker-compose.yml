@@ -1,0 +1,99 @@
+# ── Self-hosted Document Redaction Workflow ─────────────────────────
+# Purpose: Secure document intake, multilingual PII redaction, and controlled processing.
+# Key principles: Data never leaves the confidential volume except through controlled redaction.
+# External runners isolate Code node execution for security.
+# Presidio services provide robust multilingual PII redaction.
+#
+# IMPORTANT: Run with `docker compose up --build`
+# After first run, the Chinese model (~500MB) may be cached in the image.
+
+volumes:
+  n8n_storage:
+
+services:
+  n8n:
+    build:
+      context: .
+      dockerfile: Dockerfile.n8n
+    image: n8n-custom:stable
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_storage:/home/node/.n8n
+      - ./confidential_volume:/data/confidential:rw
+    depends_on:
+      presidio-analyzer:
+        condition: service_started
+      presidio-anonymizer:
+        condition: service_started
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:5678/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ── Presidio Analyzer (Multilingual PII Detection: English + Chinese) ─────
+  # Built from custom Dockerfile to include zh_core_web_lg for Chinese NER/PII
+  # Official MCR base + spaCy Chinese model for robust detection of names, orgs, IDs in mixed HK/Chinese docs
+  # Call via HTTP Request in n8n: POST /analyze with {"text": "...", "language": "en" or "zh", "entities": [...] }
+  presidio-analyzer:
+    build:
+      context: .
+      dockerfile: Dockerfile.presidio
+    ports:
+      - "5002:3000"   # Host access for debugging; internal use via service name
+    restart: always
+    environment:
+      - PORT=3000
+      - LOG_LEVEL=INFO
+      - NLP_CONF_FILE=/app/analyzer.yaml
+      - PYTHONPATH=/app:$PYTHONPATH
+    volumes:
+      # Mount recognizers for development (changes reflect without rebuild)
+      - ./recognizers:/app/recognizers:ro
+      - ./config/analyzer.yaml:/app/analyzer.yaml:ro
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s   # Allow time for spaCy model loading
+
+  # ── Presidio Anonymizer (Redaction Engine) ─────────────────────────
+  # Official Microsoft image - no custom build needed for standard operators
+  # Use after analyzer to replace detected entities (PERSON, ORG, etc.) with placeholders or masks
+  # Supports custom operators if you extend later (e.g. HKID-specific redaction)
+  presidio-anonymizer:
+    image: mcr.microsoft.com/presidio-anonymizer:latest
+    ports:
+      - "5001:3000"
+    restart: always
+    environment:
+      - PORT=3000
+      - LOG_LEVEL=INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  n8n-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile.runner
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - ./confidential_volume:/data/confidential:rw
+      - ./n8n-task-runners.json:/etc/n8n-task-runners.json:ro
+    depends_on:
+      - n8n
+    deploy:
+      resources:
+        limits:
+          cpus: '2'
+          memory: 4G

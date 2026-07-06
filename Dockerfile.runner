@@ -1,0 +1,8 @@
+FROM n8nio/runners:latest
+
+USER root
+
+COPY n8n-task-runners.json /etc/n8n-task-runners.json
+RUN chown runner:runner /etc/n8n-task-runners.json && chmod 644 /etc/n8n-task-runners.json
+
+USER runner

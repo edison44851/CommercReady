@@ -1,0 +1,1 @@
+This file prevents the confidential volume folder from disappearing; it can be ignored.

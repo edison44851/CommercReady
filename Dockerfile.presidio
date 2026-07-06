@@ -1,0 +1,33 @@
+# Dockerfile.presidio
+# Extends official Microsoft MCR Presidio Analyzer image
+# Adds Chinese (zh_core_web_lg) spaCy model for robust PII detection
+# Includes custom HK-specific PII recognizers
+
+FROM mcr.microsoft.com/presidio-analyzer:latest
+
+USER root
+
+# Install Chinese language model (enables NER for Chinese names, orgs, IDs, etc.)
+RUN python -m spacy download zh_core_web_lg --quiet
+
+# Copy custom configuration (NLP settings only)
+COPY ./config/analyzer.yaml /app/analyzer.yaml
+ENV NLP_CONF_FILE=/app/analyzer.yaml
+
+# Copy custom recognizers
+COPY ./recognizers /app/recognizers
+
+# Set Python path for imports
+ENV PYTHONPATH=/app:$PYTHONPATH
+
+# Create config directory
+RUN mkdir -p /app/config
+
+# Return to non-root user
+USER 1000
+
+# Expose the port
+EXPOSE 3000
+
+# Use custom startup script to register Chinese recognizers
+CMD ["python", "/app/recognizers/startup.py"]

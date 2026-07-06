@@ -1,0 +1,54 @@
+# Secrets and local environment overrides
+.env
+.env.*
+!.env.template
+!.env.example
+
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python caches and build artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.coverage
+.coverage.*
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local editor and OS noise
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+.DS_Store
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# Node artifacts (in case custom/community node development is added)
+node_modules/
+
+# n8n local runtime data (if host-mounted in future)
+.n8n/
+*.sqlite
+*.sqlite-journal
+
+# Confidential runtime data (keep example file tracked)
+confidential_volume/*
+!confidential_volume/demo.txt
+
+# Test
+tests/
+test_data/

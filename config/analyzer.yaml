@@ -1,0 +1,18 @@
+# config/analyzer.yaml
+# NLP configuration for Presidio Analyzer
+# Custom recognizers are loaded via startup.py
+
+supported_languages:
+  - en
+  - zh
+
+nlp_engine_name: spacy
+
+models:
+  - lang_code: en
+    model_name: en_core_web_lg
+  - lang_code: zh
+    model_name: zh_core_web_lg
+
+# Note: Custom recognizers are registered programmatically in recognizers/startup.py
+# Do not add 'recognizers:' section here - it's not supported by Presidio

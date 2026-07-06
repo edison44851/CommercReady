@@ -1,0 +1,25 @@
+category,name,regex,score,language
+hkid,hkid_standard,"[A-Z]{1,2}\d{6}[A0-9]",0.7,en
+hkid,hkid_with_brackets,"[A-Z]{1,2}\s*\d{6}\s*[\(\[]?[A0-9][\)\[]?",0.65,en
+passport,passport_standard,"\b[A-Z]\d{6,9}\b",0.5,en
+passport,hk_passport,"\bK\d{7,8}\b",0.75,en
+hk_phone,hk_mobile,"(?:\+852[-\s]?)?[569]\d{3}[-\s]?\d{4}",0.8,en
+hk_phone,hk_landline,"(?:\+852[-\s]?)?[23]\d{3}[-\s]?\d{4}",0.7,en
+hk_phone,hk_phone_intl,"\(852\)\s?\d{4}\s?\d{4}",0.85,en
+bank_account,hk_account_hyphenated,"\d{3}-\d{6,10}-\d{1,3}",0.6,en
+bank_account,hk_account_plain,"\b\d{9,12}\b",0.4,en
+bank_account,hk_iban,"HK\d{2}\s?[A-Z]{4}\s?[A-Z0-9]{14}",0.85,en
+english_address,hk_address_full,"(?:Flat|Room|Unit|Suite)\s*\d+(?:[A-Z])?,?\s*\d+[/\s]?F(?:loor)?,?\s*(?:[\w\s]*(?:Building|Tower|Centre|Center|Plaza|Commercial|Campus|Mall|Hotel|Residences?|Court|Estate|Gardens|House|Villa|Maison))?,?\s*\d+\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,3}\s+(?:Road|Street|Lane|Avenue|Boulevard),?\s*(?:[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*,?\s*)?(?:Kowloon|New Territories|Hong Kong|Central|Wan Chai|Tsim Sha Tsui|Causeway Bay|Sha Tin|Tuen Mun|Yuen Long|Sai Kung|Tai Po|Fanling|Sheung Shui|Ma On Shan|Tung Chung|Discovery Bay)?",0.85,en
+english_address,hk_address_university,"(?:[A-Za-z]+(?:\s+[A-Za-z]+){0,3}\s+(?:University|Polytechnic|Institute|College|Campus))(?:[,\s]*(?:[\w\s]*(?:Campus|Park|Building|Tower|Institute|Laboratory|College|Academic Building|Academic Block)))?",0.8,en
+english_address,hk_address_sciencepark,"(?:Hong Kong Science Park|HKSTP|Innocentre|Industrial Park|Cyberport|Digital Media Centre|Creative Media Centre)[,\s]*(?:[\w\s]*(?:Phase|Tower|Building|Block|Innovation Hub))?",0.8,en
+english_address,hk_address_estate,"(?:[\w\s]+(?:Estate|Gardens|Residence|Plaza|Court|Mansion|Villa|Maison|Heights|Park|Grove|Terrace|Manor|Place|Square|Gate|Pinnacle|Crescent|Promenade|Harbour|Bay|View|Green|Fields|Village|Summit|Peak|Star|Dream|Legend|Crown|Diamond|Jewel|Crown|Imperial|Palace|Regency|Majestic|Premier|Elite|Regent|Regal|Palace|Prince|Princess|King|Queen|Royal|Palace))",0.7,en
+english_address,hk_address_street,"\b\d+\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+){0,3}\s+(?:Road|Street|Lane|Avenue|Boulevard|Path|Walk|Place|Quadrant)",0.7,en
+english_address,hk_address_unit,"(?:Flat|Room|Unit|Suite)\s*\d+(?:[A-Z])?(?:,?\s*\d+[/\s]?F(?:loor)?)?",0.55,en
+chinese_name,chinese_name_title_before_trad,"(?:博士|教授|先生|女士|老師|醫生|工程師|發明人|研究員|校長)\s*[\u4e00-\u9fa5]{2,4}",0.9,zh
+chinese_name,chinese_name_title_after_trad,"[\u4e00-\u9fa5]{2,4}(?:\s*(?:博士|教授|先生|女士|老師|醫生|工程師|發明人|研究員|校長))",0.9,zh
+chinese_name,chinese_name_benren_trad,"本人\s*[\u4e00-\u9fa5]{2,4}",0.95,zh
+chinese_name,chinese_name_wo_trad,"(?:我叫|我是|本人|姓名是|名字是)\s*[\u4e00-\u9fa5]{2,4}",0.95,zh
+chinese_address,chinese_address_university,"(?:香港大學|香港中文大學|香港科技大學|香港城市大學|香港理工大學|香港浸會大學|嶺南大學|香港教育大學|香港都會大學|城市大學|科技大學|理工大學|中山大學|深圳大學|清華大學)[\u4e00-\u9fa5]{0,15}(?:校園|校區|校舍|大樓|大廈)?",0.85,zh
+chinese_address,chinese_address_building_floor_room,"[\u4e00-\u9fa5]{2,10}(?:大廈|商廈|廣場|中心|大樓|寫字樓|商場|酒店|屋苑|屋邨|花園|別墅|公寓|寫字樓|學術樓|教學樓|研究樓|辦公大樓)(?:\d+[樓层樓]|\d+層)(?:\d+室|\d+號)",0.8,zh
+chinese_address,chinese_address_full,"(?:香港|香港島|香港仔|南區|中環|上環|西環|堅尼地城|薄扶林|大學堂|柴灣|筲箕灣|西灣河|鰂魚涌|北角|天后|炮台山|銅鑼灣|灣仔|會議道|金鐘|太古廣場|中信|九龍|九龍塘|九龍城|旺角|油麻地|佐敦|尖沙咀|紅磡|何文田|土瓜灣|深水埗|長沙灣|荔枝角|石硤尾|大角咀|美孚|新蒲崗|鑽石山|黃大仙|九龍灣|牛頭角|觀塘|藍田|油塘|牛池灣|慈雲山|鯉魚門|新界|新界東|新界西|沙田|火炭|馬鞍山|大圍|科學園|大埔|白石角|康樂園|粉嶺|上水|古洞|羅湖|打鼓嶺|坪輋|葵涌|葵芳|葵盛|荃灣|荃灣西|深井|青山|屯門|藍地|元朗|天水圍|洪水橋|錦上路|落馬洲|廈村|東涌|大嶼山|愉景灣|梅窩|坪洲|南丫島|長洲|西貢|清水灣|將軍澳|坑口|調景嶺|小瀝源|香港科學園|數碼港)[\u4e00-\u9fa5]{0,10}[\u4e00-\u9fa5\d]{2,30}(?:道|路|街|大道|徑|巷|里|圍|坊|廣場|隧道|天橋)[\u4e00-\u9fa5\d]{0,20}",0.75,zh
+chinese_address,chinese_address_estate,"(?:香港|香港島|香港仔|南區|中環|上環|西環|堅尼地城|薄扶林|大學堂|柴灣|筲箕灣|西灣河|鰂魚涌|北角|天后|炮台山|銅鑼灣|灣仔|會議道|金鐘|太古廣場|中信|九龍|九龍塘|九龍城|旺角|油麻地|佐敦|尖沙咀|紅磡|何文田|土瓜灣|深水埗|長沙灣|荔枝角|石硤尾|大角咀|美孚|新蒲崗|鑽石山|黃大仙|九龍灣|牛頭角|觀塘|藍田|油塘|牛池灣|慈雲山|鯉魚門|新界|新界東|新界西|沙田|火炭|馬鞍山|大圍|科學園|大埔|白石角|康樂園|粉嶺|上水|古洞|羅湖|打鼓嶺|坪輋|葵涌|葵芳|葵盛|荃灣|荃灣西|深井|青山|屯門|藍地|元朗|天水圍|洪水橋|錦上路|落馬洲|廈村|東涌|大嶼山|愉景灣|梅窩|坪洲|南丫島|長洲|西貢|清水灣|將軍澳|坑口|調景嶺|小瀝源|香港科學園|數碼港)?[\u4e00-\u9fa5]{2,8}(?:邨|花園|豪園|山莊|廣場|大廈|中心|灣畔|苑|閣|樓|臺|居|庭|軒|寓|匯|灣|海岸)",0.7,zh
