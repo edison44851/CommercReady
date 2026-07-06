@@ -237,7 +237,7 @@ Import steps in n8n:
 1. Open the n8n editor (`http://localhost:5678`).
 2. Create a new workflow.
 3. Use `Import from File`.
-4. Select `Project_Evaluation.json` from the repository root.
+4. Select `CommercReady.json` from the repository root.
 5. Save the workflow after import.
 
 After importing, continue with credential setup before running tests or production submissions.
