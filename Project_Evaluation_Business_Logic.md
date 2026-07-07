@@ -2,7 +2,7 @@
 
 | Item              | Details                                                                                                                                                                                                                                                                                                                                                                               |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Workflow name     | CommercReady: A Technology Transfer n8n Workflow                                                                                                                                                                                                                                                                                                                                     |
+| Workflow name     | CommercReady: A Technology Transfer n8n Workflow                                                                                                                                                                                                                                                                                                                                      |
 | Purpose           | End-to-end technology assessment pipeline for a university Research Office. A Principal Investigator (PI) submits a research disclosure (form + supporting documents); the workflow redacts PII, builds a RAG knowledge base, runs multiple specialised AI evaluation agents in parallel, computes a weighted readiness score, and produces an actionable commercialisation strategy. |
 | Authoring context | Reverse-engineered from the n8n workflow JSON. All credentials and node IDs have been stripped from the source; this document describes only the business logic.                                                                                                                                                                                                                      |
 
@@ -418,25 +418,24 @@ The node on the n8n canvas is shown below:
 | 6  | `KTH_FRL_WEIGHT`                         | 0.10  | Weights               | Weight for Financial Readiness                                  |
 | 7  | `TRANSLATION_RISK_NO_PENALTY_THRESHOLD`  | 2     | $\rho$ thresholds   | $\rho$ below this means no penalty                            |
 | 8  | `TRANSLATION_RISK_MAX_PENALTY_THRESHOLD` | 4     | $\rho$ thresholds   | $\rho$ at or above this means max penalty                     |
-| 9  | `MUTURITY_DELTA_NO_PENALTY_THRESHOLD`    | 2     | $\Delta$ thresholds | $\Delta$ at or below this means no penalty                    |
-| 10 | `MUTURITY_DELTA_MAX_PENALTY_THRESHOLD`   | 3.5   | $\Delta$ thresholds | $\Delta$ above this means max penalty                         |
-| 11 | `TR_PENALTY_1`                           | 0.80  | Multipliers           | Mild translation-risk penalty                                   |
-| 12 | `TR_PENALTY_2`                           | 0.75  | Multipliers           | Severe translation-risk penalty                                 |
-| 13 | `MD_PENALTY_1`                           | 0.80  | Multipliers           | Mild maturity-delta penalty                                     |
-| 14 | `MD_PENALTY_2`                           | 0.75  | Multipliers           | Severe maturity-delta penalty                                   |
-| 15 | `COMMERICAL_KTH_THRESHOLD`               | 6     | Decision              | Minimum penalized weighted sum to commercialize                 |
-| 16 | `COMMERCIAL_TR_THRESHOLD`                | 3.5   | Decision              | Maximum allowed maturity delta for commercialization            |
+| 9  | `MATURITY_DELTA_NO_PENALTY_THRESHOLD`    | 2     | $\Delta$ thresholds | $\Delta$ at or below this means no penalty                    |
+| 10 | `MATURITY_DELTA_MAX_PENALTY_THRESHOLD`   | 3.5   | $\Delta$ thresholds | $\Delta$ above this means max penalty                         |
+| 11 | `TR_PENALTY_1`                           | 0.80  | ==Mu==ltipliers   | Mild translation-risk penalty                                   |
+| 12 | `TR_PENALTY_2`                           | 0.75  | ==Mu==ltipliers   | Severe translation-risk penalty                                 |
+| 13 | `MD_PENALTY_1`                           | 0.80  | ==Mu==ltipliers   | Mild maturity-delta penalty                                     |
+| 14 | `MD_PENALTY_2`                           | 0.75  | ==Mu==ltipliers   | Severe maturity-delta penalty                                   |
+| 15 | `COMMERCIAL_KTH_THRESHOLD`               | 6     | Decision              | Mini==mu==m penalized weighted sum to commercialize         |
+| 16 | `COMMERCIAL_TR_THRESHOLD`                | 3.5   | Decision              | Maxi==mu==m allowed maturity delta for commercialization    |
 | 17 | `COMMERCIAL_MD_THRESHOLD`                | 3     | Decision              | Stricter maturity-delta ceiling for commercialization           |
-| 18 | `COMMERCIAL_TMRL_THRESHOLD`              | 5     | Decision              | Minimum TMRL to commercialize                                   |
-| 19 | `COMMERCIAL_IPRL_THRESHOLD`              | 4     | Decision              | Minimum IPRL to commercialize                                   |
+| 18 | `COMMERCIAL_TMRL_THRESHOLD`              | 5     | Decision              | Mini==mu==m TMRL to commercialize                           |
+| 19 | `COMMERCIAL_IPRL_THRESHOLD`              | 4     | Decision              | Mini==mu==m IPRL to commercialize                           |
 | 20 | `HOLD_TR_THRESHOLD`                      | 4     | Decision              | STOP cutoff for weighted sum and HOLD cutoff for maturity delta |
-| 21 | `HOLD_MD_THRESOLD`                       | 3.5   | Decision              | Additional maturity-delta HOLD cutoff                           |
+| 21 | `HOLD_MD_THRESHOLD`                      | 3.5   | Decision              | Additional maturity-delta HOLD cutoff                           |
 
 #### Operational notes
 
 1. All 21 variables are read fresh on every execution. There is no caching.
-2. Typos are preserved deliberately: `MUTURITY_DELTA_*`, `COMMERICAL_KTH_THRESHOLD`, and `HOLD_MD_THRESOLD` are all misspelled in the workflow source. Renaming them in the `Set` node without also updating the code node will break downstream calculations.
-3. Two potential implementation issues are worth flagging:
+2. Two potential implementation issues are worth flagging:
 
 - The risk-level labels appear to use `maturityDelta` rather than `rhoValue`.
 - `COMMERCIAL_TR_THRESHOLD` and `COMMERCIAL_MD_THRESHOLD` are both checked against `maturity_delta`, so the stricter MD threshold is effectively the binding one.
