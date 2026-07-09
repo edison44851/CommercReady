@@ -41,7 +41,7 @@ This repository is licensed under the Apache License 2.0. See [LICENSE](LICENSE)
 2. Import both workflow JSON files in [Import Workflow to n8n](#6-import-workflow-to-n8n).
 3. Configure credentials in [Configure n8n Credentials](#7-configure-n8n-credentials).
 4. Review [Workflow Usage](#workflow-usage) for folder structure and operator flow.
-5. Read [Evaluation Logic](#evaluation-logic) and the detailed [Project_Evaluation_Business_Logic.md](Project_Evaluation_Business_Logic.md).
+5. Read [Evaluation Logic](#evaluation-logic) and the detailed [Workflow_Logic.md](Workflow_Logic.md).
 
 ## Functionality Overview
 
@@ -91,7 +91,7 @@ Service selection works as follows:
 
 ## Evaluation Logic
 
-The project evaluation flow is based on a multi-stage business process described in [Project_Evaluation_Business_Logic.md](Project_Evaluation_Business_Logic.md). That document explains the end-to-end workflow in more detail, including:
+The project evaluation flow is based on a multi-stage business process described in [Workflow_Logic.md](Workflow_Logic.md). That document explains the end-to-end workflow in more detail, including:
 
 - submission intake and folder creation
 - multi-format document processing and PII redaction
@@ -619,4 +619,4 @@ Platform and implementation credits:
 - `@mazix/n8n-nodes-converter-documents` by mazix: https://github.com/mazixs/n8n-node-converter-documents
 - `n8n-nodes-pdf-page-extract` by Oscar Weijman: https://github.com/OscarWeijman/n8n-nodes-pdf-page-extract
 
-Detailed workflow reasoning and methodology attribution are documented in [Project_Evaluation_Business_Logic.md](Project_Evaluation_Business_Logic.md).
+Detailed workflow reasoning and methodology attribution are documented in [Workflow_Logic.md](Workflow_Logic.md).

@@ -129,15 +129,25 @@ PDFs require special handling because some are text-layer PDFs and others are sc
 The redacted JSON outputs from all three branches are merged at `Document Collector`, then a single `Loop Over Document and PDF(s) for Redaction` iterates each document. For each document:
 
 1. `Text Cleaner` normalises whitespace and strips conversion artefacts.
-2. `Detect Language` now classifies each document into three states: English (`en`), Chinese (`zh`), or mixed (`mixed`).
-3. `Language Router` dispatches the document into one of four execution nodes:
-  - **`Redaction - English Only`:** calls the child workflow `CommercReady - Redaction` once with `language = en`.
-  - **`Redaction - Chinese Only`:** calls the child workflow once with `language = zh`.
-  - **`Redaction - Chinese Mix`:** starts the first pass for mixed-language documents with `language = zh`.
-  - **`Redaction - English Mix`:** receives the redacted output from the Chinese mixed pass and runs the second pass with `language = en`.
-4. The reusable child workflow `CommercReady - Redaction` contains the core Presidio pipeline: `When Executed by Another Workflow` → `Prepare Presidio Request` → `Presidio Anaylze` → `Prepare Anonymizer Request` → `Presidio Anonymize` → `Tidy Up` → `Return Results`.
-5. Mixed-language documents therefore receive **sequential two-pass redaction** rather than being forced through a single language branch. This preserves correct analyzer offsets for each pass while avoiding duplication of the full Presidio chain on the main canvas.
-6. Both the analyzer and anonymizer steps are configured to continue safely when no entities are detected, so a document with zero English entities, zero Chinese entities, or sparse mixed-language PII no longer halts the parent workflow.
+2. `Detect Language` classifies each document into three states: English (`en`), Chinese (`zh`), or mixed (`mixed`). The detector is intentionally conservative: mixed content is routed to a sequential two-pass path instead of being compressed into a single language bucket.
+3. `Language Router` dispatches the document to one of three parent-workflow handlers:
+  - `Redaction - English Only`
+  - `Redaction - Chinese Only`
+  - `Redaction - Chinese Mix` followed by `Redaction - English Mix`
+4. The parent workflow does not perform Presidio redaction directly. Instead, it invokes the reusable child workflow `CommercReady - Redaction` through `Execute Workflow` for each required pass.
+5. The child workflow `CommercReady - Redaction` is a single-language redaction core. Its nodes work as follows:
+  - `When Executed by Another Workflow` is the child-workflow trigger. It defines the input contract for a single redaction pass: `text`, `language`, and `fileName`.
+  - `Prepare Presidio Request` builds the Presidio analyzer payload from the supplied text and language. It normalises the text input, sets the analyzer language (`en` or `zh`), and declares the entity set to search for, including standard PII plus the Hong Kong and Chinese name/address recognisers used by this project.
+  - `Presidio Anaylze` sends the prepared JSON to the local Presidio analyzer service at `/analyze`. It is configured to continue safely when no entities are found so that an empty analyzer response does not halt the redaction pass.
+  - `Prepare Anonymizer Request` converts the analyzer output into the request format expected by Presidio anonymizer. It filters out invalid or low-confidence detections, preserves the original text when no valid entities remain, and assembles the redaction operators used for names, contact details, IDs, and related entity types.
+  - `Presidio Anonymize` sends the anonymization payload to the local Presidio anonymizer service at `/anonymize`. This produces the redacted text for the current pass.
+  - `Tidy Up` extracts the final redacted text from the anonymizer response and reattaches the source file name so the parent workflow can keep the document metadata aligned with the redacted output.
+  - `Return Results` packages the child workflow output for the parent workflow. It returns `redactedText`, `fileName`, and `language` so the parent can either write the file directly or feed the output into the second mixed-language pass.
+6. English-only documents execute the child workflow once with `language = en`.
+7. Chinese-only documents execute the child workflow once with `language = zh`.
+8. Mixed-language documents execute the child workflow twice in sequence: first with `language = zh`, then with `language = en`, carrying forward the redacted text from the first pass into the second pass.
+9. This design preserves analyzer offsets for each pass while avoiding duplication of the full Presidio chain on the main canvas.
+10. Both the analyzer and anonymizer steps are configured to continue safely when no entities are detected, so a document with zero English entities, zero Chinese entities, or sparse mixed-language PII no longer halts the parent workflow.
 
 The redacted text is written to `02_Redacted/`. Only these redacted files are ever read back into the RAG system; the raw originals never touch an LLM. This is the workflow's primary confidentiality safeguard and is non-negotiable: every downstream agent operates on redacted text only.
 
@@ -631,7 +641,7 @@ This three-framework stack is the methodological backbone of the workflow. The a
 - **Scanned PDFs are flagged, not OCR'd.** They go into a `scanned_pdf.json` manifest for human review but are not added to the RAG corpus. A future enhancement would be to OCR them via Tesseract or a cloud OCR service.
 - **In-memory RAG is per-execution.** The vector store is rebuilt on every run from the redacted files on disk. There is no cross-submission knowledge retention.
 - **OpenRouter is the only LLM provider.** All seven chat-model nodes use `@n8n/n8n-nodes-langchain.lmChatOpenRouter`. The configured models in the payload include `qwen/qwen3.7-plus` (vision) and `qwen/qwen3-32b` (web search). The actual model used for each agent depends on the OpenRouter credential configuration and is not pinned in the workflow JSON.
-- **Redaction now depends on a child workflow.** The main workflow delegates Presidio execution to `CommercReady - Redaction`, so both workflow JSON files must be imported and kept in sync.
+- **Redaction now depends on a child workflow.** The parent workflow delegates Presidio execution to `CommercReady - Redaction`, so both workflow JSON files must be imported locally and the `Execute Workflow` node must be rebound to the child workflow in the current n8n instance.
 - **Presidio endpoints are assumed reachable.** The redaction child workflow expects a Presidio service exposing `/analyze` and `/anonymize` endpoints. The URL is configured in the `Prepare Presidio Request` code node, not in the workflow JSON's static fields.
 - **Mixed-language handling is sequential, not simultaneous.** The current implementation runs `zh` first and then `en` for mixed documents. This is intentional to keep entity offsets stable between passes.
 - **RRL is not in the weighted sum.** The Kobos TRM regulatory dimension (RRL, §10.3) is currently reported as qualitative context for the Strategy Agent, not as a weighted contributor to the penalised weighted sum. If the methodology is later revised to include RRL in the score, `Business Logic Variables` must be updated and the weights rebalanced.
