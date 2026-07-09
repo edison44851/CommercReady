@@ -131,18 +131,22 @@ The redacted JSON outputs from all three branches are merged at `Document Collec
 1. `Text Cleaner` normalises whitespace and strips conversion artefacts.
 2. `Detect Language` classifies each document into three states: English (`en`), Chinese (`zh`), or mixed (`mixed`). The detector is intentionally conservative: mixed content is routed to a sequential two-pass path instead of being compressed into a single language bucket.
 3. `Language Router` dispatches the document to one of three parent-workflow handlers:
-  - `Redaction - English Only`
-  - `Redaction - Chinese Only`
-  - `Redaction - Chinese Mix` followed by `Redaction - English Mix`
+
+- `Redaction - English Only`
+- `Redaction - Chinese Only`
+- `Redaction - Chinese Mix` followed by `Redaction - English Mix`
+
 4. The parent workflow does not perform Presidio redaction directly. Instead, it invokes the reusable child workflow `CommercReady - Redaction` through `Execute Workflow` for each required pass.
 5. The child workflow `CommercReady - Redaction` is a single-language redaction core. Its nodes work as follows:
-  - `When Executed by Another Workflow` is the child-workflow trigger. It defines the input contract for a single redaction pass: `text`, `language`, and `fileName`.
-  - `Prepare Presidio Request` builds the Presidio analyzer payload from the supplied text and language. It normalises the text input, sets the analyzer language (`en` or `zh`), and declares the entity set to search for, including standard PII plus the Hong Kong and Chinese name/address recognisers used by this project.
-  - `Presidio Anaylze` sends the prepared JSON to the local Presidio analyzer service at `/analyze`. It is configured to continue safely when no entities are found so that an empty analyzer response does not halt the redaction pass.
-  - `Prepare Anonymizer Request` converts the analyzer output into the request format expected by Presidio anonymizer. It filters out invalid or low-confidence detections, preserves the original text when no valid entities remain, and assembles the redaction operators used for names, contact details, IDs, and related entity types.
-  - `Presidio Anonymize` sends the anonymization payload to the local Presidio anonymizer service at `/anonymize`. This produces the redacted text for the current pass.
-  - `Tidy Up` extracts the final redacted text from the anonymizer response and reattaches the source file name so the parent workflow can keep the document metadata aligned with the redacted output.
-  - `Return Results` packages the child workflow output for the parent workflow. It returns `redactedText`, `fileName`, and `language` so the parent can either write the file directly or feed the output into the second mixed-language pass.
+
+- `When Executed by Another Workflow` is the child-workflow trigger. It defines the input contract for a single redaction pass: `text`, `language`, and `fileName`.
+- `Prepare Presidio Request` builds the Presidio analyzer payload from the supplied text and language. It normalises the text input, sets the analyzer language (`en` or `zh`), and declares the entity set to search for, including standard PII plus the Hong Kong and Chinese name/address recognisers used by this project.
+- `Presidio Anaylze` sends the prepared JSON to the local Presidio analyzer service at `/analyze`. It is configured to continue safely when no entities are found so that an empty analyzer response does not halt the redaction pass.
+- `Prepare Anonymizer Request` converts the analyzer output into the request format expected by Presidio anonymizer. It filters out invalid or low-confidence detections, preserves the original text when no valid entities remain, and assembles the redaction operators used for names, contact details, IDs, and related entity types.
+- `Presidio Anonymize` sends the anonymization payload to the local Presidio anonymizer service at `/anonymize`. This produces the redacted text for the current pass.
+- `Tidy Up` extracts the final redacted text from the anonymizer response and reattaches the source file name so the parent workflow can keep the document metadata aligned with the redacted output.
+- `Return Results` packages the child workflow output for the parent workflow. It returns `redactedText`, `fileName`, and `language` so the parent can either write the file directly or feed the output into the second mixed-language pass.
+
 6. English-only documents execute the child workflow once with `language = en`.
 7. Chinese-only documents execute the child workflow once with `language = zh`.
 8. Mixed-language documents execute the child workflow twice in sequence: first with `language = zh`, then with `language = en`, carrying forward the redacted text from the first pass into the second pass.
@@ -276,9 +280,11 @@ The Prior Arts branch is unique because it requires a human to provide a list of
 3. `Generate Summarization` saves this output as `00_Admin/technology_summarization.txt`. This file is intended for university staff to support prior-art searching workflows (for example, CAS SciFinder Prior Art) before the patent-list submission step.
 4. **`Wait for Prior Arts Subission`** — a `wait` node in `form` resume mode. The workflow pauses execution and expects the operator to open the wait node in n8n and click the `Webform` link shown in the right-side panel; the form does not reliably pop up on its own. The uploaded file should be a new Excel workbook with patent publication numbers entered in column `A`, one per row, with no worksheet renaming required. The PI (or research office staff) must submit this file before the workflow can continue.
 
-  Example Excel format:
+   Example Excel format:
 
-  ![Prior arts Excel format](images/prior_arts_excel.png)
+   <figure>
+     <img src="images/prior_arts_excel.png" alt="Prior arts Excel format" />
+   </figure>
 5. `Extract Publication Number` (an `extractFromFile` node) reads the submitted Excel and extracts the patent numbers.
 6. `Parse Excel Extraction` (a code node) normalises the patent numbers into an array.
 7. `Prior Arts Analysis Agent` runs. Its system message instructs it to:
