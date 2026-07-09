@@ -17,7 +17,7 @@
 
 Self-hosted document intake, multilingual PII redaction, and downstream assessment workflow built with n8n, Microsoft Presidio, and isolated n8n task runners.
 
-The stack is designed for handling confidential files locally. Documents stay inside the mounted `confidential_volume` directory, while Presidio performs English and Chinese entity detection and redaction through internal container-to-container calls.
+The stack is designed for handling confidential files locally. Documents stay inside the mounted `confidential_volume` directory, while Presidio performs English, Chinese, and mixed-language redaction through internal container-to-container calls orchestrated by a reusable child workflow.
 
 ## Important Disclaimer
 
@@ -38,7 +38,7 @@ This repository is licensed under the Apache License 2.0. See [LICENSE](LICENSE)
 ## Quick Start Path
 
 1. Complete [Setup](#setup) and launch the stack with Docker Compose.
-2. Import the workflow JSON in [Import Workflow to n8n](#6-import-workflow-to-n8n).
+2. Import both workflow JSON files in [Import Workflow to n8n](#6-import-workflow-to-n8n).
 3. Configure credentials in [Configure n8n Credentials](#7-configure-n8n-credentials).
 4. Review [Workflow Usage](#workflow-usage) for folder structure and operator flow.
 5. Read [Evaluation Logic](#evaluation-logic) and the detailed [Project_Evaluation_Business_Logic.md](Project_Evaluation_Business_Logic.md).
@@ -55,7 +55,7 @@ At a high level, the workflow:
 - separates and preserves confidential originals inside a controlled local volume
 - processes images, office documents, and text-based PDFs into machine-readable content
 - flags scanned PDFs that need an additional conversion or OCR step
-- redacts personally identifiable information in both English and Chinese before any AI assessment step
+- redacts personally identifiable information in English, Chinese, and mixed-language documents before any AI assessment step
 - builds an in-memory RAG layer over redacted content only
 - runs parallel AI agents for project evaluation, market research, prior arts analysis, and commercialization strategy
 - computes a deterministic readiness outcome from structured scoring logic rather than relying on freeform model judgment alone
@@ -105,6 +105,8 @@ If you want to understand how the scoring and branching decisions work, that doc
 ## What This Project Includes
 
 - `n8n`: workflow orchestration and UI
+- `CommercReady.json`: main end-to-end workflow, including language routing and mixed-document orchestration
+- `CommercReady - Redaction.json`: reusable child workflow that performs one Presidio redaction pass for a supplied text and language
 - `presidio-analyzer`: custom Presidio analyzer image with Chinese spaCy support and Hong Kong specific recognizers
 - `presidio-anonymizer`: redaction service used after entity detection
 - `n8n-runner`: external task runner container for isolated code execution
@@ -115,6 +117,8 @@ If you want to understand how the scoring and branching decisions work, that doc
 ```text
 .
 |-- docker-compose.yml
+|-- CommercReady.json
+|-- CommercReady - Redaction.json
 |-- Dockerfile.n8n
 |-- Dockerfile.presidio
 |-- Dockerfile.runner
@@ -230,15 +234,31 @@ docker compose down -v
 
 ### 6. Import Workflow to n8n
 
-This project workflow definition is stored in `CommercReady.json`.
+This project uses two workflow definitions that should be imported together:
+
+- `CommercReady.json`: the main parent workflow that handles intake, routing, branching, and report generation
+- `CommercReady - Redaction.json`: the reusable child workflow that performs one Presidio redaction pass for a supplied text and language
+
+Important note:
+
+- each user should import their own local copy of both workflows instead of reusing an exported workflow reference from another machine
+- n8n `Execute Workflow` nodes can retain the referenced sub-workflow ID from the exporter’s instance, so the parent workflow must be opened after import and pointed to the child workflow imported in the current n8n instance
 
 Import steps in n8n:
 
 1. Open the n8n editor (`http://localhost:5678`).
 2. Create a new workflow.
 3. Use `Import from File`.
-4. Select `CommercReady.json` from the repository root.
-5. Save the workflow after import.
+4. Select `CommercReady - Redaction.json` from the repository root and save it.
+5. Create or open another workflow.
+6. Use `Import from File` again.
+7. Select `CommercReady.json` from the repository root and save it.
+8. Open the parent workflow and confirm its redaction node calls the child workflow by the imported workflow name.
+9. Save both workflows again after confirming the relationship.
+
+When you configure the parent workflow, choose the child workflow from your own local workflow list in n8n. Do not leave a reference to the exporter’s workflow record, because imported Execute Workflow nodes can keep the original sub-workflow ID until you reselect the child workflow in your instance.
+
+![Choose sub-workflow from list](images/choose_sub_workflow.png)
 
 After importing, continue with credential setup before running tests or production submissions.
 
@@ -333,7 +353,7 @@ Even though this uses the `Bearer Auth` credential type, the token value should 
 
 These nodes may look like external integrations, but they do not require separate n8n credentials in the current workflow:
 
-- `Presidio Analyze` and `Presidio Anonymize` nodes for English and Chinese: these call your local Presidio services and do not have auth configured by default
+- `Presidio Anaylze` and `Presidio Anonymize` inside `CommercReady - Redaction`: these call your local Presidio services and do not have auth configured by default
 - `Google Patent HTTP Tool`: uses a public endpoint and does not require auth in the current setup
 - `Read/Write File` nodes: these operate on the local filesystem
 - `Form Trigger` and `Wait` nodes: these are native n8n workflow nodes
@@ -491,6 +511,8 @@ Current configuration:
 
 Change this file if you need to add or remove supported languages or swap model choices.
 
+In the current workflow design, the parent workflow handles language classification and routing, while the child workflow performs a single redaction pass for the requested language. Mixed-language documents are handled by calling the child workflow twice in sequence: first `zh`, then `en`.
+
 ### Custom Recognizers
 
 The `recognizers` folder contains the custom Presidio logic for project-specific detection behavior.
@@ -592,7 +614,7 @@ Methodology references:
 Platform and implementation credits:
 
 - `n8n`: workflow orchestration and form-driven automation
-- `Microsoft Presidio`: PII detection and anonymization foundation for the bilingual redaction pipeline
+- `Microsoft Presidio`: PII detection and anonymization foundation for the multilingual redaction pipeline
 - `spaCy`: NLP model runtime used by the custom Presidio analyzer configuration
 - `@mazix/n8n-nodes-converter-documents` by mazix: https://github.com/mazixs/n8n-node-converter-documents
 - `n8n-nodes-pdf-page-extract` by Oscar Weijman: https://github.com/OscarWeijman/n8n-nodes-pdf-page-extract

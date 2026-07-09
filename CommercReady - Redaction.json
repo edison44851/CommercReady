@@ -1,0 +1,235 @@
+{
+  "name": "CommercReady - Redaction",
+  "nodes": [
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "text"
+            },
+            {
+              "name": "language"
+            },
+            {
+              "name": "fileName"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "a3af8ae2-fbd8-4314-b1be-cea8e2450d57",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "jsCode": "const text = $json.text ?? $json.cleanedText ?? \"\";\n\nconst body = {\n  text: text,\n  language: $input.first().json.language,\n  entities: [\n      // Standard entities\n      \"PERSON\", \"LOCATION\", \"EMAIL_ADDRESS\", \"PHONE_NUMBER\",\n      \"HK_ID_CARD\", \"PASSPORT_NUMBER\", \"HK_PHONE_NUMBER\",\n      \"BANK_ACCOUNT\", \"UNIVERSITY_ID\", \"CREDIT_CARD\",\n      \"IP_ADDRESS\", \"MAC_ADDRESS\", \"URL\",\n      \n      // Chinese-specific\n      \"PERSON_ZH\",      // Basic Chinese name detection\n      \"ADDRESS_ZH\",     // Chinese address detection\n      \n      // Enhanced Chinese name (NEW!)\n      \"PERSON_CHINESE\"  // Expanded context redaction with surname database\n    ]\n};\n\nreturn [\n  {\n    json: {\n      presidioBody: body   // This will be a clean JavaScript object\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        224,
+        0
+      ],
+      "id": "363dd293-dea1-4504-bfb6-c901c99cd910",
+      "name": "Prepare Presidio Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://presidio-analyzer:3000/analyze",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.presidioBody }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        448,
+        0
+      ],
+      "id": "f3da6ef9-b1cd-4c23-9d3c-9f82038ed8e0",
+      "name": "Presidio Anaylze",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the original cleaned text from the preparation node\nconst originalText = $('Prepare Presidio Request').first().json.presidioBody.text\n\n// Get analyzer results (may be single item or array depending on n8n version)\nlet analyzerResults = $input.all()\n\n// Handle different input formats\nif (!Array.isArray(analyzerResults) || analyzerResults.length === 0) {\n  return [{\n    json: {\n      text: originalText,\n      redacted_text: originalText,  // No entities found, return original\n      entities_found: 0\n    }\n  }]\n}\n\n// Extract and clean the analyzer results\nconst cleanResults = analyzerResults\n  .filter(item => item.json && item.json.entity_type)  // Filter out empty results\n  .map(item => ({\n    start: item.json.start,\n    end: item.json.end,\n    entity_type: item.json.entity_type,\n    score: item.json.score || 0.5,\n  }))\n  // Filter out low confidence results (optional - adjust threshold as needed)\n  .filter(item => item.score >= 0.7)\n\n// If no valid entities after filtering\nif (cleanResults.length === 0) {\n  return [{\n    json: {\n      text: originalText,\n      redacted_text: originalText,\n      entities_found: 0\n    }\n  }]\n}\n\n// Request body for anonymizer\nconst requestBody = {\n  text: originalText,\n  analyzer_results: cleanResults,\n  // Redaction configuration by entity type\n  operators: {\n    // High priority - use specific redaction labels\n    \"HK_ID_CARD\": {\n      type: \"replace\",\n      value: \"[REDACTED HKID]\"\n    },\n    \"PASSPORT_NUMBER\": {\n      type: \"replace\", \n      value: \"[REDACTED PASSPORT]\"\n    },\n    \"CREDIT_CARD\": {\n      type: \"replace\",\n      value: \"[REDACTED CARD]\"\n    },\n    \"BANK_ACCOUNT\": {\n      type: \"replace\",\n      value: \"[REDACTED ACCOUNT]\"\n    },\n    // Names get specific label\n    \"PERSON\": {\n      type: \"replace\",\n      value: \"[REDACTED NAME]\"\n    },\n    // Contact info\n    \"EMAIL_ADDRESS\": {\n      type: \"replace\",\n      value: \"[REDACTED EMAIL]\"\n    },\n    \"PHONE_NUMBER\": {\n      type: \"replace\",\n      value: \"[REDACTED PHONE]\"\n    },\n    \"HK_PHONE_NUMBER\": {\n      type: \"replace\",\n      value: \"[REDACTED PHONE]\"\n    },\n    // Addresses\n    \"LOCATION\": {\n      type: \"replace\",\n      value: \"[REDACTED LOCATION]\"\n    },\n    \"ADDRESS_EN\": {\n      type: \"replace\",\n      value: \"[REDACTED ADDRESS]\"\n    },\n    \"ADDRESS_ZH_TRAD\": {\n      type: \"replace\",\n      value: \"[REDACTED ADDRESS]\"\n    },\n    \"ADDRESS_ZH_SIMP\": {\n      type: \"replace\",\n      value: \"[REDACTED ADDRESS]\"\n    },\n    // Technical identifiers\n    \"IP_ADDRESS\": {\n      type: \"replace\",\n      value: \"[REDACTED IP]\"\n    },\n    \"MAC_ADDRESS\": {\n      type: \"replace\",\n      value: \"[REDACTED MAC]\"\n    },\n    // Default for anything else\n    \"DEFAULT\": {\n      type: \"replace\",\n      value: \"[REDACTED]\"\n    }\n  }\n}\n\nreturn [requestBody]"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        0
+      ],
+      "id": "9cd67978-d25f-4d49-b44e-6a45e32a092b",
+      "name": "Prepare Anonymizer Request"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://presidio-anonymizer:3000/anonymize",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        912,
+        0
+      ],
+      "id": "bfe93265-0948-4007-9df4-5d452f9ebce9",
+      "name": "Presidio Anonymize",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const redactedText = $json.text;\nconst fileName = $('When Executed by Another Workflow').first().json.fileName\n\nreturn [{\n  json: {\n    redactedText,\n    fileName\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        0
+      ],
+      "id": "14edba41-012b-406e-99e0-d2a245a14e5c",
+      "name": "Tidy Up",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d74cd801-9baf-41d2-abd8-7a52f2550115",
+              "name": "redactedText",
+              "value": "={{ $('Tidy Up').first().json.redactedText }}",
+              "type": "string"
+            },
+            {
+              "id": "892c452e-7c6f-46c9-a263-3fd35ba4e8f8",
+              "name": "fileName",
+              "value": "={{ $('Tidy Up').first().json.fileName }}",
+              "type": "string"
+            },
+            {
+              "id": "658c5005-9602-4ebc-98f2-dd4c4ad730cb",
+              "name": "language",
+              "value": "={{ $('When Executed by Another Workflow').item.json.language }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1360,
+        0
+      ],
+      "id": "7e68a5db-b702-4ed2-b233-0f244551a2b8",
+      "name": "Return Results",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "Prepare Presidio Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Presidio Request": {
+      "main": [
+        [
+          {
+            "node": "Presidio Anaylze",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Presidio Anaylze": {
+      "main": [
+        [
+          {
+            "node": "Prepare Anonymizer Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Anonymizer Request": {
+      "main": [
+        [
+          {
+            "node": "Presidio Anonymize",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Presidio Anonymize": {
+      "main": [
+        [
+          {
+            "node": "Tidy Up",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tidy Up": {
+      "main": [
+        [
+          {
+            "node": "Return Results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "5092d9cf-0792-4275-a4a9-35c1a395b4c7",
+  "meta": {
+    "instanceId": "1fbed9836991c71b4217885a42e6d2e71448b41e9e89f4cd7c1df683513d879b"
+  },
+  "nodeGroups": [],
+  "id": "gToHAh2TqIVu4FkZ",
+  "tags": []
+}
