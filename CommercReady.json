@@ -79,12 +79,12 @@
       "type": "n8n-nodes-base.formTrigger",
       "typeVersion": 2.5,
       "position": [
-        -2560,
-        784
+        -2352,
+        608
       ],
-      "id": "0cdebd92-25fc-4637-a8f7-0faa1a721f19",
+      "id": "717351c5-fff6-4bb2-a746-a34828f62f87",
       "name": "On form submission",
-      "webhookId": "3d49e8a0-9702-472b-a8d1-07bc871a1b35"
+      "webhookId": "85f627ce-41a0-4edf-b42a-bdb9bfd6f112"
     },
     {
       "parameters": {
@@ -93,10 +93,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2336,
-        784
+        -2128,
+        608
       ],
-      "id": "185a74f0-641b-4ac0-87a9-a3e5032f691e",
+      "id": "34dec5b0-3083-48f5-8e11-643a258c4376",
       "name": "Parse Form & Normalize Binary"
     },
     {
@@ -106,10 +106,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -2112,
-        784
+        -1904,
+        608
       ],
-      "id": "27a07cd0-00c9-4c2d-8bb0-f162f716f3a2",
+      "id": "c989687e-108e-4dd3-980e-e3f54b54817e",
       "name": "Create Folder Structure"
     },
     {
@@ -121,10 +121,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        -1888,
-        784
+        -1680,
+        608
       ],
-      "id": "772bbbd1-2a8d-4c72-a7f9-932237555ef1",
+      "id": "169c85b1-e5fd-4408-851b-6cc9e9d41925",
       "name": "Save Uploaded Files"
     },
     {
@@ -134,10 +134,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1632,
-        576
+        -1424,
+        400
       ],
-      "id": "95338e7a-a4a0-429c-86c5-a065764cbbfe",
+      "id": "3fa62052-e233-455e-b029-7d60bc8fc73e",
       "name": "Build submission_info.json Binary"
     },
     {
@@ -149,10 +149,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        -1424,
-        576
+        -1216,
+        400
       ],
-      "id": "b4f467be-9913-4048-bbb7-6ad2aa9c7c63",
+      "id": "db35321e-f26b-42bf-bad0-9b44cc75a6e6",
       "name": "Save submission_info.json"
     },
     {
@@ -238,10 +238,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        -1664,
-        1088
+        -1456,
+        912
       ],
-      "id": "71f3734c-b1a0-4256-9c38-926d1b5cc9cc",
+      "id": "789890d8-a82b-473c-b8da-4ba1740325b7",
       "name": "Format Router",
       "alwaysOutputData": false
     },
@@ -256,10 +256,10 @@
       "type": "n8n-nodes-base.aggregate",
       "typeVersion": 1,
       "position": [
-        -592,
-        1888
+        -384,
+        1712
       ],
-      "id": "6d281287-5c47-4d67-a812-3b7deb50fc67",
+      "id": "a4c9c76d-4cc7-4509-811b-a8eb0b6c9eef",
       "name": "Aggregate"
     },
     {
@@ -271,10 +271,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1488,
-        1904
+        -1280,
+        1728
       ],
-      "id": "72203d12-d743-4837-8a17-d54144be4fa7",
+      "id": "e1090e36-794b-484b-aa4f-a52a9296bde2",
       "name": "Loop Over Images"
     },
     {
@@ -284,10 +284,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -1296,
-        1968
+        -1088,
+        1792
       ],
-      "id": "59450995-47e1-4ed5-8aa5-86d0c0f97c99",
+      "id": "16efb021-dd59-425d-857f-fcb9d5d0838e",
       "name": "Base64 Encoding"
     },
     {
@@ -317,12 +317,18 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.4,
       "position": [
-        -1072,
-        1968
+        -864,
+        1792
       ],
-      "id": "d929bc52-7336-4d06-b2b6-7f9c4e01e889",
+      "id": "4ca7c2a9-f047-4cef-a349-11dfae6997bc",
       "name": "LLM Image Analysis",
-      "retryOnFail": true
+      "retryOnFail": true,
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "E8vi6YLRVhis91rl",
+          "name": "Bearer Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -331,10 +337,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -784,
-        2112
+        -576,
+        1936
       ],
-      "id": "404a64cf-5dc2-4ae9-8e08-7867dd4453ea",
+      "id": "f510e78e-a748-4d29-959a-487e7e48554a",
       "name": "Combine LLM Results with File Data"
     },
     {
@@ -344,10 +350,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        128,
-        608
+        336,
+        432
       ],
-      "id": "d3a34703-6d19-4505-8922-46de1ba4b2e6",
+      "id": "3bf8d1ce-5876-499a-a870-ac27872f6da2",
       "name": "Text Cleaner"
     },
     {
@@ -357,10 +363,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1376,
-        1536
+        -1168,
+        1360
       ],
-      "id": "958832c5-1dc3-4e43-a012-2dbffebe0ba4",
+      "id": "053fbed4-f567-4393-b912-d8a780276f0b",
       "name": "Loop Over PDFs"
     },
     {
@@ -370,10 +376,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -784,
-        1168
+        -576,
+        992
       ],
-      "id": "5387e3d6-6dfd-4cb6-a6a5-1efde1ca87be",
+      "id": "95fa30e5-b977-4e6e-9bbb-c64918a53f09",
       "name": "Loop Over PDFs for Coversion",
       "alwaysOutputData": false
     },
@@ -382,10 +388,10 @@
       "type": "n8n-nodes-pdf-page-extract.pdfPageExtract",
       "typeVersion": 1,
       "position": [
-        -1152,
-        1632
+        -944,
+        1456
       ],
-      "id": "7519c723-6a91-4c5a-a55a-2e08fa9263bf",
+      "id": "ee3f2f3a-c4a0-4871-83a4-492339bbe913",
       "name": "PDF Metadata Extraction"
     },
     {
@@ -395,10 +401,10 @@
       "type": "@mazix/n8n-nodes-converter-documents.convertFileToJson",
       "typeVersion": 5,
       "position": [
-        -560,
-        1200
+        -352,
+        1024
       ],
-      "id": "785a672d-1002-432b-9b22-454632150195",
+      "id": "758af1ac-f1f2-4503-923b-9104dba4493c",
       "name": "Convert PDF(s) to JSON"
     },
     {
@@ -408,10 +414,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -368,
-        1888
+        -160,
+        1712
       ],
-      "id": "f8485d76-efeb-49cb-a761-efc57b561958",
+      "id": "87421e12-ac20-46d3-9132-d246ef58f016",
       "name": "Write Image Description Markdown to Drive"
     },
     {
@@ -421,10 +427,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -1184,
-        688
+        -976,
+        512
       ],
-      "id": "2e4909a5-e03b-4426-a750-9b9e41352406",
+      "id": "64821125-846c-4527-af39-9811f00752d8",
       "name": "Loop Over Documents for Conversion",
       "alwaysOutputData": false
     },
@@ -433,10 +439,10 @@
       "type": "@mazix/n8n-nodes-converter-documents.convertFileToJson",
       "typeVersion": 5,
       "position": [
-        -960,
-        848
+        -752,
+        672
       ],
-      "id": "0b9db067-bc08-493c-a76c-081454c1b193",
+      "id": "8dc56823-1d6e-4014-a071-b4db54f7abf2",
       "name": "Convert Documents to JSON",
       "alwaysOutputData": false
     },
@@ -447,10 +453,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -80,
-        592
+        128,
+        416
       ],
-      "id": "7cd7c228-4405-448f-ada3-640509bfb078",
+      "id": "fcd797e8-5a91-492a-aeb1-f1ca75f494af",
       "name": "Loop Over Document and PDF(s) for Redaction"
     },
     {
@@ -460,10 +466,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        320,
-        608
+        528,
+        432
       ],
-      "id": "00dc57a5-b5e1-4b82-8277-218d60d4124e",
+      "id": "db1ca14e-4db3-4c4a-aabe-231bfafb6f30",
       "name": "Detect Language"
     },
     {
@@ -471,10 +477,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        -352,
-        592
+        -144,
+        416
       ],
-      "id": "3ba1da67-b2f2-4f9a-9e7e-74010204ea5a",
+      "id": "5d276b28-1bfe-48cd-8841-8c7f8aaa5076",
       "name": "Document Collector"
     },
     {
@@ -482,10 +488,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        608,
-        1280
+        816,
+        1104
       ],
-      "id": "101f5f8d-867d-4a1e-9165-cbddd1aa3ca7",
+      "id": "2007a080-7419-47dd-80e3-15da7260e52c",
       "name": "Gate for Phase 3"
     },
     {
@@ -496,10 +502,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        1040,
-        1296
+        1248,
+        1120
       ],
-      "id": "6108f36d-c6aa-4bbe-8d5a-100f4e90ec48",
+      "id": "9163f0e1-a011-4a0d-b4d8-5356bf55a6df",
       "name": "Read Redacted Files from Disk"
     },
     {
@@ -516,10 +522,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.3,
       "position": [
-        3088,
-        3296
+        3296,
+        3120
       ],
-      "id": "37088ca8-89cd-4d0f-9476-8252397110f8",
+      "id": "31377786-3b68-4bb1-ad1b-cf3741739856",
       "name": "Query Data Tool"
     },
     {
@@ -534,10 +540,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3072,
-        1744
+        3280,
+        1568
       ],
-      "id": "89c48878-8be6-45df-9bc5-03a5bbc1ef57",
+      "id": "4c4e923e-bb34-4280-8b6d-0b8ebbb02b4f",
       "name": "Tech Readiness Evaluation Agent",
       "retryOnFail": true
     },
@@ -550,10 +556,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        3264,
-        1920
+        3472,
+        1744
       ],
-      "id": "3179b14d-0379-4918-88a5-cf71135d38f7",
+      "id": "42263750-a128-4128-b004-8be7733f34db",
       "name": "Tech Readiness Evaluation Agent Output Parser",
       "retryOnFail": true
     },
@@ -569,10 +575,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3072,
-        848
+        3280,
+        672
       ],
-      "id": "79e6a677-425a-4c03-a3fa-a3c38dc9bcae",
+      "id": "405a7e3c-1a8a-4ee1-bd25-4ab855b69736",
       "name": "Regulatory & Certification Strategy Agent",
       "retryOnFail": true
     },
@@ -584,10 +590,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        1680,
-        1312
+        1888,
+        1136
       ],
-      "id": "0af5a511-fca3-4cd9-ae2d-5f5f97b19202",
+      "id": "c9d73cdc-a602-490b-9b11-0ed5bb3059fb",
       "name": "Vectore Store Complete Trigger"
     },
     {
@@ -602,10 +608,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3072,
-        1296
+        3280,
+        1120
       ],
-      "id": "bba5b770-f2e6-4386-ae9d-a9b1637e8e96",
+      "id": "20e241c5-b513-4cd8-a5d0-8e2dfd2ccce7",
       "name": "Business Evaluation Agent",
       "retryOnFail": true,
       "maxTries": 5
@@ -619,10 +625,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        3248,
-        1488
+        3456,
+        1312
       ],
-      "id": "793dab3c-5b30-493d-b37a-0e1de0f6a8f2",
+      "id": "2349a44c-3d98-47cc-9fe1-d4e819d170b4",
       "name": "Business Evaluation Agent Output Parser",
       "retryOnFail": true
     },
@@ -634,10 +640,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        832,
-        1296
+        1040,
+        1120
       ],
-      "id": "ba03edf8-7271-4a88-bea6-3e9cb647e218",
+      "id": "a088c3f6-d87c-4eec-a1e3-4c077870e5cc",
       "name": "Trigger Gate"
     },
     {
@@ -653,10 +659,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3072,
-        2176
+        3280,
+        2000
       ],
-      "id": "107bda2f-f8c5-442a-a2d7-c677afb990ae",
+      "id": "b4fab664-3c6f-4c82-8d1b-5dad342514fa",
       "name": "Market Research Agent",
       "retryOnFail": true
     },
@@ -669,10 +675,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        3248,
-        2352
+        3456,
+        2176
       ],
-      "id": "5923a89d-e419-4c94-a09c-295144506e43",
+      "id": "990f6956-d6c4-4c17-a33f-f0991c6c78be",
       "name": "Market Research Agent Output Parser",
       "retryOnFail": true
     },
@@ -683,10 +689,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3744,
-        2048
+        3952,
+        1872
       ],
-      "id": "b0d22dcb-ddd6-4caf-81cb-f6278d03f872",
+      "id": "5f8801b0-cda8-4150-89b5-4122c0ebda4f",
       "name": "Generate Market Research Report"
     },
     {
@@ -716,10 +722,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        -1120,
-        1392
+        -912,
+        1216
       ],
-      "id": "eaeef91f-700b-40d6-b71f-c7122c6321af",
+      "id": "8ed88355-a209-43ea-a92b-e870161671c6",
       "name": "If"
     },
     {
@@ -729,10 +735,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -864,
-        1568
+        -656,
+        1392
       ],
-      "id": "fa5d7f4f-28af-45d5-b8ed-1f6a896a5230",
+      "id": "5dc8c094-5c74-4fb0-8147-5924d09388c4",
       "name": "Build scanned_pdf.json"
     },
     {
@@ -744,10 +750,10 @@
       "type": "n8n-nodes-base.readWriteFile",
       "typeVersion": 1.1,
       "position": [
-        -592,
-        1568
+        -384,
+        1392
       ],
-      "id": "4ac93849-e631-4d73-ba85-81b90bc64f5d",
+      "id": "1bd39b05-7f01-48f0-8ea5-300123abba2b",
       "name": "Save scanned_pdf.json"
     },
     {
@@ -763,10 +769,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        3072,
-        2640
+        3280,
+        2464
       ],
-      "id": "631329a6-2cac-4ba5-b94b-9825d5faa50a",
+      "id": "8cdc0e31-1f5d-43c2-aec6-a9df929d855d",
       "name": "Tech Describer",
       "retryOnFail": true
     },
@@ -778,10 +784,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        3280,
-        2864
+        3488,
+        2688
       ],
-      "id": "fc20c38a-8417-4769-a5fe-cbf1af36f740",
+      "id": "c2df071a-fa7f-4051-8737-e95cd3ff9b7f",
       "name": "Tech Describer Output Parser",
       "retryOnFail": true
     },
@@ -792,10 +798,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        3728,
-        1280
+        3936,
+        1104
       ],
-      "id": "e1ae4633-4604-402a-b0a4-d9062e7f79c2",
+      "id": "74975171-9b9c-4b5c-90de-bf810276217e",
       "name": "Evaluation Gate"
     },
     {
@@ -805,10 +811,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3968,
-        1296
+        4176,
+        1120
       ],
-      "id": "e7e8b6fa-0c52-49f1-9f16-9d16deb281a2",
+      "id": "1a8177bb-a1d9-4b14-8b30-ca6e4ca27cfa",
       "name": "Merge Evaluation Agent Outputs"
     },
     {
@@ -818,10 +824,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4064,
-        2416
+        4272,
+        2240
       ],
-      "id": "b5107cc3-bc0a-49df-9470-acd667e07425",
+      "id": "dac96fd2-07d3-4678-9491-e031f622db1e",
       "name": "Parse Excel Extraction"
     },
     {
@@ -836,10 +842,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        4304,
-        2416
+        4512,
+        2240
       ],
-      "id": "6862b41f-aa31-4ed8-afb7-029eed3301a8",
+      "id": "5799fddb-3621-41d3-9b96-c381692c5a8f",
       "name": "Prior Arts Analysis Agent",
       "retryOnFail": true
     },
@@ -866,10 +872,10 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        4400,
-        2832
+        4608,
+        2656
       ],
-      "id": "e4f8a7da-8d2f-4624-b3ea-680febffd44c",
+      "id": "37afb186-1086-47d8-9042-2c033aaf5322",
       "name": "Google Patent HTTP Tool",
       "notesInFlow": true
     },
@@ -882,10 +888,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        3232,
-        1040
+        3440,
+        864
       ],
-      "id": "0cf23504-50db-4172-9236-deacc9a87962",
+      "id": "c599a035-56d9-4906-901f-0b0be8a36c28",
       "name": "Regulatory & Certification Strategy Agent Output Parser",
       "retryOnFail": true
     },
@@ -898,10 +904,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        4464,
-        2576
+        4672,
+        2400
       ],
-      "id": "7c1f6eeb-c13b-48f6-83a9-27ccc723b0f4",
+      "id": "83f54c17-5575-4f8b-adea-a0d905fe72d5",
       "name": "Prior Arts AnalysisOutput Parser",
       "retryOnFail": true
     },
@@ -912,10 +918,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3408,
-        2640
+        3616,
+        2464
       ],
-      "id": "09f3b3aa-c531-4d63-9476-e9f6073e7e87",
+      "id": "5750e10c-a9c3-40c6-bb44-2078b837b052",
       "name": "Generate Summarization"
     },
     {
@@ -925,10 +931,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        5840,
-        2144
+        6048,
+        1968
       ],
-      "id": "b3d28ec2-40a4-429f-9731-7f0155d23fb7",
+      "id": "12209d3e-d665-4048-a343-35d1592e6e27",
       "name": "Merging All Research Items"
     },
     {
@@ -938,10 +944,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4768,
-        2416
+        4976,
+        2240
       ],
-      "id": "b6be0478-a701-42e0-a8f7-243cfc69ce99",
+      "id": "bec12313-c8e7-4a4b-954f-33e9a3a468b8",
       "name": "Generate Prior Arts Anaylsis Report"
     },
     {
@@ -951,10 +957,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        4208,
-        1296
+        4416,
+        1120
       ],
-      "id": "d45e8910-2005-4075-8d12-131373dd9045",
+      "id": "1783de25-d0f0-4c09-a749-b30dbee01636",
       "name": "Generate Assessment Report"
     },
     {
@@ -995,10 +1001,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2848,
-        2192
+        3056,
+        2016
       ],
-      "id": "44d395e7-fd6d-4115-8a5c-f3b406d656c7",
+      "id": "8e6db900-660d-497f-b545-b261136c0f68",
       "name": "Market Research Input Gate"
     },
     {
@@ -1039,10 +1045,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2864,
-        2656
+        3072,
+        2480
       ],
-      "id": "98fc21be-312f-46ab-b630-4e8c7b4ed1dc",
+      "id": "568fa9f9-b489-4c15-bcfe-037416c60f39",
       "name": "Prior Arts Input Gate"
     },
     {
@@ -1083,10 +1089,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        2320,
-        1312
+        2528,
+        1136
       ],
-      "id": "915bc95d-a957-49c3-b770-7b98b8e13baa",
+      "id": "a0f749b7-42e2-412e-b87e-0c35cda198f2",
       "name": "Evaluation Input Gate"
     },
     {
@@ -1226,10 +1232,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1968,
-        1312
+        2176,
+        1136
       ],
-      "id": "04819b55-1126-46f4-bffd-760b6523231a",
+      "id": "b7afad97-83ac-4dcc-8738-d58d6a601f6f",
       "name": "Business Logic Variables"
     },
     {
@@ -1259,10 +1265,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.3,
       "position": [
-        5552,
-        2160
+        5760,
+        1984
       ],
-      "id": "d17c91da-107a-43ab-b5a5-b59ad587c8f0",
+      "id": "f2d82701-8426-467c-98d2-dec7dac0d1ab",
       "name": "Strategy Agent Input Gate"
     },
     {
@@ -1277,10 +1283,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3.1,
       "position": [
-        6080,
-        2144
+        6288,
+        1968
       ],
-      "id": "9899fcd7-00c5-43c5-8a81-abe7bc8339e1",
+      "id": "989fe6f3-51cf-4f0b-946a-44a89dd9f55c",
       "name": "Strategy Agent",
       "retryOnFail": true
     },
@@ -1293,10 +1299,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        6272,
-        2368
+        6480,
+        2192
       ],
-      "id": "e6c6afb4-015b-455e-892c-afbc665d62e7",
+      "id": "8e3bedcf-79fd-459f-9ca3-1bf3605f8873",
       "name": "Strategy Agent Output Parser",
       "retryOnFail": true
     },
@@ -1307,10 +1313,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        6512,
-        2144
+        6720,
+        1968
       ],
-      "id": "8ebc8654-490c-4152-b482-49d873bc6fb9",
+      "id": "742d114d-7c02-4126-ba30-3602dae97bdc",
       "name": "Generate Strategy Sheet"
     },
     {
@@ -1320,10 +1326,10 @@
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
       "position": [
-        5312,
-        2144
+        5520,
+        1968
       ],
-      "id": "1cd8b51f-2bff-4e73-8937-31f9c96d4320",
+      "id": "7b438759-7449-4658-bd8f-e04b34edf372",
       "name": "Strategy Agent Merge"
     },
     {
@@ -1346,10 +1352,10 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3648,
-        2640
+        3856,
+        2464
       ],
-      "id": "b059d675-1974-4747-a50c-89a77929d187",
+      "id": "0e2f7c58-a225-4716-a766-7ef08824f6d2",
       "name": "Wait for Prior Arts Subission",
       "webhookId": "301afcb8-46be-49ff-af45-4f04a38f720e"
     },
@@ -1363,11 +1369,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3072,
-        1136
+        3280,
+        960
       ],
-      "id": "f005b7ac-754d-443f-9490-09bf2d0d2b86",
-      "name": "Regulatory & Certification Chat Model"
+      "id": "563a24e2-305b-470c-a023-04d264f247a3",
+      "name": "Regulatory & Certification Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1379,11 +1391,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3072,
-        1584
+        3280,
+        1408
       ],
-      "id": "c21aa31a-5404-4a8f-a5c4-4a7094b50a6b",
-      "name": "Business Evaluation Chat Model"
+      "id": "78b135d3-f56a-417e-aa5c-b22966dc4266",
+      "name": "Business Evaluation Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1395,11 +1413,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3072,
-        2016
+        3280,
+        1840
       ],
-      "id": "16f0e912-5dc9-4d6d-9453-f2c3ca2ac5f3",
-      "name": "Technology Readiness Chat Model"
+      "id": "5bde83ae-ae66-4406-91c6-892280bb3146",
+      "name": "Technology Readiness Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1411,11 +1435,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3072,
-        2448
+        3280,
+        2272
       ],
-      "id": "882843f7-1289-434e-9be3-3632156602c7",
-      "name": "Market Research Chat Model"
+      "id": "32d50539-baf7-4385-ab9b-c3e73f8f4861",
+      "name": "Market Research Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1427,11 +1457,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        3072,
-        2960
+        3280,
+        2784
       ],
-      "id": "a9d42804-200e-40bc-a6ac-c4f066781738",
-      "name": "Tech Describer Chat Model"
+      "id": "43cb039c-91d1-466d-95e7-be8a14c3cecb",
+      "name": "Tech Describer Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1443,11 +1479,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        4304,
-        2672
+        4512,
+        2496
       ],
-      "id": "f784e282-ebad-439c-a6bd-024387b594ba",
-      "name": "Prior Arts Chat Model"
+      "id": "f2106e4d-dea1-48ca-92c3-de26b75098fd",
+      "name": "Prior Arts Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1460,10 +1502,10 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1.1,
       "position": [
-        3840,
-        2416
+        4048,
+        2240
       ],
-      "id": "2a340de6-5def-401d-a7eb-b84ce02c270e",
+      "id": "70ad04aa-f39c-4d15-8c32-0df2b75ba61d",
       "name": "Extract Publication Number"
     },
     {
@@ -1476,11 +1518,17 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenRouter",
       "typeVersion": 1,
       "position": [
-        6080,
-        2464
+        6288,
+        2288
       ],
-      "id": "d7736f99-d889-4bc6-92fc-539c20e69db5",
-      "name": "Strategy Chat Model"
+      "id": "5b6999c4-846e-4281-9449-170812fca6ef",
+      "name": "Strategy Chat Model",
+      "credentials": {
+        "openRouterApi": {
+          "id": "j62VIDCeIFbvylac",
+          "name": "OpenRouter account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1490,11 +1538,17 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1280,
-        1968
+        1488,
+        1792
       ],
-      "id": "b5fe8409-6d7e-40da-aa51-a1437b20ef24",
-      "name": "In-memory RAG Embeddings"
+      "id": "372ce3fc-8d9f-458b-a66e-b37cc0ee7539",
+      "name": "In-memory RAG Embeddings",
+      "credentials": {
+        "openAiApi": {
+          "id": "gNDHDVP4m2d7C2ut",
+          "name": "OpenAI account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1509,10 +1563,10 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreInMemory",
       "typeVersion": 1.3,
       "position": [
-        1280,
-        1296
+        1488,
+        1120
       ],
-      "id": "95b7979b-d51a-4c19-84ea-87a8a9f66ab7",
+      "id": "e41244dc-1d2e-48c0-bfad-2b185715216f",
       "name": "In-memory RAG"
     },
     {
@@ -1523,10 +1577,10 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        1440,
-        1552
+        1648,
+        1376
       ],
-      "id": "46f8a440-7029-418a-a452-3ee20c777fa3",
+      "id": "18f4c41c-a740-4363-8a68-ca2570c2fe66",
       "name": "Data Loader"
     },
     {
@@ -1548,11 +1602,17 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.4,
       "position": [
-        3328,
-        2464
+        3536,
+        2288
       ],
-      "id": "6a7ae816-4835-467c-8864-308ccce382bd",
-      "name": "Web Search Tool"
+      "id": "b34f84d7-81b8-4dfa-8970-2c5cead4ab9d",
+      "name": "Web Search Tool",
+      "credentials": {
+        "httpBearerAuth": {
+          "id": "E8vi6YLRVhis91rl",
+          "name": "Bearer Auth account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1563,10 +1623,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2576,
-        448
+        -2368,
+        272
       ],
-      "id": "ebf1d39d-0adf-48ed-a69c-334349bd64cc",
+      "id": "f0bc1e40-dd28-4ec7-b659-874fe2cb8149",
       "name": "Sticky Note"
     },
     {
@@ -1578,10 +1638,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1632,
-        448
+        -1424,
+        272
       ],
-      "id": "c94b5a6d-f2dd-4214-964c-aa75efb58784",
+      "id": "beef58cc-f535-4db3-8fd2-7ebbc27ef9a5",
       "name": "Sticky Note1"
     },
     {
@@ -1593,10 +1653,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2048,
-        1136
+        -1840,
+        960
       ],
-      "id": "7e8f0fc6-6131-4141-ac38-ace598c8cc48",
+      "id": "67792ef1-5712-4cae-8c04-45c41006d05b",
       "name": "Sticky Note2"
     },
     {
@@ -1608,10 +1668,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -912,
-        752
+        -704,
+        576
       ],
-      "id": "d18ef36d-177c-4040-8352-1f06e4f10b69",
+      "id": "b668fd45-1be6-4cb3-93d0-f9774bd6279e",
       "name": "Sticky Note3"
     },
     {
@@ -1623,10 +1683,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1408,
-        1360
+        -1200,
+        1184
       ],
-      "id": "34653e8c-9f46-47ff-aec3-800f80f63fd1",
+      "id": "e5f9004b-7f14-4003-8bd0-92973655a323",
       "name": "Sticky Note4"
     },
     {
@@ -1638,10 +1698,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -384,
-        1168
+        -176,
+        992
       ],
-      "id": "cf6a0a01-999e-48cd-9791-05ae5b9ca0e2",
+      "id": "76f91614-2e07-4d2e-bf35-ca22ef354da4",
       "name": "Sticky Note5"
     },
     {
@@ -1653,10 +1713,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -400,
-        1568
+        -192,
+        1392
       ],
-      "id": "b8ca0913-8fc8-4c4d-8bef-bed4cf24a747",
+      "id": "e83d2a80-5821-4b77-93c6-cecb1dbb625e",
       "name": "Sticky Note6"
     },
     {
@@ -1668,10 +1728,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -2112,
-        1968
+        -1904,
+        1792
       ],
-      "id": "401790d2-06eb-46c8-bbb2-407995e06041",
+      "id": "cf32bb8d-3eae-4dd6-96b7-4cbe73c1b0e8",
       "name": "Sticky Note7"
     },
     {
@@ -1683,26 +1743,26 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -384,
-        2064
+        -176,
+        1888
       ],
-      "id": "e63ef0e3-8180-4c43-9b03-28c8c686e5ef",
+      "id": "2d8e1869-a044-400d-a5c8-45139eacfa22",
       "name": "Sticky Note8"
     },
     {
       "parameters": {
-        "content": "This part is the redaction pipeline. For all converted documents and PDFs, their content must pass through this pipeline to redact sensitive data, including addresses, phone numbers, names, and email addresses, etc.\n\nIf any Chinese character is detected, those documents must pass through the Chinese redaction pipeline after the English redaction pipeline to ensure data safety.\n\nMicrosoft Presidio powers the redaction. Customized recognizers are also provided for some patterns, such as HKID Cards, passports, and addresses in Hong Kong. Developers can further customize the Python script to enhance its capabilities.\n\nRedacted files are kept in 02_Redacted/",
-        "height": 256,
+        "content": "This part is the redaction pipeline. For all converted documents and PDFs, their content must pass through this pipeline to redact sensitive data, including addresses, phone numbers, names, and email addresses, etc.\n\nMicrosoft Presidio powers the redaction. Customized recognizers are also provided for some patterns, such as HKID Cards, passports, and addresses in Hong Kong. Developers can further customize the Python script to enhance its capabilities.\n\nRedacted files are kept in 02_Redacted/",
+        "height": 192,
         "width": 1024,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -208,
-        176
+        0,
+        64
       ],
-      "id": "3659a811-2b6e-498d-a340-0fedc5d34b46",
+      "id": "a64adba5-bf20-4eeb-9d80-e44ac48f2384",
       "name": "Sticky Note9"
     },
     {
@@ -1715,10 +1775,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        608,
-        1088
+        816,
+        912
       ],
-      "id": "7f9bbfc7-5d5c-4261-bee1-d80f83ebc2e1",
+      "id": "55e90a7b-0906-45fd-a8cb-8c95f7970fa8",
       "name": "Sticky Note10"
     },
     {
@@ -1731,10 +1791,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1920,
-        1152
+        2128,
+        976
       ],
-      "id": "b12de4fa-fabc-41e0-8422-9147f91902c3",
+      "id": "bc1e2e33-5962-48a1-a64d-bf838712a554",
       "name": "Sticky Note11"
     },
     {
@@ -1747,10 +1807,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3664,
-        992
+        3872,
+        816
       ],
-      "id": "9ca7df53-efa7-4ca8-a8eb-c26ac0541236",
+      "id": "f26e69b1-4fd3-489c-9494-63d3a62011e0",
       "name": "Sticky Note12"
     },
     {
@@ -1763,10 +1823,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3952,
-        2048
+        4160,
+        1872
       ],
-      "id": "d8e2f888-a6de-4dd2-bf71-063f87871f52",
+      "id": "301ddf67-f967-4f5a-b70f-829c16753253",
       "name": "Sticky Note13"
     },
     {
@@ -1779,10 +1839,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3520,
-        3056
+        3728,
+        2880
       ],
-      "id": "7fa4a17f-7483-4a23-8886-903b63107f6d",
+      "id": "81e3f5ec-0fca-4ac6-a357-5378d8699cbf",
       "name": "Sticky Note14"
     },
     {
@@ -1795,10 +1855,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        5312,
-        1968
+        5520,
+        1792
       ],
-      "id": "628596fd-f841-4e65-89bd-8f93b644d7d4",
+      "id": "5ce506fe-f0a2-4478-9a62-76e195400044",
       "name": "Sticky Note15"
     },
     {
@@ -1811,10 +1871,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2880,
-        1568
+        3088,
+        1392
       ],
-      "id": "e02cd9be-11a3-4764-b2b8-ee242fe64e3d",
+      "id": "12423140-275e-4ece-9bb3-c142f50689a2",
       "name": "Sticky Note16"
     },
     {
@@ -1827,10 +1887,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2864,
-        1152
+        3072,
+        976
       ],
-      "id": "0a21f1c2-c21b-4011-ab46-42c61e2a1da2",
+      "id": "d6ad3e68-0e10-440b-9b56-fd1881df0f99",
       "name": "Sticky Note17"
     },
     {
@@ -1843,10 +1903,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2896,
-        2016
+        3104,
+        1840
       ],
-      "id": "a230daf9-e61a-4800-9f92-986863e0b442",
+      "id": "9a2a09c8-7f68-4f9a-806a-9c68f1886c50",
       "name": "Sticky Note18"
     },
     {
@@ -1859,10 +1919,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2864,
-        2464
+        3072,
+        2288
       ],
-      "id": "0ce88b4f-c1e6-4bdf-a6e8-9c814e47c5b4",
+      "id": "41bf8b64-2216-414a-baf0-72781bdeb96c",
       "name": "Sticky Note19"
     },
     {
@@ -1875,10 +1935,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        3456,
-        2464
+        3664,
+        2288
       ],
-      "id": "9e2bb6b3-41bc-4170-b806-552cea737ba0",
+      "id": "56b74cbc-11dc-49b7-8a14-c5eb0d3af3b8",
       "name": "Sticky Note20"
     },
     {
@@ -1891,10 +1951,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        2896,
-        2944
+        3104,
+        2768
       ],
-      "id": "e71c243b-3926-48c9-9f76-00385c48e132",
+      "id": "9446805f-c69d-4190-892a-be13ff3e31ee",
       "name": "Sticky Note21"
     },
     {
@@ -1907,10 +1967,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        4128,
-        2704
+        4336,
+        2528
       ],
-      "id": "a48df0c2-897f-4447-a185-4439d5f71444",
+      "id": "fee30ccc-44c4-4cfc-8bd7-5296b299e0df",
       "name": "Sticky Note22"
     },
     {
@@ -1923,10 +1983,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        6048,
-        2592
+        6256,
+        2416
       ],
-      "id": "8ea79847-b523-4486-a8ce-edd8eed6d5ba",
+      "id": "4adfc9f9-fb47-4916-bf65-fafd00101ca6",
       "name": "Sticky Note23"
     },
     {
@@ -1939,10 +1999,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1088,
-        1984
+        1296,
+        1808
       ],
-      "id": "840eb8a8-aa88-4879-a515-fd6adc227b39",
+      "id": "732f1dbd-5a61-45f6-ba01-5b653baace39",
       "name": "Sticky Note24"
     },
     {
@@ -1955,10 +2015,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        -1088,
-        2128
+        -880,
+        1952
       ],
-      "id": "7145154b-9bbe-4911-8d38-56b42addb5bc",
+      "id": "bfff13fe-e02a-420a-b87c-67dff4fc6c5f",
       "name": "Sticky Note25"
     },
     {
@@ -2046,19 +2106,19 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.4,
       "position": [
-        528,
-        592
+        736,
+        416
       ],
-      "id": "04aecb08-e89d-449d-b987-663dd8ba113f",
+      "id": "6bb924fd-eaf7-42ec-8409-a27d0e203c32",
       "name": "Language Router"
     },
     {
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "gToHAh2TqIVu4FkZ",
+          "value": "EEsmPQQ1Zva3zu6q",
           "mode": "list",
-          "cachedResultUrl": "/workflow/gToHAh2TqIVu4FkZ",
+          "cachedResultUrl": "/workflow/EEsmPQQ1Zva3zu6q",
           "cachedResultName": "CommercReady - Redaction"
         },
         "workflowInputs": {
@@ -2109,10 +2169,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1152,
-        432
+        1360,
+        256
       ],
-      "id": "9087dc87-d1d5-4556-a2b8-8465d37b2354",
+      "id": "404c1468-c297-4d07-93b7-d7a5aeb8f268",
       "name": "Redaction - Chinese Only",
       "retryOnFail": false,
       "alwaysOutputData": true,
@@ -2122,9 +2182,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "gToHAh2TqIVu4FkZ",
+          "value": "EEsmPQQ1Zva3zu6q",
           "mode": "list",
-          "cachedResultUrl": "/workflow/gToHAh2TqIVu4FkZ",
+          "cachedResultUrl": "/workflow/EEsmPQQ1Zva3zu6q",
           "cachedResultName": "CommercReady - Redaction"
         },
         "workflowInputs": {
@@ -2175,10 +2235,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1152,
-        256
+        1360,
+        80
       ],
-      "id": "d81a0afc-0708-47c4-956f-abaaf1b0ed35",
+      "id": "bbd3c0be-60b6-4fed-b41a-a79e24bc89d9",
       "name": "Redaction - English Only",
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
@@ -2187,9 +2247,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "gToHAh2TqIVu4FkZ",
+          "value": "EEsmPQQ1Zva3zu6q",
           "mode": "list",
-          "cachedResultUrl": "/workflow/gToHAh2TqIVu4FkZ",
+          "cachedResultUrl": "/workflow/EEsmPQQ1Zva3zu6q",
           "cachedResultName": "CommercReady - Redaction"
         },
         "workflowInputs": {
@@ -2240,10 +2300,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        848,
-        640
+        1056,
+        464
       ],
-      "id": "8a822bbc-5071-47a1-a092-f122472b9599",
+      "id": "b38d8267-3c85-487a-8bd1-ba890809f969",
       "name": "Redaction - Chinese Mix",
       "retryOnFail": false,
       "alwaysOutputData": true,
@@ -2253,9 +2313,9 @@
       "parameters": {
         "workflowId": {
           "__rl": true,
-          "value": "gToHAh2TqIVu4FkZ",
+          "value": "EEsmPQQ1Zva3zu6q",
           "mode": "list",
-          "cachedResultUrl": "/workflow/gToHAh2TqIVu4FkZ",
+          "cachedResultUrl": "/workflow/EEsmPQQ1Zva3zu6q",
           "cachedResultName": "CommercReady - Redaction"
         },
         "workflowInputs": {
@@ -2306,10 +2366,10 @@
       "type": "n8n-nodes-base.executeWorkflow",
       "typeVersion": 1.3,
       "position": [
-        1152,
-        640
+        1360,
+        464
       ],
-      "id": "6e2d1dba-f3f3-434b-a52d-a500c6d61c12",
+      "id": "b529cf9c-df30-45c3-ba9f-b01b4fc85a47",
       "name": "Redaction - English Mix",
       "executeOnce": false,
       "alwaysOutputData": true,
@@ -2322,10 +2382,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1408,
-        640
+        1616,
+        464
       ],
-      "id": "a9ea5c58-ed62-473b-bc6d-2380d7967fdf",
+      "id": "cf1433da-979d-48ac-af47-7b9c12c8d452",
       "name": "Write Redacted Docs"
     },
     {
@@ -2337,24 +2397,24 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        256,
-        480
+        464,
+        304
       ],
-      "id": "90f63b9d-33a9-4c3c-bada-933bbf8b1ba9",
+      "id": "60be93aa-22e1-4d1a-ac6d-383595afa6b6",
       "name": "Sticky Note26"
     },
     {
       "parameters": {
-        "content": "You must always set the \"text\" field of first node of the \"Mixed\" branch as **{{ $json.cleanedText ?? $('Text Cleaner').item.json.cleanedText }}**\n\nYou must always set the \"text\" field of the later nodes of the \"Mixed\" branch as **{{ $json.redactedText ?? $('Text Cleaner').item.json.cleanedText }}**",
-        "width": 608
+        "content": "You must always set the \"text\" field of first node of the \"Mixed\" branch as \n**{{ $json.cleanedText ?? $('Text Cleaner').item.json.cleanedText }}**\n\nYou must always set the \"text\" field of the later nodes of the \"Mixed\" branch as \n**{{ $json.redactedText ?? $('Text Cleaner').item.json.cleanedText }}**",
+        "width": 624
       },
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        752,
-        848
+        960,
+        672
       ],
-      "id": "8a26be37-d9e5-4e06-9c2d-515033c55ce8",
+      "id": "5e26e1f8-09c9-4467-847c-dd18ecc2dd0c",
       "name": "Sticky Note27"
     },
     {
@@ -2366,10 +2426,10 @@
       "type": "n8n-nodes-base.stickyNote",
       "typeVersion": 1,
       "position": [
-        1360,
-        352
+        1568,
+        176
       ],
-      "id": "1368e3fa-474e-4b5c-98c7-4b27a71f70eb",
+      "id": "d50eaa3c-9504-47d3-9a3a-6d8fb42c3a8e",
       "name": "Sticky Note29"
     }
   ],
@@ -3376,11 +3436,12 @@
     "binaryMode": "separate",
     "availableInMCP": false
   },
-  "versionId": "a60bf974-2525-4682-ba2a-a33b14746da9",
+  "versionId": "048004c4-ea10-495c-a62d-1388a73ad9b0",
   "meta": {
-    "instanceId": "1fbed9836991c71b4217885a42e6d2e71448b41e9e89f4cd7c1df683513d879b"
+    "templateCredsSetupCompleted": true,
+    "instanceId": "a5f893597461f949b09b084c5de2d6642613f3c1b5b519353b0230e4d17116fc"
   },
   "nodeGroups": [],
-  "id": "l5fqhGxHoVlOfmy8",
+  "id": "sOu9huAhlfrOIC02",
   "tags": []
 }
