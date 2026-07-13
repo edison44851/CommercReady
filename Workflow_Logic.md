@@ -394,14 +394,16 @@ Only the strongest penalty applies — they are not multiplicative. This is a de
 
 ### 6.6 Recommendation decision matrix
 
-The final recommendation label is computed by a strict decision tree (Table 4.4 in the underlying methodology):
+The final recommendation label is computed by a simplified decision matrix that uses the **penalised weighted sum only** for all pre-commercialisation states. The commercialization gate remains criteria-based and unchanged:
 
-| Priority     | Condition                                                                                                                                                                                                                                                                | Recommendation                   |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------- |
-| 1            | `penalised_weighted_sum < HOLD_TR_THRESHOLD (4.0)`                                                                                                                                                                                                                     | `Stop / Archive`               |
-| 2            | `maturity_delta > HOLD_TR_THRESHOLD (4.0)` or `maturity_delta > HOLD_MD_THRESOLD (3.5)`                                                                                                                                                                              | `Hold / Pivot`                 |
-| 3            | Hold/Pivot floor is satisfied, but one or more commercialization conditions are unmet                                                                                                                                                                                    | `Accelerate / Support`         |
-| 4 (override) | `penalised_weighted_sum >= COMMERICAL_KTH_THRESHOLD (6.0)` and `maturity_delta <= COMMERCIAL_TR_THRESHOLD (3.5)` and `maturity_delta <= COMMERCIAL_MD_THRESHOLD (3.0)` and `TMRL >= COMMERCIAL_TMRL_THRESHOLD (5)` and `IPRL >= COMMERCIAL_IPRL_THRESHOLD (4)` | `Advance to Commercialization` |
+| Priority     | Condition                                                                                                                                                                                                                             | Recommendation                   |
+| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
+| 1            | `penalised_weighted_sum < 2.0`                                                                                                                                                                                                       | `Stop / Archive`               |
+| 2            | `2.0 <= penalised_weighted_sum < 5.0`                                                                                                                                                                                                 | `Hold / Pivot`                 |
+| 3            | `penalised_weighted_sum >= 5.0` and the commercialization gate is not met                                                                                                                                                             | `Accelerate / Support`         |
+| 4 (override) | `penalised_weighted_sum >= COMMERCIAL_KTH_THRESHOLD (6.0)` and `maturity_delta <= COMMERCIAL_TR_THRESHOLD (3.5)` and `maturity_delta <= COMMERCIAL_MD_THRESHOLD (3.0)` and `TMRL >= COMMERCIAL_TMRL_THRESHOLD (5)` and `IPRL >= COMMERCIAL_IPRL_THRESHOLD (4)` | `Advance to Commercialization` |
+
+The report node renders this matrix but does not recalculate it. `Merge Evaluation Agent Outputs` remains the only node that determines the label and reason text.
 
 The output of this node is a single item containing:
 
@@ -415,11 +417,11 @@ The output of this node is a single item containing:
 
 ### 6.7 Generate Assessment Report (HTML)
 
-A code node renders the merged scoring payload into a colour-coded HTML report and writes it to `03_Assessment/Assessment_Report.html`. This node performs **zero calculations** — all numbers come from the upstream `Merge Evaluation Agent Outputs` node. This separation is intentional: it makes the report generator trivially auditable, because the same JSON could be re-rendered by a different template without changing any numbers.
+A code node renders the merged scoring payload into a colour-coded HTML report and writes it to `03_Assessment/Assessment_Report.html`. This node performs **zero calculations** — all numbers, the recommendation label, and the decision-matrix outcome come from the upstream `Merge Evaluation Agent Outputs` node. The HTML node is therefore a pure renderer: it formats the precomputed score bands, commercialization override, and report labels without re-evaluating any thresholds.
 
 ### 6.8 `Business Logic Variables` — complete reference
 
-The `Business Logic Variables` node is a single `Set` node that exposes **21 named constants** to the rest of the workflow. They are read by the `Merge Evaluation Agent Outputs` code node and drive every weight, threshold, and penalty multiplier in the scoring engine.
+The `Business Logic Variables` node is a single `Set` node that exposes **19 named constants** to the rest of the workflow. They are read by the `Merge Evaluation Agent Outputs` code node and drive every weight, threshold, and penalty multiplier in the scoring engine.
 
 To avoid repeating formulas already documented in `6.2` through `6.6`, this subsection provides a compact variable map only.
 
@@ -445,17 +447,15 @@ The node on the n8n canvas is shown below:
 | 12 | `TR_PENALTY_2`                           | 0.75  | ==Mu==ltipliers   | Severe translation-risk penalty                                 |
 | 13 | `MD_PENALTY_1`                           | 0.80  | ==Mu==ltipliers   | Mild maturity-delta penalty                                     |
 | 14 | `MD_PENALTY_2`                           | 0.75  | ==Mu==ltipliers   | Severe maturity-delta penalty                                   |
-| 15 | `COMMERCIAL_KTH_THRESHOLD`               | 6     | Decision              | Mini==mu==m penalized weighted sum to commercialize         |
+| 15 | `COMMERCIAL_KTH_THRESHOLD`               | 6     | Decision              | Minimum penalized weighted sum to commercialize         |
 | 16 | `COMMERCIAL_TR_THRESHOLD`                | 3.5   | Decision              | Maxi==mu==m allowed maturity delta for commercialization    |
 | 17 | `COMMERCIAL_MD_THRESHOLD`                | 3     | Decision              | Stricter maturity-delta ceiling for commercialization           |
 | 18 | `COMMERCIAL_TMRL_THRESHOLD`              | 5     | Decision              | Mini==mu==m TMRL to commercialize                           |
 | 19 | `COMMERCIAL_IPRL_THRESHOLD`              | 4     | Decision              | Mini==mu==m IPRL to commercialize                           |
-| 20 | `HOLD_TR_THRESHOLD`                      | 4     | Decision              | STOP cutoff for weighted sum and HOLD cutoff for maturity delta |
-| 21 | `HOLD_MD_THRESHOLD`                      | 3.5   | Decision              | Additional maturity-delta HOLD cutoff                           |
 
 #### Operational notes
 
-1. All 21 variables are read fresh on every execution. There is no caching.
+1. All 19 variables are read fresh on every execution. There is no caching.
 2. Two potential implementation issues are worth flagging:
 
 - The risk-level labels appear to use `maturityDelta` rather than `rhoValue`.
